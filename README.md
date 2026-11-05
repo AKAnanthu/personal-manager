@@ -18,6 +18,23 @@ fvm flutter analyze
 fvm flutter test
 ```
 
+## One-command scripts (Windows)
+
+Run from the project folder (`cmd` or PowerShell):
+
+| Command | Does |
+|---------|------|
+| `.\run.cmd` | clean → pub get → gen-l10n → run **dev** on the connected device |
+| `.\run.cmd -NoClean` | same, skipping `flutter clean` (much faster) |
+| `.\run.cmd -Flavor prod -Release -Device <id>` | prod flavor, release mode, chosen device |
+| `.\run.cmd -Codegen` | also re-runs drift `build_runner` |
+| `.\release.cmd` | clean → pub get → analyze → test → signed, obfuscated prod **APK + App Bundle** |
+| `.\release.cmd -Target apk -Install` | only the APK, then install it on the phone |
+| `.\release.cmd -SkipChecks` | skip analyze/tests |
+
+Without `android/key.properties` the release is signed with debug keys (a
+warning is printed): fine for your own phone, rejected by Google Play.
+
 ## Flavors
 
 | Flavor | Android applicationId            | Config file          |
