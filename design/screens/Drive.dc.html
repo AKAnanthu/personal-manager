@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drive storage</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Documents.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Drive storage</h1>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px; padding: 4px 16px">
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px">
+      <div style="width: 40px; height: 40px; border-radius: 20px; background: #D6EDE7; color: #0A4F44; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8z"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg></div>
+      <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 700">Connected</span><span style="font-size: 12px; color: #5B6461">[your Google account]</span></div>
+      <a href="#" style="font-size: 14px; font-weight: 600; text-decoration: none; padding: 10px 4px">Manage</a>
+    </div>
+
+    <nav aria-label="Folder path" style="display: flex; align-items: center; gap: 4px; font-size: 14px; flex-wrap: wrap">
+      <a href="#" style="font-weight: 600; text-decoration: none">Personal Life Manager</a>
+      <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 16px; height: 16px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg>
+      <span style="font-weight: 700">Documents</span>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Personal</span><span style="font-size: 11px; color: #5B6461">6 files</span></a>
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Financial</span><span style="font-size: 11px; color: #5B6461">4 files</span></a>
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Medical</span><span style="font-size: 11px; color: #5B6461">3 files</span></a>
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Education</span><span style="font-size: 11px; color: #5B6461">2 files</span></a>
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Employment</span><span style="font-size: 11px; color: #5B6461">5 files</span></a>
+      <a href="#" style="text-decoration: none; color: #1A1D1C; background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span style="font-size: 13px; font-weight: 600">Others</span><span style="font-size: 11px; color: #5B6461">1 file</span></a>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Files in Documents</h2>
+      <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 4px 10px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 36px; height: 36px; border-radius: 8px; background: #FBE4E1; color: #9A2D21; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center">PDF</div>
+          <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 600">passport.pdf</span><span style="font-size: 12px; color: #5B6461">PDF · 1.2 MB · 28 Oct</span></div>
+          <button aria-label="Download passport.pdf" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M12 4v10M8 10l4 4 4-4M5 20h14"/></svg></button>
+          <button aria-label="More options for passport.pdf" style="width: 44px; height: 44px; border: 0; background: transparent; color: #5B6461; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><circle cx="12" cy="6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="18" r="1.2"/></svg></button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 4px 10px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 36px; height: 36px; border-radius: 8px; background: #E7EEFB; color: #2F4F8F; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center">PNG</div>
+          <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 14px; font-weight: 600">aadhaar_front.png</span><span style="font-size: 12px; color: #5B6461">PNG · 540 KB · 21 Oct</span></div>
+          <button aria-label="Download aadhaar_front.png" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M12 4v10M8 10l4 4 4-4M5 20h14"/></svg></button>
+          <button aria-label="More options for aadhaar_front.png" style="width: 44px; height: 44px; border: 0; background: transparent; color: #5B6461; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><circle cx="12" cy="6" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="18" r="1.2"/></svg></button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 14px">
+          <div style="width: 36px; height: 36px; border-radius: 8px; background: #E3F1E8; color: #23663E; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center">XLS</div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 14px; font-weight: 600">salary_slips_fy25.xlsx</span>
+            <div style="height: 4px; border-radius: 2px; background: #E3E7E5"><div style="width: 64%; height: 4px; border-radius: 2px; background: #0F6B5C"></div></div>
+            <span style="font-size: 12px; color: #0A4F44; font-weight: 600">Uploading · 64%</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin: 0; font-size: 12px; color: #5B6461; line-height: 1.45">Only this app's folder is shown. Drive copies don't sync — editing one won't change the other.</p>
+  </div>
+
+  <button style="position: absolute; right: 16px; bottom: 24px; height: 56px; padding: 0 20px 0 16px; border: 0; border-radius: 16px; background: #0F6B5C; color: #FFFFFF; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(15,107,92,.28)"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V6M8 10l4-4 4 4M5 20h14"/></svg>Upload</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

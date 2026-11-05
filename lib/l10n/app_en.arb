@@ -1,0 +1,3028 @@
+{
+  "@@locale": "en",
+  "appTitle": "Personal Life Manager",
+  "@appTitle": {
+    "description": "App name."
+  },
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Bottom navigation: dashboard tab."
+  },
+  "navDocuments": "Documents",
+  "@navDocuments": {
+    "description": "Bottom navigation: documents tab."
+  },
+  "navShopping": "Shopping",
+  "@navShopping": {
+    "description": "Bottom navigation: shopping tab."
+  },
+  "navMore": "More",
+  "@navMore": {
+    "description": "Bottom navigation: grid of remaining modules."
+  },
+  "sectionUnderConstruction": "This section is coming soon.",
+  "@sectionUnderConstruction": {
+    "description": "Temporary body text for a tab whose feature is not built yet."
+  },
+  "startupFailed": "The app couldn't open its local storage. Restart the app. If this keeps happening, check that your device has free storage space.",
+  "@startupFailed": {
+    "description": "Shown if the local database or file storage can't be opened at launch."
+  },
+  "continueAction": "Continue",
+  "@continueAction": {
+    "description": "Primary button that moves to the next step."
+  },
+  "lockAppAction": "Lock app",
+  "@lockAppAction": {
+    "description": "Tooltip/semantics for the button that locks the app immediately."
+  },
+  "showPassword": "Show password",
+  "@showPassword": {
+    "description": "Semantics for the eye button that reveals a masked password."
+  },
+  "hidePassword": "Hide password",
+  "@hidePassword": {
+    "description": "Semantics for the button that masks a revealed password."
+  },
+  "secureStorageError": "Couldn't reach this device's secure storage. Try again.",
+  "@secureStorageError": {
+    "description": "Shown when the keychain/keystore read or write fails."
+  },
+  "setupStepLabel": "Step {step} of {total}",
+  "@setupStepLabel": {
+    "description": "Progress label in first-time setup.",
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "setupWelcomeTitle": "Welcome",
+  "@setupWelcomeTitle": {
+    "description": "Title of the first setup step."
+  },
+  "setupWelcomeBody": "Keep your personal details, documents, notes, reminders and everyday records in one place, on this phone.",
+  "@setupWelcomeBody": {
+    "description": "Body of the first setup step."
+  },
+  "setupPasswordTitle": "Create your app password",
+  "@setupPasswordTitle": {
+    "description": "Title of the password setup step."
+  },
+  "setupPasswordSubtitle": "You'll enter this each time you open the app.",
+  "@setupPasswordSubtitle": {
+    "description": "Subtitle of the password setup step."
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label for the new password field."
+  },
+  "confirmPasswordLabel": "Confirm password",
+  "@confirmPasswordLabel": {
+    "description": "Label for the repeat-password field."
+  },
+  "passwordStrengthHint": "{strength, select, tooShort{Too short} fair{Fair} good{Good} strong{Strong} other{}} · at least {min} characters",
+  "@passwordStrengthHint": {
+    "description": "Strength label under the new password field.",
+    "placeholders": {
+      "strength": {
+        "type": "String"
+      },
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "passwordStrengthSemantics": "Strength: {strength, select, tooShort{too short} fair{fair} good{good} strong{strong} other{}}",
+  "@passwordStrengthSemantics": {
+    "description": "Screen-reader label for the strength meter.",
+    "placeholders": {
+      "strength": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordsDoNotMatch": "Passwords don't match",
+  "@passwordsDoNotMatch": {
+    "description": "Error under the confirm password field."
+  },
+  "dataStorageTitle": "How your data is stored",
+  "@dataStorageTitle": {
+    "description": "Heading of the data-storage disclosure card."
+  },
+  "dataStorageLocal": "Everything stays on this phone. We have no servers.",
+  "@dataStorageLocal": {
+    "description": "Disclosure: data is local."
+  },
+  "dataStorageDrive": "Copies go to your own Google Drive only when you choose.",
+  "@dataStorageDrive": {
+    "description": "Disclosure: Drive uploads are manual."
+  },
+  "dataStorageNotEncrypted": "Data, files and backups are not encrypted. The password only controls who opens the app.",
+  "@dataStorageNotEncrypted": {
+    "description": "Disclosure: no app-level encryption."
+  },
+  "dataStorageAcknowledge": "I understand how my data is stored",
+  "@dataStorageAcknowledge": {
+    "description": "Checkbox the user must tick before continuing setup."
+  },
+  "setupBiometricTitle": "{kind, select, face{Unlock with Face ID?} fingerprint{Unlock with fingerprint?} other{Unlock with biometrics?}}",
+  "@setupBiometricTitle": {
+    "description": "Title of the optional biometric step.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "setupBiometricBody": "It's quicker than typing your password. Your password always works too, and you can change this later in Settings.",
+  "@setupBiometricBody": {
+    "description": "Body of the optional biometric step."
+  },
+  "setupBiometricEnable": "Turn on",
+  "@setupBiometricEnable": {
+    "description": "Enables biometric unlock."
+  },
+  "setupBiometricSkip": "Not now",
+  "@setupBiometricSkip": {
+    "description": "Skips biometric unlock."
+  },
+  "biometricReasonEnable": "Confirm it's you to turn on biometric unlock",
+  "@biometricReasonEnable": {
+    "description": "System biometric prompt text when enabling."
+  },
+  "biometricReasonUnlock": "Unlock Personal Life Manager",
+  "@biometricReasonUnlock": {
+    "description": "System biometric prompt text when unlocking."
+  },
+  "biometricFailed": "Biometric check didn't work. Try again or use your password.",
+  "@biometricFailed": {
+    "description": "Shown when the biometric prompt fails or is cancelled."
+  },
+  "unlockSubtitle": "Enter your app password to continue",
+  "@unlockSubtitle": {
+    "description": "Subtitle on the unlock screen."
+  },
+  "appPasswordLabel": "App password",
+  "@appPasswordLabel": {
+    "description": "Label for the password field on the unlock screen."
+  },
+  "unlockAction": "Unlock",
+  "@unlockAction": {
+    "description": "Unlock button."
+  },
+  "orDivider": "or",
+  "@orDivider": {
+    "description": "Divider between password and biometric unlock."
+  },
+  "useBiometric": "{kind, select, face{Use Face ID} fingerprint{Use fingerprint} other{Use biometrics}}",
+  "@useBiometric": {
+    "description": "Biometric unlock button.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "unlockInfo": "Your data stays on this device. The app password controls access — it does not encrypt your data or files.",
+  "@unlockInfo": {
+    "description": "Info banner on the unlock screen."
+  },
+  "wrongPassword": "{count, plural, =0{Wrong password.} =1{Wrong password. 1 attempt left before a short wait.} other{Wrong password. {count} attempts left before a short wait.}}",
+  "@wrongPassword": {
+    "description": "Error after a wrong password.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lockedOut": "Too many attempts. Try again in {time}.",
+  "@lockedOut": {
+    "description": "Shown during the backoff period after repeated wrong passwords.",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "0:30"
+      }
+    }
+  },
+  "notificationChannelName": "{kind, select, medicine{Medicine} reminder{Reminders} task{Tasks} lending{Lending and borrowing} documentExpiry{Document expiry} shopping{Shopping} other{Other}}",
+  "@notificationChannelName": {
+    "description": "Android notification channel name, shown in system settings.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelDescription": "{kind, select, medicine{Medicine schedule reminders} reminder{Your reminders} task{Task due-date reminders} lending{Money lent and borrowed due dates} documentExpiry{Documents that are about to expire} shopping{Items left on a paused shopping list} other{Other notifications}}",
+  "@notificationChannelDescription": {
+    "description": "Android notification channel description.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationSnoozeAction": "Snooze {minutes} min",
+  "@notificationSnoozeAction": {
+    "description": "Notification action button that snoozes it.",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "saveAction": "Save",
+  "@saveAction": {
+    "description": "Save button on forms."
+  },
+  "cancelAction": "Cancel",
+  "@cancelAction": {
+    "description": "Cancel button."
+  },
+  "deleteAction": "Delete",
+  "@deleteAction": {
+    "description": "Delete button or menu item."
+  },
+  "discardAction": "Discard",
+  "@discardAction": {
+    "description": "Discard unsaved changes."
+  },
+  "keepEditingAction": "Keep editing",
+  "@keepEditingAction": {
+    "description": "Stay on the form."
+  },
+  "removeAction": "Remove",
+  "@removeAction": {
+    "description": "Remove an item."
+  },
+  "undoAction": "Undo",
+  "@undoAction": {
+    "description": "Undo after a delete."
+  },
+  "seeAllAction": "See all",
+  "@seeAllAction": {
+    "description": "Link to the full list."
+  },
+  "clearAction": "Clear",
+  "@clearAction": {
+    "description": "Clears a field value."
+  },
+  "closeAction": "Close",
+  "@closeAction": {
+    "description": "Close button tooltip."
+  },
+  "moreOptions": "More options",
+  "@moreOptions": {
+    "description": "Overflow menu tooltip."
+  },
+  "optionalSuffix": "(optional)",
+  "@optionalSuffix": {
+    "description": "After an optional field label."
+  },
+  "fieldRequired": "Required",
+  "@fieldRequired": {
+    "description": "Validation error for an empty required field."
+  },
+  "discardChangesTitle": "Discard changes?",
+  "@discardChangesTitle": {
+    "description": "Dialog title when leaving a form with unsaved edits."
+  },
+  "discardChangesBody": "Your changes haven't been saved.",
+  "@discardChangesBody": {
+    "description": "Dialog body when leaving a form with unsaved edits."
+  },
+  "cannotUndoBody": "This can't be undone.",
+  "@cannotUndoBody": {
+    "description": "Body of a delete confirmation."
+  },
+  "errorGeneric": "Something went wrong. Please try again.",
+  "@errorGeneric": {
+    "description": "Fallback error message."
+  },
+  "errorNotFound": "This item no longer exists.",
+  "@errorNotFound": {
+    "description": "Opened an item that was deleted."
+  },
+  "errorUnsupportedFile": "This file type isn't supported. Use PDF, JPG, PNG, Word or Excel files.",
+  "@errorUnsupportedFile": {
+    "description": "Rejected attachment."
+  },
+  "errorFileTooLarge": "This file is too large. The limit is {megabytes} MB.",
+  "@errorFileTooLarge": {
+    "description": "Rejected attachment over the size limit.",
+    "placeholders": {
+      "megabytes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorFileStorage": "Couldn't save the file on this phone. Check free space and try again.",
+  "@errorFileStorage": {
+    "description": "File copy failed."
+  },
+  "errorNoAppToOpen": "No app on this phone can open this file.",
+  "@errorNoAppToOpen": {
+    "description": "No external app for a DOC/XLS file."
+  },
+  "notificationsOffMessage": "Notifications are off, so reminders won't ring.",
+  "@notificationsOffMessage": {
+    "description": "Shown when notification permission is denied."
+  },
+  "openSettingsAction": "Settings",
+  "@openSettingsAction": {
+    "description": "Opens the system settings for this app."
+  },
+  "exactAlarmsOffMessage": "Reminders may ring a few minutes late. Allow exact alarms for on-time reminders.",
+  "@exactAlarmsOffMessage": {
+    "description": "Android 12+: exact alarm permission not granted."
+  },
+  "allowAction": "Allow",
+  "@allowAction": {
+    "description": "Grants a permission."
+  },
+  "pickDateHint": "Pick a date",
+  "@pickDateHint": {
+    "description": "Placeholder for an empty date field."
+  },
+  "pickTimeHint": "Pick a time",
+  "@pickTimeHint": {
+    "description": "Placeholder for an empty time field."
+  },
+  "timeInPastError": "Pick a time in the future.",
+  "@timeInPastError": {
+    "description": "Validation for a one-time reminder in the past."
+  },
+  "moduleName": "{module, select, personal{Personal details} passwords{Password notes} documents{Documents} notes{Notes} tasks{Tasks} reminders{Reminders} shopping{Shopping} budget{Budget} lending{Lending and borrowing} medicine{Medicine schedule} breathe{Eye rest and breathing} drive{Drive storage} backup{Backup and restore} settings{Settings} other{}}",
+  "@moduleName": {
+    "description": "Full module name (page titles, More grid).",
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "moduleShortName": "{module, select, personal{Personal} passwords{Passwords} documents{Documents} notes{Notes} tasks{Tasks} reminders{Reminders} shopping{Shopping} budget{Budget} lending{Lending} medicine{Medicine} breathe{Breathe} drive{Drive} backup{Backup} settings{Settings} other{}}",
+  "@moduleShortName": {
+    "description": "Short module name for quick-access tiles.",
+    "placeholders": {
+      "module": {
+        "type": "String"
+      }
+    }
+  },
+  "greetingMorning": "Good morning",
+  "@greetingMorning": {
+    "description": "Dashboard greeting before noon."
+  },
+  "greetingAfternoon": "Good afternoon",
+  "@greetingAfternoon": {
+    "description": "Dashboard greeting, noon to 5 PM."
+  },
+  "greetingEvening": "Good evening",
+  "@greetingEvening": {
+    "description": "Dashboard greeting after 5 PM."
+  },
+  "searchNotesTooltip": "Search notes",
+  "@searchNotesTooltip": {
+    "description": "Dashboard search button."
+  },
+  "quickAddNote": "Note",
+  "@quickAddNote": {
+    "description": "Quick-add button label."
+  },
+  "quickAddTask": "Task",
+  "@quickAddTask": {
+    "description": "Quick-add button label."
+  },
+  "quickAddReminder": "Reminder",
+  "@quickAddReminder": {
+    "description": "Quick-add button label."
+  },
+  "newNoteAction": "New note",
+  "@newNoteAction": {
+    "description": "Create a note."
+  },
+  "newTaskAction": "New task",
+  "@newTaskAction": {
+    "description": "Create a task."
+  },
+  "newReminderAction": "New reminder",
+  "@newReminderAction": {
+    "description": "Create a reminder."
+  },
+  "comingUpTitle": "Coming up",
+  "@comingUpTitle": {
+    "description": "Dashboard section of upcoming items."
+  },
+  "comingUpEmpty": "Nothing coming up. Reminders and tasks with dates appear here.",
+  "@comingUpEmpty": {
+    "description": "Empty dashboard section."
+  },
+  "quickAccessTitle": "Quick access",
+  "@quickAccessTitle": {
+    "description": "Dashboard module shortcuts."
+  },
+  "upcomingLine": "{kind, select, medicine{Medicine} reminder{Reminder} task{Task} lending{Lending} documentExpiry{Expires} other{}} · {when}",
+  "@upcomingLine": {
+    "description": "Subtitle of an upcoming item.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "whenToday": "Today, {time}",
+  "@whenToday": {
+    "description": "Relative date with time.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "whenTomorrow": "Tomorrow, {time}",
+  "@whenTomorrow": {
+    "description": "Relative date with time.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "whenYesterday": "Yesterday, {time}",
+  "@whenYesterday": {
+    "description": "Relative date with time.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "whenDateTime": "{date}, {time}",
+  "@whenDateTime": {
+    "description": "Absolute date with time.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dueOn": "Due {date}",
+  "@dueOn": {
+    "description": "Task due date.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "notesSearchHint": "Search notes",
+  "@notesSearchHint": {
+    "description": "Notes search field."
+  },
+  "notesFilterAll": "All",
+  "@notesFilterAll": {
+    "description": "Notes filter chip."
+  },
+  "notesFilterFavourites": "Favourites",
+  "@notesFilterFavourites": {
+    "description": "Notes filter chip."
+  },
+  "archivedNotesTitle": "Archived notes",
+  "@archivedNotesTitle": {
+    "description": "Archived notes view title and button tooltip."
+  },
+  "notesPinned": "Pinned",
+  "@notesPinned": {
+    "description": "Notes section."
+  },
+  "notesOthers": "Others",
+  "@notesOthers": {
+    "description": "Notes section."
+  },
+  "notesEmptyTitle": "No notes yet",
+  "@notesEmptyTitle": {
+    "description": "Empty notes list."
+  },
+  "notesEmptyBody": "Tap New note to write your first one.",
+  "@notesEmptyBody": {
+    "description": "Empty notes list."
+  },
+  "notesNoResults": "No notes match your search.",
+  "@notesNoResults": {
+    "description": "Notes search returned nothing."
+  },
+  "notesArchiveEmpty": "No archived notes.",
+  "@notesArchiveEmpty": {
+    "description": "Archive is empty."
+  },
+  "noteEdited": "Edited {date}",
+  "@noteEdited": {
+    "description": "Note card footer.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "notePhotoCount": "{count, plural, =1{1 photo} other{{count} photos}}",
+  "@notePhotoCount": {
+    "description": "Attachment summary on a note card.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noteFileCount": "{count, plural, =1{1 file} other{{count} files}}",
+  "@noteFileCount": {
+    "description": "Attachment summary on a note card.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noteTitleHint": "Title",
+  "@noteTitleHint": {
+    "description": "Note title placeholder."
+  },
+  "noteBodyHint": "Write something…",
+  "@noteBodyHint": {
+    "description": "Note body placeholder."
+  },
+  "noteTagsLabel": "Tags",
+  "@noteTagsLabel": {
+    "description": "Note tags section."
+  },
+  "noteTagHint": "Add a tag, e.g. home",
+  "@noteTagHint": {
+    "description": "Note tag input placeholder."
+  },
+  "removeTagTooltip": "Remove tag {tag}",
+  "@removeTagTooltip": {
+    "description": "Remove a tag.",
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "notePin": "Pin",
+  "@notePin": {
+    "description": "Pin a note."
+  },
+  "noteUnpin": "Unpin",
+  "@noteUnpin": {
+    "description": "Unpin a note."
+  },
+  "noteFavourite": "Add to favourites",
+  "@noteFavourite": {
+    "description": "Mark note as favourite."
+  },
+  "noteUnfavourite": "Remove from favourites",
+  "@noteUnfavourite": {
+    "description": "Unmark favourite."
+  },
+  "noteArchive": "Archive",
+  "@noteArchive": {
+    "description": "Archive a note."
+  },
+  "noteUnarchive": "Unarchive",
+  "@noteUnarchive": {
+    "description": "Restore an archived note."
+  },
+  "noteArchivedSnack": "Note archived",
+  "@noteArchivedSnack": {
+    "description": "Snackbar after archiving."
+  },
+  "noteDeletedSnack": "Note deleted",
+  "@noteDeletedSnack": {
+    "description": "Snackbar after deleting."
+  },
+  "deleteNoteTitle": "Delete this note?",
+  "@deleteNoteTitle": {
+    "description": "Delete confirmation."
+  },
+  "deleteNoteBody": "The note and its attachments will be removed from this phone. This can't be undone.",
+  "@deleteNoteBody": {
+    "description": "Delete confirmation."
+  },
+  "newNoteTitle": "New note",
+  "@newNoteTitle": {
+    "description": "Editor title for a new note."
+  },
+  "editNoteTitle": "Edit note",
+  "@editNoteTitle": {
+    "description": "Editor title for an existing note."
+  },
+  "attachmentsLabel": "Attachments",
+  "@attachmentsLabel": {
+    "description": "Note attachments section."
+  },
+  "attachTakePhoto": "Take photo",
+  "@attachTakePhoto": {
+    "description": "Attach from camera."
+  },
+  "attachChoosePhoto": "Choose photo",
+  "@attachChoosePhoto": {
+    "description": "Attach from gallery."
+  },
+  "attachChooseFile": "Choose file",
+  "@attachChooseFile": {
+    "description": "Attach a document."
+  },
+  "addAttachmentAction": "Add attachment",
+  "@addAttachmentAction": {
+    "description": "Opens attachment options."
+  },
+  "removeAttachmentTitle": "Remove this attachment?",
+  "@removeAttachmentTitle": {
+    "description": "Confirmation."
+  },
+  "removeAttachmentTooltip": "Remove {name}",
+  "@removeAttachmentTooltip": {
+    "description": "Remove an attachment.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "openAttachmentSemantics": "Open {name}",
+  "@openAttachmentSemantics": {
+    "description": "Open an attachment.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksPendingTab": "Pending · {count}",
+  "@tasksPendingTab": {
+    "description": "Tasks tab.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksCompletedTab": "Completed · {count}",
+  "@tasksCompletedTab": {
+    "description": "Tasks tab.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksOverdue": "Overdue",
+  "@tasksOverdue": {
+    "description": "Tasks section."
+  },
+  "tasksUpcoming": "Upcoming",
+  "@tasksUpcoming": {
+    "description": "Tasks section."
+  },
+  "taskNoDueDate": "No due date",
+  "@taskNoDueDate": {
+    "description": "Task without a due date."
+  },
+  "taskMarkDone": "Mark {title} done",
+  "@taskMarkDone": {
+    "description": "Checkbox semantics.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "taskMarkNotDone": "Mark {title} not done",
+  "@taskMarkNotDone": {
+    "description": "Checkbox semantics.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "checklistProgress": "{done}/{total}",
+  "@checklistProgress": {
+    "description": "Checklist progress.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "tasksEmptyPending": "No pending tasks",
+  "@tasksEmptyPending": {
+    "description": "Empty tab."
+  },
+  "tasksEmptyPendingBody": "Tap New task to add one.",
+  "@tasksEmptyPendingBody": {
+    "description": "Empty tab."
+  },
+  "tasksEmptyCompleted": "No completed tasks yet.",
+  "@tasksEmptyCompleted": {
+    "description": "Empty tab."
+  },
+  "tasksNoResults": "No tasks match your search.",
+  "@tasksNoResults": {
+    "description": "Search returned nothing."
+  },
+  "searchTasksHint": "Search tasks",
+  "@searchTasksHint": {
+    "description": "Tasks search field and button tooltip."
+  },
+  "newTaskTitle": "New task",
+  "@newTaskTitle": {
+    "description": "Task editor title."
+  },
+  "editTaskTitle": "Edit task",
+  "@editTaskTitle": {
+    "description": "Task editor title."
+  },
+  "titleLabel": "Title",
+  "@titleLabel": {
+    "description": "Title field label."
+  },
+  "descriptionLabel": "Description",
+  "@descriptionLabel": {
+    "description": "Description field label."
+  },
+  "dueDateLabel": "Due date",
+  "@dueDateLabel": {
+    "description": "Task due date label."
+  },
+  "reminderLabel": "Reminder",
+  "@reminderLabel": {
+    "description": "Task reminder label."
+  },
+  "dateLabel": "Date",
+  "@dateLabel": {
+    "description": "Date field label."
+  },
+  "timeLabel": "Time",
+  "@timeLabel": {
+    "description": "Time field label."
+  },
+  "checklistLabel": "Checklist",
+  "@checklistLabel": {
+    "description": "Task checklist section."
+  },
+  "addChecklistItem": "Add item",
+  "@addChecklistItem": {
+    "description": "Adds a checklist row."
+  },
+  "checklistItemHint": "Item",
+  "@checklistItemHint": {
+    "description": "Checklist row placeholder."
+  },
+  "removeChecklistItem": "Remove item",
+  "@removeChecklistItem": {
+    "description": "Removes a checklist row."
+  },
+  "taskCompletedSnack": "Task completed",
+  "@taskCompletedSnack": {
+    "description": "Snackbar."
+  },
+  "taskDeletedSnack": "Task deleted",
+  "@taskDeletedSnack": {
+    "description": "Snackbar."
+  },
+  "deleteTaskTitle": "Delete this task?",
+  "@deleteTaskTitle": {
+    "description": "Confirmation."
+  },
+  "remindersOverdue": "Overdue · {count}",
+  "@remindersOverdue": {
+    "description": "Reminders section.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "remindersUpcoming": "Upcoming",
+  "@remindersUpcoming": {
+    "description": "Reminders section."
+  },
+  "reminderMarkDone": "Mark done",
+  "@reminderMarkDone": {
+    "description": "Completes a reminder."
+  },
+  "reminderSnoozeHour": "Snooze 1 h",
+  "@reminderSnoozeHour": {
+    "description": "Snoozes a reminder for an hour."
+  },
+  "remindersOffline": "Reminders ring even without internet.",
+  "@remindersOffline": {
+    "description": "Info banner."
+  },
+  "remindersEmptyTitle": "No reminders",
+  "@remindersEmptyTitle": {
+    "description": "Empty list."
+  },
+  "remindersEmptyBody": "Tap New reminder to add one.",
+  "@remindersEmptyBody": {
+    "description": "Empty list."
+  },
+  "repeatName": "{repeat, select, none{Once} daily{Daily} weekly{Weekly} monthly{Monthly} yearly{Yearly} other{}}",
+  "@repeatName": {
+    "description": "Repeat option.",
+    "placeholders": {
+      "repeat": {
+        "type": "String"
+      }
+    }
+  },
+  "repeatSectionLabel": "Repeat",
+  "@repeatSectionLabel": {
+    "description": "Reminder repeat chooser label."
+  },
+  "repeatHelpOnce": "Rings once.",
+  "@repeatHelpOnce": {
+    "description": "Repeat helper text."
+  },
+  "repeatHelpDaily": "Repeats every day.",
+  "@repeatHelpDaily": {
+    "description": "Repeat helper text."
+  },
+  "repeatHelpWeekly": "Repeats every {weekday}.",
+  "@repeatHelpWeekly": {
+    "description": "Repeat helper text.",
+    "placeholders": {
+      "weekday": {
+        "type": "String"
+      }
+    }
+  },
+  "repeatHelpMonthly": "Repeats on day {day} of every month.",
+  "@repeatHelpMonthly": {
+    "description": "Repeat helper text.",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "repeatHelpMonthlyEnd": "Repeats on day {day} of every month, or the last day of shorter months.",
+  "@repeatHelpMonthlyEnd": {
+    "description": "Repeat helper for days 29-31.",
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "repeatHelpYearly": "Repeats every year on {date}.",
+  "@repeatHelpYearly": {
+    "description": "Repeat helper text.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "repeatHelpLeapDay": "Repeats every year on 29 February, or 28 February in other years.",
+  "@repeatHelpLeapDay": {
+    "description": "Repeat helper for 29 Feb."
+  },
+  "reminderFormInfo": "You'll be notified on this phone, even offline. Snooze from the notification.",
+  "@reminderFormInfo": {
+    "description": "Info banner on the reminder form."
+  },
+  "newReminderTitle": "New reminder",
+  "@newReminderTitle": {
+    "description": "Form title."
+  },
+  "editReminderTitle": "Edit reminder",
+  "@editReminderTitle": {
+    "description": "Form title."
+  },
+  "reminderDoneSnack": "Marked done",
+  "@reminderDoneSnack": {
+    "description": "Snackbar."
+  },
+  "reminderSnoozedSnack": "Snoozed for 1 hour",
+  "@reminderSnoozedSnack": {
+    "description": "Snackbar."
+  },
+  "reminderDeletedSnack": "Reminder deleted",
+  "@reminderDeletedSnack": {
+    "description": "Snackbar."
+  },
+  "deleteReminderTitle": "Delete this reminder?",
+  "@deleteReminderTitle": {
+    "description": "Confirmation."
+  },
+  "moreTitle": "More",
+  "@moreTitle": {
+    "description": "More tab title."
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Filter chip showing everything."
+  },
+  "filterFavourites": "Favourites",
+  "@filterFavourites": {
+    "description": "Filter chip for favourites."
+  },
+  "editAction": "Edit",
+  "@editAction": {
+    "description": "Edit button."
+  },
+  "dismissAction": "Dismiss",
+  "@dismissAction": {
+    "description": "Dismiss a banner."
+  },
+  "noMatches": "No matches.",
+  "@noMatches": {
+    "description": "Search returned nothing."
+  },
+  "copyTooltip": "Copy {label}",
+  "@copyTooltip": {
+    "description": "Copy button tooltip.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "copiedSnack": "{label} copied",
+  "@copiedSnack": {
+    "description": "After copying a value.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "copiedSensitiveSnack": "{label} copied. It will be cleared from the clipboard in 30 seconds.",
+  "@copiedSensitiveSnack": {
+    "description": "After copying a password or ID number.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "showValueTooltip": "Show {label}",
+  "@showValueTooltip": {
+    "description": "Reveal a masked value.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "hideValueTooltip": "Hide {label}",
+  "@hideValueTooltip": {
+    "description": "Mask a revealed value.",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "detailCategory": "{category, select, personal{Personal} family{Family} identification{IDs} additional{Work & more} other{}}",
+  "@detailCategory": {
+    "description": "Personal details tab.",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "detailKind": "{kind, select, profile{Personal information} familyMember{Family member} aadhaar{Aadhaar} pan{PAN} passport{Passport} drivingLicence{Driving licence} voterId{Voter ID} otherId{Other ID} education{Education} employment{Employment} financial{Financial reference} custom{Custom} other{}}",
+  "@detailKind": {
+    "description": "Type of personal details entry.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "detailField": "{field, select, fullName{Full name} dateOfBirth{Date of birth} phone{Phone number} email{Email address} currentAddress{Current address} permanentAddress{Permanent address} otherInfo{Other information} relationship{Relationship} address{Address} emergencyContact{Emergency contact} number{Number} nameOnId{Name on ID} expiryDate{Expiry date} notes{Notes} institution{Institution} qualification{Qualification} year{Year} employer{Employer} role{Role} employeeId{Employee ID} reference{Reference or account number} other{}}",
+  "@detailField": {
+    "description": "Label of a personal details field.",
+    "placeholders": {
+      "field": {
+        "type": "String"
+      }
+    }
+  },
+  "entryTitleLabel": "{kind, select, familyMember{Name} otherId{ID name} financial{Name} other{Title}}",
+  "@entryTitleLabel": {
+    "description": "Label of the user-entered title.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "personalBorn": "Born {date}",
+  "@personalBorn": {
+    "description": "Profile header subtitle.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profileEmptyTitle": "Add your details",
+  "@profileEmptyTitle": {
+    "description": "Profile card when empty."
+  },
+  "profileEmptyBody": "Your name, date of birth, contact details and addresses.",
+  "@profileEmptyBody": {
+    "description": "Profile card when empty."
+  },
+  "editProfileTooltip": "Edit personal information",
+  "@editProfileTooltip": {
+    "description": "Edit profile button."
+  },
+  "addFamilyMember": "Add member",
+  "@addFamilyMember": {
+    "description": "FAB on the Family tab."
+  },
+  "addIdAction": "Add ID",
+  "@addIdAction": {
+    "description": "FAB on the IDs tab."
+  },
+  "addEntryAction": "Add entry",
+  "@addEntryAction": {
+    "description": "FAB on the Work & more tab."
+  },
+  "personalCardHint": "Tap a card to see it in full and copy, edit or delete.",
+  "@personalCardHint": {
+    "description": "Hint under the list."
+  },
+  "personalTabEmpty": "Nothing saved here yet.",
+  "@personalTabEmpty": {
+    "description": "Empty tab."
+  },
+  "personalSearchHint": "Search personal details",
+  "@personalSearchHint": {
+    "description": "Search field."
+  },
+  "chooseTypeLabel": "Type",
+  "@chooseTypeLabel": {
+    "description": "Entry type chooser label."
+  },
+  "customFieldsLabel": "More fields",
+  "@customFieldsLabel": {
+    "description": "Custom fields section."
+  },
+  "addCustomField": "Add field",
+  "@addCustomField": {
+    "description": "Adds a custom field."
+  },
+  "customFieldLabelHint": "Label",
+  "@customFieldLabelHint": {
+    "description": "Custom field label placeholder."
+  },
+  "customFieldValueHint": "Value",
+  "@customFieldValueHint": {
+    "description": "Custom field value placeholder."
+  },
+  "removeFieldTooltip": "Remove field",
+  "@removeFieldTooltip": {
+    "description": "Removes a custom field."
+  },
+  "deleteEntryTitle": "Delete this entry?",
+  "@deleteEntryTitle": {
+    "description": "Confirmation."
+  },
+  "entryDeletedSnack": "Deleted",
+  "@entryDeletedSnack": {
+    "description": "Snackbar after deleting."
+  },
+  "addKindTitle": "Add {kind}",
+  "@addKindTitle": {
+    "description": "Entry form title.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "editKindTitle": "Edit {kind}",
+  "@editKindTitle": {
+    "description": "Entry form title.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordsWarning": "Saved without encryption. Anyone who can open this device or a backup file could read these entries.",
+  "@passwordsWarning": {
+    "description": "Warning banner on Password notes."
+  },
+  "passwordsSearchHint": "Search websites and apps",
+  "@passwordsSearchHint": {
+    "description": "Search field."
+  },
+  "websiteNameLabel": "Website or app name",
+  "@websiteNameLabel": {
+    "description": "Form field."
+  },
+  "websiteUrlLabel": "Website URL",
+  "@websiteUrlLabel": {
+    "description": "Form field."
+  },
+  "usernameLabel": "Username or email",
+  "@usernameLabel": {
+    "description": "Form field."
+  },
+  "categoryLabel": "Category",
+  "@categoryLabel": {
+    "description": "Form field."
+  },
+  "newCategoryAction": "New",
+  "@newCategoryAction": {
+    "description": "Adds a custom category chip."
+  },
+  "newCategoryTitle": "New category",
+  "@newCategoryTitle": {
+    "description": "Dialog title."
+  },
+  "categoryNameHint": "Category name",
+  "@categoryNameHint": {
+    "description": "Dialog field."
+  },
+  "addAction": "Add",
+  "@addAction": {
+    "description": "Confirm adding."
+  },
+  "notesLabel": "Notes",
+  "@notesLabel": {
+    "description": "Form field."
+  },
+  "addToFavourites": "Add to favourites",
+  "@addToFavourites": {
+    "description": "Checkbox."
+  },
+  "savedUnencryptedNote": "Saved without encryption on this device.",
+  "@savedUnencryptedNote": {
+    "description": "Note at the bottom of the password form."
+  },
+  "copyPasswordFor": "Copy password for {name}",
+  "@copyPasswordFor": {
+    "description": "Copy button on a collapsed card.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordsEmptyTitle": "No password notes yet",
+  "@passwordsEmptyTitle": {
+    "description": "Empty list."
+  },
+  "passwordsEmptyBody": "Tap + to save login details for a website or app.",
+  "@passwordsEmptyBody": {
+    "description": "Empty list."
+  },
+  "newPasswordTitle": "New password note",
+  "@newPasswordTitle": {
+    "description": "Form title."
+  },
+  "editPasswordTitle": "Edit password note",
+  "@editPasswordTitle": {
+    "description": "Form title."
+  },
+  "addPasswordNoteTooltip": "Add password note",
+  "@addPasswordNoteTooltip": {
+    "description": "FAB tooltip."
+  },
+  "deletePasswordTitle": "Delete this password note?",
+  "@deletePasswordTitle": {
+    "description": "Confirmation."
+  },
+  "passwordDeletedSnack": "Password note deleted",
+  "@passwordDeletedSnack": {
+    "description": "Snackbar."
+  },
+  "hiddenValueSemantics": "Hidden",
+  "@hiddenValueSemantics": {
+    "description": "Screen-reader text for a masked value (ID number, password)."
+  },
+  "idExpires": "Expires {date}",
+  "@idExpires": {
+    "description": "Expiry line on an ID card row.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "documentCategory": "{category, select, personal{Personal} financial{Financial} medical{Medical} employment{Employment} educational{Educational} propertyVehicle{Property and vehicle} others{Others} other{}}",
+  "@documentCategory": {
+    "description": "Document category (PRD 7.3).",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "documentCategoryShort": "{category, select, personal{Personal} financial{Financial} medical{Medical} employment{Employment} educational{Educational} propertyVehicle{Property} others{Others} other{}}",
+  "@documentCategoryShort": {
+    "description": "Short category name for filter chips.",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "documentsSearchHint": "Search documents",
+  "@documentsSearchHint": {
+    "description": "Search field hint / tooltip."
+  },
+  "openDriveTooltip": "Open Drive storage",
+  "@openDriveTooltip": {
+    "description": "Documents app bar button."
+  },
+  "addDocumentAction": "Add document",
+  "@addDocumentAction": {
+    "description": "FAB and add-form title."
+  },
+  "editDocumentTitle": "Edit document",
+  "@editDocumentTitle": {
+    "description": "Form title when editing."
+  },
+  "documentsRecent": "Recent",
+  "@documentsRecent": {
+    "description": "Section heading over the document list."
+  },
+  "documentsEmptyTitle": "No documents yet",
+  "@documentsEmptyTitle": {
+    "description": "Empty state title."
+  },
+  "documentsEmptyBody": "Tap Add document to scan or pick a file. It's kept on this phone.",
+  "@documentsEmptyBody": {
+    "description": "Empty state body."
+  },
+  "documentExpiresOn": "{title} expires {date}",
+  "@documentExpiresOn": {
+    "description": "Expiry banner title.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "daysLeft": "{count, plural, =0{Expires today} =1{1 day left} other{{count} days left}}",
+  "@daysLeft": {
+    "description": "Days until a document expires.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "documentExpired": "Expired",
+  "@documentExpired": {
+    "description": "Shown after the expiry date has passed."
+  },
+  "documentExpiryShort": "Exp. {date}",
+  "@documentExpiryShort": {
+    "description": "Expiry in the list row.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "driveDeviceOnly": "On this device only",
+  "@driveDeviceOnly": {
+    "description": "No Drive copy."
+  },
+  "driveUploading": "Uploading to Drive",
+  "@driveUploading": {
+    "description": "Drive upload in progress."
+  },
+  "driveCopyOnDrive": "Copy on Drive",
+  "@driveCopyOnDrive": {
+    "description": "Uploaded to Drive."
+  },
+  "driveUploadFailed": "Upload failed",
+  "@driveUploadFailed": {
+    "description": "Drive upload failed."
+  },
+  "driveLabel": "Google Drive",
+  "@driveLabel": {
+    "description": "Detail row label."
+  },
+  "scanWithCamera": "Scan with camera",
+  "@scanWithCamera": {
+    "description": "Form button."
+  },
+  "pickFromFiles": "Pick from files",
+  "@pickFromFiles": {
+    "description": "Form button."
+  },
+  "replaceFileAction": "Replace file",
+  "@replaceFileAction": {
+    "description": "Form button once a file is chosen."
+  },
+  "fileSavedOnDevice": "{size} · saved on this device",
+  "@fileSavedOnDevice": {
+    "description": "Under the chosen file name.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "documentFileRequired": "Scan or pick a file to add.",
+  "@documentFileRequired": {
+    "description": "Error when saving without a file."
+  },
+  "documentDescriptionHint": "e.g. renewed copy, both pages",
+  "@documentDescriptionHint": {
+    "description": "Description hint."
+  },
+  "expiryDateLabel": "Expiry date",
+  "@expiryDateLabel": {
+    "description": "Form/detail label."
+  },
+  "markFavourite": "Mark as favourite",
+  "@markFavourite": {
+    "description": "Form checkbox."
+  },
+  "expiryReminderLabel": "Remind me 30 days before",
+  "@expiryReminderLabel": {
+    "description": "Switch for the expiry notification."
+  },
+  "expiryReminderHelp": "A notification on this phone at 9:00, 30 days before it expires.",
+  "@expiryReminderHelp": {
+    "description": "Help under the expiry reminder switch."
+  },
+  "expiryReminderOn": "Reminder 30 days before",
+  "@expiryReminderOn": {
+    "description": "Detail: reminder on."
+  },
+  "expiryReminderOff": "No reminder",
+  "@expiryReminderOff": {
+    "description": "Detail: reminder off."
+  },
+  "previewAction": "Preview",
+  "@previewAction": {
+    "description": "Open PDF/image preview."
+  },
+  "openInOtherAppAction": "Open in another app",
+  "@openInOtherAppAction": {
+    "description": "Open Word/Excel files externally."
+  },
+  "documentFileMissing": "The file is missing from this phone. Edit the document to add it again.",
+  "@documentFileMissing": {
+    "description": "Shown when the stored file can't be found."
+  },
+  "documentFileLabel": "File",
+  "@documentFileLabel": {
+    "description": "Detail row label."
+  },
+  "documentAddedLabel": "Added",
+  "@documentAddedLabel": {
+    "description": "Detail row label."
+  },
+  "deleteDocumentTitle": "Delete this document?",
+  "@deleteDocumentTitle": {
+    "description": "Confirm dialog title."
+  },
+  "deleteDocumentBody": "The file will be removed from this phone. A copy on your Google Drive, if there is one, is not affected.",
+  "@deleteDocumentBody": {
+    "description": "Confirm dialog body."
+  },
+  "documentDeletedSnack": "Document deleted",
+  "@documentDeletedSnack": {
+    "description": "Snackbar after delete."
+  },
+  "documentExpiryNotificationTitle": "{title} expires soon",
+  "@documentExpiryNotificationTitle": {
+    "description": "Expiry notification title.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "documentExpiryNotificationBody": "{days, plural, =1{Expires tomorrow.} other{Expires in {days} days.}} Tap to view it.",
+  "@documentExpiryNotificationBody": {
+    "description": "Expiry notification body.",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "linkedDocumentsLabel": "Documents",
+  "@linkedDocumentsLabel": {
+    "description": "Section of documents linked to a personal-details entry."
+  },
+  "linkDocumentAction": "Link document",
+  "@linkDocumentAction": {
+    "description": "Opens the document picker."
+  },
+  "unlinkDocumentTooltip": "Remove link to {title}",
+  "@unlinkDocumentTooltip": {
+    "description": "Chip delete tooltip. The document itself is kept.",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chooseDocumentTitle": "Choose a document",
+  "@chooseDocumentTitle": {
+    "description": "Picker sheet title."
+  },
+  "noDocumentsToLink": "No documents to link. Add them in Documents first.",
+  "@noDocumentsToLink": {
+    "description": "Picker empty state."
+  },
+  "errorConflict": "That can't be done right now. Please try again.",
+  "@errorConflict": {
+    "description": "Generic conflict error."
+  },
+  "paymentMethod": "{method, select, cash{Cash} upi{UPI} card{Card} other{Other}}",
+  "@paymentMethod": {
+    "description": "Payment method.",
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingStartNew": "Start a new list",
+  "@shoppingStartNew": {
+    "description": "Shopping."
+  },
+  "shoppingTypeItems": "Type items",
+  "@shoppingTypeItems": {
+    "description": "Shopping."
+  },
+  "shoppingTypeItemsHint": "Add them one by one",
+  "@shoppingTypeItemsHint": {
+    "description": "Shopping."
+  },
+  "shoppingPasteMessage": "Paste a message",
+  "@shoppingPasteMessage": {
+    "description": "Shopping."
+  },
+  "shoppingPasteMessageHint": "From WhatsApp or SMS",
+  "@shoppingPasteMessageHint": {
+    "description": "Shopping."
+  },
+  "shoppingShareInstructions": "Send someone the \"how to send a list\" image",
+  "@shoppingShareInstructions": {
+    "description": "Shopping."
+  },
+  "shoppingShareText": "Please send me the shopping list like this 🙂",
+  "@shoppingShareText": {
+    "description": "Text sent with the instruction image."
+  },
+  "shoppingSavedLists": "Saved lists",
+  "@shoppingSavedLists": {
+    "description": "Shopping."
+  },
+  "shoppingPreviousLists": "Previous lists",
+  "@shoppingPreviousLists": {
+    "description": "Shopping."
+  },
+  "shoppingHistoryEmpty": "Finished lists will appear here.",
+  "@shoppingHistoryEmpty": {
+    "description": "Shopping."
+  },
+  "shoppingItemCount": "{count, plural, =1{1 item} other{{count} items}}",
+  "@shoppingItemCount": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingReceiptTag": "receipt",
+  "@shoppingReceiptTag": {
+    "description": "Marks a history row that has a receipt."
+  },
+  "shoppingStartAction": "Start",
+  "@shoppingStartAction": {
+    "description": "Shopping."
+  },
+  "shoppingReuseAction": "Reuse",
+  "@shoppingReuseAction": {
+    "description": "Shopping."
+  },
+  "shoppingReuseList": "Reuse this list",
+  "@shoppingReuseList": {
+    "description": "Shopping."
+  },
+  "shoppingInProgress": "In progress",
+  "@shoppingInProgress": {
+    "description": "Shopping."
+  },
+  "shoppingPausedAt": "Paused · {when}",
+  "@shoppingPausedAt": {
+    "description": "Shopping.",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingProgress": "{done} of {total}",
+  "@shoppingProgress": {
+    "description": "Shopping.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingProgressShort": "{done} / {total}",
+  "@shoppingProgressShort": {
+    "description": "Shopping.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingResumeAction": "Resume shopping",
+  "@shoppingResumeAction": {
+    "description": "Shopping."
+  },
+  "shoppingFinishAction": "Finish",
+  "@shoppingFinishAction": {
+    "description": "Shopping."
+  },
+  "shoppingFinishShopping": "Finish shopping",
+  "@shoppingFinishShopping": {
+    "description": "Shopping."
+  },
+  "shoppingInProgressTitle": "A list is in progress",
+  "@shoppingInProgressTitle": {
+    "description": "Shopping."
+  },
+  "shoppingInProgressBody": "Finish or continue the list you're shopping for before starting another.",
+  "@shoppingInProgressBody": {
+    "description": "Shopping."
+  },
+  "shoppingOpenCurrent": "Open it",
+  "@shoppingOpenCurrent": {
+    "description": "Shopping."
+  },
+  "shoppingNewList": "New list",
+  "@shoppingNewList": {
+    "description": "Shopping."
+  },
+  "shoppingEditList": "Edit list",
+  "@shoppingEditList": {
+    "description": "Shopping."
+  },
+  "shoppingListName": "List name",
+  "@shoppingListName": {
+    "description": "Shopping."
+  },
+  "shoppingDefaultListName": "Shopping {date}",
+  "@shoppingDefaultListName": {
+    "description": "Default list name.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingCopiedFrom": "Copied from the {date} list — change anything before you start.",
+  "@shoppingCopiedFrom": {
+    "description": "Shopping.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingItemsHeader": "Item · {count}",
+  "@shoppingItemsHeader": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingQtyHeader": "Qty",
+  "@shoppingQtyHeader": {
+    "description": "Shopping."
+  },
+  "shoppingUnitHeader": "Unit",
+  "@shoppingUnitHeader": {
+    "description": "Shopping."
+  },
+  "shoppingQtyHint": "Qty",
+  "@shoppingQtyHint": {
+    "description": "Shopping."
+  },
+  "shoppingAddItemHint": "Add an item…",
+  "@shoppingAddItemHint": {
+    "description": "Shopping."
+  },
+  "shoppingAddItemTooltip": "Add item",
+  "@shoppingAddItemTooltip": {
+    "description": "Shopping."
+  },
+  "shoppingAddItemAction": "Add item",
+  "@shoppingAddItemAction": {
+    "description": "Shopping."
+  },
+  "shoppingPasteTip": "Tip: paste several lines here and each becomes its own item.",
+  "@shoppingPasteTip": {
+    "description": "Shopping."
+  },
+  "shoppingNoItemsError": "Add at least one item.",
+  "@shoppingNoItemsError": {
+    "description": "Shopping."
+  },
+  "shoppingStartShopping": "Start shopping",
+  "@shoppingStartShopping": {
+    "description": "Shopping."
+  },
+  "shoppingSavedSnack": "List saved",
+  "@shoppingSavedSnack": {
+    "description": "Shopping."
+  },
+  "shoppingItemNameLabel": "Item name",
+  "@shoppingItemNameLabel": {
+    "description": "Shopping."
+  },
+  "shoppingQuantityRequired": "Quantity, required",
+  "@shoppingQuantityRequired": {
+    "description": "Shopping."
+  },
+  "shoppingRemoveItem": "Remove {name}",
+  "@shoppingRemoveItem": {
+    "description": "Shopping.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingImportTitle": "Import from message",
+  "@shoppingImportTitle": {
+    "description": "Shopping."
+  },
+  "shoppingOrTypeHere": "Or paste or type it here",
+  "@shoppingOrTypeHere": {
+    "description": "Shopping."
+  },
+  "shoppingMessageExample": "Milk 2\nBread 1\nRice 5 kg",
+  "@shoppingMessageExample": {
+    "description": "Shopping."
+  },
+  "shoppingReviewAction": "Review items",
+  "@shoppingReviewAction": {
+    "description": "Shopping."
+  },
+  "shoppingClipboardEmpty": "Nothing to paste. Copy the message first, then tap Paste.",
+  "@shoppingClipboardEmpty": {
+    "description": "Shopping."
+  },
+  "shoppingPastedMessage": "Pasted message",
+  "@shoppingPastedMessage": {
+    "description": "Shopping."
+  },
+  "shoppingPasteAgain": "Paste again",
+  "@shoppingPasteAgain": {
+    "description": "Shopping."
+  },
+  "shoppingReviewCount": "{count, plural, =1{Review 1 item} other{Review {count} items}}",
+  "@shoppingReviewCount": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingNothingFound": "No items found in this message.",
+  "@shoppingNothingFound": {
+    "description": "Shopping."
+  },
+  "shoppingDuplicate": "{name} is listed {count} times.",
+  "@shoppingDuplicate": {
+    "description": "Shopping.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingDuplicateNoMerge": "{name} is listed {count} times with different units. Check them.",
+  "@shoppingDuplicateNoMerge": {
+    "description": "Shopping.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingMergeAction": "Merge",
+  "@shoppingMergeAction": {
+    "description": "Shopping."
+  },
+  "shoppingNoQuantityFound": "No quantity found — enter one to confirm.",
+  "@shoppingNoQuantityFound": {
+    "description": "Shopping."
+  },
+  "shoppingQuantityInvalid": "Enter a number, like 2 or 1.5.",
+  "@shoppingQuantityInvalid": {
+    "description": "Shopping."
+  },
+  "shoppingNameMissing": "Enter the item name.",
+  "@shoppingNameMissing": {
+    "description": "Shopping."
+  },
+  "shoppingImportItems": "{count, plural, =1{Import 1 item} other{Import {count} items}}",
+  "@shoppingImportItems": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingConfirmToImport": "{count, plural, =1{Confirm 1 item to import} other{Confirm {count} items to import}}",
+  "@shoppingConfirmToImport": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingPrivacyNote": "Only text you paste is read — the app never opens WhatsApp.",
+  "@shoppingPrivacyNote": {
+    "description": "Shopping."
+  },
+  "shoppingToPick": "To pick · {count}",
+  "@shoppingToPick": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingInCart": "In the cart · {count}",
+  "@shoppingInCart": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingEditItem": "Edit item",
+  "@shoppingEditItem": {
+    "description": "Shopping."
+  },
+  "shoppingNoSession": "No shopping in progress.",
+  "@shoppingNoSession": {
+    "description": "Shopping."
+  },
+  "shoppingContinueLater": "Continue later",
+  "@shoppingContinueLater": {
+    "description": "Shopping."
+  },
+  "shoppingKeepShopping": "Keep shopping",
+  "@shoppingKeepShopping": {
+    "description": "Shopping."
+  },
+  "shoppingLeaveTitle": "{count, plural, =1{1 item still to pick} other{{count} items still to pick}}",
+  "@shoppingLeaveTitle": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingLeaveBody": "Continue later keeps this list and shows one notification with what's left. Finish saves it to history.",
+  "@shoppingLeaveBody": {
+    "description": "Shopping."
+  },
+  "shoppingAllPickedTitle": "Everything is picked",
+  "@shoppingAllPickedTitle": {
+    "description": "Shopping."
+  },
+  "shoppingAllPickedBody": "Finish now to save the total to history?",
+  "@shoppingAllPickedBody": {
+    "description": "Shopping."
+  },
+  "shoppingPausedSnack": "{count, plural, =1{Saved for later · 1 item left} other{Saved for later · {count} items left}}",
+  "@shoppingPausedSnack": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingNoticeTitle": "{count, plural, =1{1 item left in {name}} other{{count} items left in {name}}}",
+  "@shoppingNoticeTitle": {
+    "description": "Pending-items notification title.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shoppingAllItemsPicked": "{count, plural, =1{The 1 item picked} other{All {count} items picked}}",
+  "@shoppingAllItemsPicked": {
+    "description": "Shopping.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingSomeItemsPicked": "{done} of {total} items picked",
+  "@shoppingSomeItemsPicked": {
+    "description": "Shopping.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "shoppingEditPurchase": "Edit purchase",
+  "@shoppingEditPurchase": {
+    "description": "Shopping."
+  },
+  "shoppingTotalAmount": "Total amount",
+  "@shoppingTotalAmount": {
+    "description": "Shopping."
+  },
+  "shoppingTotalRequired": "Enter the amount paid.",
+  "@shoppingTotalRequired": {
+    "description": "Shopping."
+  },
+  "shoppingStore": "Store",
+  "@shoppingStore": {
+    "description": "Shopping."
+  },
+  "shoppingStoreHint": "e.g. neighbourhood supermarket",
+  "@shoppingStoreHint": {
+    "description": "Shopping."
+  },
+  "shoppingPaidWith": "Paid with",
+  "@shoppingPaidWith": {
+    "description": "Shopping."
+  },
+  "shoppingReceipt": "Receipt",
+  "@shoppingReceipt": {
+    "description": "Shopping."
+  },
+  "shoppingReceiptPhoto": "Photo",
+  "@shoppingReceiptPhoto": {
+    "description": "Shopping."
+  },
+  "shoppingReceiptPdf": "PDF",
+  "@shoppingReceiptPdf": {
+    "description": "Shopping."
+  },
+  "shoppingBudgetNote": "Added once to Budget as an expense.",
+  "@shoppingBudgetNote": {
+    "description": "Shopping."
+  },
+  "shoppingSaveToHistory": "Save to history",
+  "@shoppingSaveToHistory": {
+    "description": "Shopping."
+  },
+  "shoppingSavedToHistory": "Saved to history",
+  "@shoppingSavedToHistory": {
+    "description": "Shopping."
+  },
+  "shoppingDeleteListTitle": "Delete this list?",
+  "@shoppingDeleteListTitle": {
+    "description": "Shopping."
+  },
+  "shoppingDeleteListBody": "Its total is in Budget as an expense. Delete that expense too, or keep it?",
+  "@shoppingDeleteListBody": {
+    "description": "Shopping."
+  },
+  "shoppingDeleteKeepExpense": "Keep expense",
+  "@shoppingDeleteKeepExpense": {
+    "description": "Shopping."
+  },
+  "shoppingDeleteWithExpense": "Delete both",
+  "@shoppingDeleteWithExpense": {
+    "description": "Shopping."
+  },
+  "shoppingListDeleted": "List deleted",
+  "@shoppingListDeleted": {
+    "description": "Shopping."
+  },
+  "shoppingBought": "Bought",
+  "@shoppingBought": {
+    "description": "Shopping."
+  },
+  "shoppingNotBought": "Not bought",
+  "@shoppingNotBought": {
+    "description": "Shopping."
+  },
+  "amountLabel": "Amount",
+  "@amountLabel": {
+    "description": "Milestone 8."
+  },
+  "amountRequired": "Enter an amount above zero.",
+  "@amountRequired": {
+    "description": "Milestone 8."
+  },
+  "statusLabel": "Status",
+  "@statusLabel": {
+    "description": "Milestone 8."
+  },
+  "remindMeLabel": "Remind me",
+  "@remindMeLabel": {
+    "description": "Milestone 8."
+  },
+  "previousMonth": "Previous month",
+  "@previousMonth": {
+    "description": "Milestone 8."
+  },
+  "nextMonth": "Next month",
+  "@nextMonth": {
+    "description": "Milestone 8."
+  },
+  "budgetRemaining": "Remaining this month",
+  "@budgetRemaining": {
+    "description": "Milestone 8."
+  },
+  "budgetOverBy": "Over budget by",
+  "@budgetOverBy": {
+    "description": "Milestone 8."
+  },
+  "totalBudget": "Total budget",
+  "@totalBudget": {
+    "description": "Milestone 8."
+  },
+  "totalSpent": "Total spent",
+  "@totalSpent": {
+    "description": "Milestone 8."
+  },
+  "editBudgetTooltip": "Edit budget",
+  "@editBudgetTooltip": {
+    "description": "Milestone 8."
+  },
+  "budgetNotSet": "Set a monthly budget to see what's left.",
+  "@budgetNotSet": {
+    "description": "Milestone 8."
+  },
+  "setBudgetAction": "Set budget",
+  "@setBudgetAction": {
+    "description": "Milestone 8."
+  },
+  "monthlyBudgetTitle": "Monthly budget",
+  "@monthlyBudgetTitle": {
+    "description": "Milestone 8."
+  },
+  "expensesLabel": "Expenses",
+  "@expensesLabel": {
+    "description": "Milestone 8."
+  },
+  "expensesEmpty": "No expenses this month",
+  "@expensesEmpty": {
+    "description": "Milestone 8."
+  },
+  "expensesEmptyBody": "Tap Add expense. Shopping totals are added automatically.",
+  "@expensesEmptyBody": {
+    "description": "Milestone 8."
+  },
+  "expenseUntitled": "Expense",
+  "@expenseUntitled": {
+    "description": "Milestone 8."
+  },
+  "expenseFromShopping": "From shopping",
+  "@expenseFromShopping": {
+    "description": "Milestone 8."
+  },
+  "expenseDeletedSnack": "Expense deleted",
+  "@expenseDeletedSnack": {
+    "description": "Milestone 8."
+  },
+  "addExpenseAction": "Add expense",
+  "@addExpenseAction": {
+    "description": "Milestone 8."
+  },
+  "editExpenseTitle": "Edit expense",
+  "@editExpenseTitle": {
+    "description": "Milestone 8."
+  },
+  "saveExpenseAction": "Save expense",
+  "@saveExpenseAction": {
+    "description": "Milestone 8."
+  },
+  "deleteExpenseTitle": "Delete this expense?",
+  "@deleteExpenseTitle": {
+    "description": "Milestone 8."
+  },
+  "expenseLeaves": "Leaves {left} of {budget} this month",
+  "@expenseLeaves": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "left": {
+        "type": "String"
+      },
+      "budget": {
+        "type": "String"
+      }
+    }
+  },
+  "expenseGoesOver": "Goes {over} over the {budget} budget this month",
+  "@expenseGoesOver": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "over": {
+        "type": "String"
+      },
+      "budget": {
+        "type": "String"
+      }
+    }
+  },
+  "expenseShoppingNote": "Shopping totals are added here automatically when you finish a shopping trip — no need to enter them again.",
+  "@expenseShoppingNote": {
+    "description": "Milestone 8."
+  },
+  "moneyLentTab": "Money lent",
+  "@moneyLentTab": {
+    "description": "Milestone 8."
+  },
+  "moneyBorrowedTab": "Money borrowed",
+  "@moneyBorrowedTab": {
+    "description": "Milestone 8."
+  },
+  "totalLentPending": "Total lent · pending",
+  "@totalLentPending": {
+    "description": "Milestone 8."
+  },
+  "totalBorrowedPending": "Total borrowed · pending",
+  "@totalBorrowedPending": {
+    "description": "Milestone 8."
+  },
+  "lendingPeople": "{count, plural, =0{Nothing pending} =1{1 person} other{{count} people}}",
+  "@lendingPeople": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lendingNextDue": "next due {date}",
+  "@lendingNextDue": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingGivenOn": "Given {date}",
+  "@lendingGivenOn": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingBorrowedOn": "Borrowed {date}",
+  "@lendingBorrowedOn": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingDueOn": "Due {date}",
+  "@lendingDueOn": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingRepaidOn": "Repaid {date}",
+  "@lendingRepaidOn": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingReminderAt": "Reminder {date}, {time}",
+  "@lendingReminderAt": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingStatus": "{status, select, pending{Pending} completed{Completed} other{}}",
+  "@lendingStatus": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "markRepaidAction": "Mark repaid",
+  "@markRepaidAction": {
+    "description": "Milestone 8."
+  },
+  "markPaidBackAction": "Mark paid back",
+  "@markPaidBackAction": {
+    "description": "Milestone 8."
+  },
+  "addLendingRecord": "Add record",
+  "@addLendingRecord": {
+    "description": "Milestone 8."
+  },
+  "lentEmpty": "No money lent",
+  "@lentEmpty": {
+    "description": "Milestone 8."
+  },
+  "borrowedEmpty": "No money borrowed",
+  "@borrowedEmpty": {
+    "description": "Milestone 8."
+  },
+  "lendingEmptyBody": "Tap Add record to note who owes what.",
+  "@lendingEmptyBody": {
+    "description": "Milestone 8."
+  },
+  "newLendingTitle": "New record",
+  "@newLendingTitle": {
+    "description": "Milestone 8."
+  },
+  "editLendingTitle": "Edit record",
+  "@editLendingTitle": {
+    "description": "Milestone 8."
+  },
+  "iLentMoney": "I lent money",
+  "@iLentMoney": {
+    "description": "Milestone 8."
+  },
+  "iBorrowedMoney": "I borrowed money",
+  "@iBorrowedMoney": {
+    "description": "Milestone 8."
+  },
+  "personLabel": "Person",
+  "@personLabel": {
+    "description": "Milestone 8."
+  },
+  "dateGivenLabel": "Date given",
+  "@dateGivenLabel": {
+    "description": "Milestone 8."
+  },
+  "dateBorrowedLabel": "Date borrowed",
+  "@dateBorrowedLabel": {
+    "description": "Milestone 8."
+  },
+  "dueBeforeGivenError": "The due date is before the date given.",
+  "@dueBeforeGivenError": {
+    "description": "Milestone 8."
+  },
+  "lendingNotesHint": "e.g. for bike repair",
+  "@lendingNotesHint": {
+    "description": "Milestone 8."
+  },
+  "lendingRemindHelp": "On the due date, 9:00 AM",
+  "@lendingRemindHelp": {
+    "description": "Milestone 8."
+  },
+  "deleteLendingTitle": "Delete this record?",
+  "@deleteLendingTitle": {
+    "description": "Milestone 8."
+  },
+  "lendingDeletedSnack": "Record deleted",
+  "@lendingDeletedSnack": {
+    "description": "Milestone 8."
+  },
+  "lendingDueLentTitle": "{person} is due to repay you",
+  "@lendingDueLentTitle": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "person": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingDueLentBody": "{amount} is due today.",
+  "@lendingDueLentBody": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingDueBorrowedTitle": "Repay {person} today",
+  "@lendingDueBorrowedTitle": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "person": {
+        "type": "String"
+      }
+    }
+  },
+  "lendingDueBorrowedBody": "{amount} is due today.",
+  "@lendingDueBorrowedBody": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "addMedicineAction": "Add medicine",
+  "@addMedicineAction": {
+    "description": "Milestone 8."
+  },
+  "editMedicineTitle": "Edit medicine",
+  "@editMedicineTitle": {
+    "description": "Milestone 8."
+  },
+  "medicineNameLabel": "Medicine name",
+  "@medicineNameLabel": {
+    "description": "Milestone 8."
+  },
+  "reminderTimesLabel": "Reminder times",
+  "@reminderTimesLabel": {
+    "description": "Milestone 8."
+  },
+  "addTimeAction": "Add a time",
+  "@addTimeAction": {
+    "description": "Milestone 8."
+  },
+  "addAnotherTime": "Add another time",
+  "@addAnotherTime": {
+    "description": "Milestone 8."
+  },
+  "removeTimeTooltip": "Remove {time}",
+  "@removeTimeTooltip": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "medicineTimesRequired": "Add at least one time.",
+  "@medicineTimesRequired": {
+    "description": "Milestone 8."
+  },
+  "medicineDaysLabel": "Days",
+  "@medicineDaysLabel": {
+    "description": "Milestone 8."
+  },
+  "medicineEveryDay": "Every day",
+  "@medicineEveryDay": {
+    "description": "Milestone 8."
+  },
+  "medicineSelectedDays": "Selected days",
+  "@medicineSelectedDays": {
+    "description": "Milestone 8."
+  },
+  "medicineDaysRequired": "Pick at least one day.",
+  "@medicineDaysRequired": {
+    "description": "Milestone 8."
+  },
+  "medicineDayRange": "{first} – {last}",
+  "@medicineDayRange": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "last": {
+        "type": "String"
+      }
+    }
+  },
+  "medicineRemindersOn": "Reminders on",
+  "@medicineRemindersOn": {
+    "description": "Milestone 8."
+  },
+  "medicineRemindersOnHelp": "Turn off to pause without deleting",
+  "@medicineRemindersOnHelp": {
+    "description": "Milestone 8."
+  },
+  "medicinePaused": "Paused",
+  "@medicinePaused": {
+    "description": "Milestone 8."
+  },
+  "medicineNextUp": "{hours, plural, =0{Next up · in {minutes} min} other{Next up · in {hours} h {minutes} min}}",
+  "@medicineNextUp": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "medicineEmptyTitle": "No medicine reminders",
+  "@medicineEmptyTitle": {
+    "description": "Milestone 8."
+  },
+  "medicineEmptyBody": "Tap Add medicine to set reminder times.",
+  "@medicineEmptyBody": {
+    "description": "Milestone 8."
+  },
+  "medicineDisclaimer": "Reminders only. This app gives no dosage or medical advice.",
+  "@medicineDisclaimer": {
+    "description": "Milestone 8."
+  },
+  "deleteMedicineTitle": "Delete this medicine?",
+  "@deleteMedicineTitle": {
+    "description": "Milestone 8."
+  },
+  "medicineDeletedSnack": "Medicine deleted",
+  "@medicineDeletedSnack": {
+    "description": "Milestone 8."
+  },
+  "medicineNotificationTitle": "Time for {name}",
+  "@medicineNotificationTitle": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "medicineNotificationBody": "Scheduled for {time}",
+  "@medicineNotificationBody": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "breatheIntro": "Look away from the screen, relax your shoulders and follow the circle.",
+  "@breatheIntro": {
+    "description": "Milestone 8."
+  },
+  "breatheIn": "Breathe in",
+  "@breatheIn": {
+    "description": "Milestone 8."
+  },
+  "breatheOut": "Breathe out",
+  "@breatheOut": {
+    "description": "Milestone 8."
+  },
+  "breatheReady": "Ready",
+  "@breatheReady": {
+    "description": "Milestone 8."
+  },
+  "breathePaused": "Paused",
+  "@breathePaused": {
+    "description": "Milestone 8."
+  },
+  "breatheDone": "Well done",
+  "@breatheDone": {
+    "description": "Milestone 8."
+  },
+  "breatheStatus": "{remaining} remaining · {inhale} s in, {exhale} s out",
+  "@breatheStatus": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "remaining": {
+        "type": "String"
+      },
+      "inhale": {
+        "type": "int"
+      },
+      "exhale": {
+        "type": "int"
+      }
+    }
+  },
+  "breatheDuration": "Duration",
+  "@breatheDuration": {
+    "description": "Milestone 8."
+  },
+  "breatheMinutes": "{count} min",
+  "@breatheMinutes": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "breathePace": "Pace",
+  "@breathePace": {
+    "description": "Milestone 8."
+  },
+  "breathePaceLabel": "{inhale} s in · {exhale} s out",
+  "@breathePaceLabel": {
+    "description": "Milestone 8.",
+    "placeholders": {
+      "inhale": {
+        "type": "int"
+      },
+      "exhale": {
+        "type": "int"
+      }
+    }
+  },
+  "breatheSound": "Completion sound",
+  "@breatheSound": {
+    "description": "Milestone 8."
+  },
+  "breatheVibration": "Vibration",
+  "@breatheVibration": {
+    "description": "Milestone 8."
+  },
+  "breatheStart": "Start",
+  "@breatheStart": {
+    "description": "Milestone 8."
+  },
+  "breatheAgain": "Start again",
+  "@breatheAgain": {
+    "description": "Milestone 8."
+  },
+  "breathePause": "Pause",
+  "@breathePause": {
+    "description": "Milestone 8."
+  },
+  "breatheResume": "Resume",
+  "@breatheResume": {
+    "description": "Milestone 8."
+  },
+  "breatheStop": "Stop",
+  "@breatheStop": {
+    "description": "Milestone 8."
+  },
+  "doneAction": "Done",
+  "@doneAction": {
+    "description": "Generic done button."
+  },
+  "googleDrive": "Google Drive",
+  "@googleDrive": {
+    "description": "Product name; do not translate."
+  },
+  "sensitiveTag": "Sensitive",
+  "@sensitiveTag": {
+    "description": "Tag on the password notes option."
+  },
+  "backupTab": "Back up",
+  "@backupTab": {
+    "description": "Backup and restore."
+  },
+  "restoreTab": "Restore",
+  "@restoreTab": {
+    "description": "Backup and restore."
+  },
+  "backupCategory": "{category, select, personal{Personal details} notes{Notes} documents{Documents with attachments} reminders{Reminders} tasks{Tasks and checklists} passwords{Password notes} shopping{Shopping lists, history & receipts} budget{Budget and expenses} lending{Lending and borrowing} medicine{Medicine schedules} preferences{App preferences} other{}}",
+  "@backupCategory": {
+    "description": "Backup category name.",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "backupNever": "No backup made on this phone yet.",
+  "@backupNever": {
+    "description": "Backup and restore."
+  },
+  "backupLast": "Last backup: {date} · {size}",
+  "@backupLast": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "backupIncludedByDefault": "Included by default",
+  "@backupIncludedByDefault": {
+    "description": "Backup and restore."
+  },
+  "backupOptional": "Optional",
+  "@backupOptional": {
+    "description": "Backup and restore."
+  },
+  "backupSaveTo": "Save to",
+  "@backupSaveTo": {
+    "description": "Backup and restore."
+  },
+  "backupThisDevice": "This phone (save or share the file)",
+  "@backupThisDevice": {
+    "description": "Backup and restore."
+  },
+  "backupDriveLater": "Available once Google Drive is connected",
+  "@backupDriveLater": {
+    "description": "Backup and restore."
+  },
+  "backupUnencryptedWarning": "Backup files are not encrypted. Anyone who gets the file can read its contents.",
+  "@backupUnencryptedWarning": {
+    "description": "Backup and restore."
+  },
+  "backupSensitiveWarning": "Backup files are not encrypted, and this one includes your password notes. Anyone who gets the file can read them. Keep it somewhere private.",
+  "@backupSensitiveWarning": {
+    "description": "Backup and restore."
+  },
+  "backupCreateCount": "{count, plural, =0{Choose what to back up} =1{Create backup · 1 category} other{Create backup · {count} categories}}",
+  "@backupCreateCount": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupChecking": "Checking what to include…",
+  "@backupChecking": {
+    "description": "Backup and restore."
+  },
+  "backupPreparing": "Preparing the backup file…",
+  "@backupPreparing": {
+    "description": "Backup and restore."
+  },
+  "backupSummaryTitle": "Create this backup?",
+  "@backupSummaryTitle": {
+    "description": "Backup and restore."
+  },
+  "backupRecordCount": "{count, plural, =1{1 item} other{{count} items}}",
+  "@backupRecordCount": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "backupEstimatedSize": "About {size}",
+  "@backupEstimatedSize": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "backupCreateAction": "Create backup",
+  "@backupCreateAction": {
+    "description": "Backup and restore."
+  },
+  "backupReady": "Backup ready · {size}",
+  "@backupReady": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "backupSaveToDevice": "Save to this phone",
+  "@backupSaveToDevice": {
+    "description": "Backup and restore."
+  },
+  "backupShare": "Share…",
+  "@backupShare": {
+    "description": "Backup and restore."
+  },
+  "backupShareHint": "Send it to another app, e.g. Files or e-mail",
+  "@backupShareHint": {
+    "description": "Backup and restore."
+  },
+  "backupSaved": "Backup saved · {size}",
+  "@backupSaved": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "backupFailed": "The backup couldn't be made. Nothing was saved.",
+  "@backupFailed": {
+    "description": "Backup and restore."
+  },
+  "backupProblem": "{problem, select, notABackup{This isn't a Personal Life Manager backup file.} damaged{This backup is damaged or incomplete. Nothing was restored.} tooNew{This backup was made by a newer version of the app. Update the app, then try again.} other{This file can't be used.}}",
+  "@backupProblem": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "problem": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreIntro": "Choose a backup file. You can see what's in it and pick what to restore before anything changes.",
+  "@restoreIntro": {
+    "description": "Backup and restore."
+  },
+  "restoreChooseFile": "Choose backup file",
+  "@restoreChooseFile": {
+    "description": "Backup and restore."
+  },
+  "restoreDriveLater": "Restoring from Google Drive will be available once Drive is connected.",
+  "@restoreDriveLater": {
+    "description": "Backup and restore."
+  },
+  "restoreChecking": "Checking the backup…",
+  "@restoreChecking": {
+    "description": "Backup and restore."
+  },
+  "restoreRestoring": "Restoring…",
+  "@restoreRestoring": {
+    "description": "Backup and restore."
+  },
+  "restoreCannotUse": "Can't use this file",
+  "@restoreCannotUse": {
+    "description": "Backup and restore."
+  },
+  "restoreBackupFrom": "Backup from {date}",
+  "@restoreBackupFrom": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreChooseCategories": "What to restore",
+  "@restoreChooseCategories": {
+    "description": "Backup and restore."
+  },
+  "restoreHow": "How",
+  "@restoreHow": {
+    "description": "Backup and restore."
+  },
+  "restoreMerge": "Merge",
+  "@restoreMerge": {
+    "description": "Backup and restore."
+  },
+  "restoreReplace": "Replace",
+  "@restoreReplace": {
+    "description": "Backup and restore."
+  },
+  "restoreMergeHelp": "Adds what's missing and updates items where the backup has the newer version. Nothing on this phone is deleted.",
+  "@restoreMergeHelp": {
+    "description": "Backup and restore."
+  },
+  "restoreReplaceHelp": "Deletes what's on this phone in the chosen categories, then restores the backup's copy. Other categories aren't touched.",
+  "@restoreReplaceHelp": {
+    "description": "Backup and restore."
+  },
+  "restoreCount": "{count, plural, =0{Choose what to restore} =1{Restore 1 category} other{Restore {count} categories}}",
+  "@restoreCount": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreMergeTitle": "Restore from this backup?",
+  "@restoreMergeTitle": {
+    "description": "Backup and restore."
+  },
+  "restoreMergeBody": "Merge into: {categories}. Newer versions win; nothing is deleted.",
+  "@restoreMergeBody": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "categories": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreReplaceTitle": "Replace this data?",
+  "@restoreReplaceTitle": {
+    "description": "Backup and restore."
+  },
+  "restoreReplaceBody": "Everything currently on this phone in {categories} will be deleted and replaced with the backup. This can't be undone.",
+  "@restoreReplaceBody": {
+    "description": "Backup and restore.",
+    "placeholders": {
+      "categories": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreAction": "Restore",
+  "@restoreAction": {
+    "description": "Backup and restore."
+  },
+  "restoreReplaceAction": "Replace",
+  "@restoreReplaceAction": {
+    "description": "Backup and restore."
+  },
+  "restoreDone": "Restore finished. Reminders have been rescheduled.",
+  "@restoreDone": {
+    "description": "Backup and restore."
+  },
+  "restoreFailed": "The restore stopped. The category being restored was left as it was.",
+  "@restoreFailed": {
+    "description": "Backup and restore."
+  },
+  "settingsSecurity": "Security",
+  "@settingsSecurity": {
+    "description": "Settings."
+  },
+  "settingsStorage": "Storage",
+  "@settingsStorage": {
+    "description": "Settings."
+  },
+  "settingsPreferences": "Preferences",
+  "@settingsPreferences": {
+    "description": "Settings."
+  },
+  "settingsAbout": "About",
+  "@settingsAbout": {
+    "description": "Settings."
+  },
+  "changePasswordTitle": "Change app password",
+  "@changePasswordTitle": {
+    "description": "Settings."
+  },
+  "currentPasswordLabel": "Current password",
+  "@currentPasswordLabel": {
+    "description": "Settings."
+  },
+  "newPasswordLabel": "New password",
+  "@newPasswordLabel": {
+    "description": "Settings."
+  },
+  "passwordTooShort": "Use at least {min} characters.",
+  "@passwordTooShort": {
+    "description": "Settings.",
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "passwordSameAsCurrent": "Choose a password different from the current one.",
+  "@passwordSameAsCurrent": {
+    "description": "Settings."
+  },
+  "passwordChangedSnack": "App password changed",
+  "@passwordChangedSnack": {
+    "description": "Settings."
+  },
+  "biometricUnlockSetting": "{kind, select, face{Face ID unlock} fingerprint{Fingerprint unlock} other{Biometric unlock}}",
+  "@biometricUnlockSetting": {
+    "description": "Settings.",
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  },
+  "autoLockTitle": "Auto-lock",
+  "@autoLockTitle": {
+    "description": "Settings."
+  },
+  "autoLockOption": "{option, select, immediately{As soon as you leave the app} after30s{After 30 seconds in background} after1min{After 1 minute in background} after5min{After 5 minutes in background} other{}}",
+  "@autoLockOption": {
+    "description": "Settings.",
+    "placeholders": {
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "driveNotConnectedYet": "Not connected · coming in a later update",
+  "@driveNotConnectedYet": {
+    "description": "Settings."
+  },
+  "settingsLastBackup": "Last backup {date}",
+  "@settingsLastBackup": {
+    "description": "Settings.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsNotifications": "Notifications",
+  "@settingsNotifications": {
+    "description": "Settings."
+  },
+  "notificationsStatusOn": "Allowed · exact alarms on",
+  "@notificationsStatusOn": {
+    "description": "Settings."
+  },
+  "notificationsStatusInexact": "Allowed · may ring a few minutes late (tap to allow exact alarms)",
+  "@notificationsStatusInexact": {
+    "description": "Settings."
+  },
+  "notificationsStatusOff": "Off · reminders won't ring (tap to allow)",
+  "@notificationsStatusOff": {
+    "description": "Settings."
+  },
+  "themeTitle": "Theme",
+  "@themeTitle": {
+    "description": "Settings."
+  },
+  "themeOption": "{mode, select, system{System default} light{Light} dark{Dark} other{}}",
+  "@themeOption": {
+    "description": "Settings.",
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "budgetPeriodTitle": "Budget period",
+  "@budgetPeriodTitle": {
+    "description": "Settings."
+  },
+  "budgetPeriodCalendarMonth": "Monthly · starts on the 1st",
+  "@budgetPeriodCalendarMonth": {
+    "description": "Settings."
+  },
+  "appInfoTitle": "App info",
+  "@appInfoTitle": {
+    "description": "Settings."
+  },
+  "appVersion": "Version {version} · licences",
+  "@appVersion": {
+    "description": "Settings.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyTitle": "Privacy & data storage",
+  "@privacyTitle": {
+    "description": "Settings."
+  },
+  "privacyLocalTitle": "Everything stays on this phone",
+  "@privacyLocalTitle": {
+    "description": "Settings."
+  },
+  "privacyLocalBody": "Your details, notes, documents and lists are stored only on this phone. The app works fully offline.",
+  "@privacyLocalBody": {
+    "description": "Settings."
+  },
+  "privacyNoServerTitle": "No servers, no account",
+  "@privacyNoServerTitle": {
+    "description": "Settings."
+  },
+  "privacyNoServerBody": "There is no developer server or cloud database. Nothing is sent to the makers of this app.",
+  "@privacyNoServerBody": {
+    "description": "Settings."
+  },
+  "privacyDriveTitle": "Google Drive only when you choose",
+  "@privacyDriveTitle": {
+    "description": "Settings."
+  },
+  "privacyDriveBody": "Copies go to your own Google Drive only when you upload or back up there yourself. Nothing syncs automatically.",
+  "@privacyDriveBody": {
+    "description": "Settings."
+  },
+  "privacyEncryptionTitle": "Not encrypted",
+  "@privacyEncryptionTitle": {
+    "description": "Settings."
+  },
+  "privacyEncryptionBody": "Data, files and backups are not encrypted by the app. Anyone who can get into this phone or a backup file may be able to read them.",
+  "@privacyEncryptionBody": {
+    "description": "Settings."
+  },
+  "privacyPasswordTitle": "The app password controls access",
+  "@privacyPasswordTitle": {
+    "description": "Settings."
+  },
+  "privacyPasswordBody": "It stops others opening the app; it does not encrypt your data. If you forget it, the only way back in is to erase everything on this phone.",
+  "@privacyPasswordBody": {
+    "description": "Settings."
+  },
+  "privacyBackupTitle": "Backups are files you control",
+  "@privacyBackupTitle": {
+    "description": "Settings."
+  },
+  "privacyBackupBody": "A backup is made only when you ask, and saved where you choose. Keep backup files somewhere private.",
+  "@privacyBackupBody": {
+    "description": "Settings."
+  },
+  "privacyScreenTitle": "Hidden from screenshots and the app switcher",
+  "@privacyScreenTitle": {
+    "description": "Settings."
+  },
+  "privacyScreenBody": "Screens with passwords, ID numbers and document scans block screenshots, and the app's preview is hidden in the app switcher.",
+  "@privacyScreenBody": {
+    "description": "Settings."
+  },
+  "privacyAnalyticsTitle": "No tracking",
+  "@privacyAnalyticsTitle": {
+    "description": "Settings."
+  },
+  "privacyAnalyticsBody": "No analytics, ads or crash reporting. Logs on the phone never contain your records.",
+  "@privacyAnalyticsBody": {
+    "description": "Settings."
+  },
+  "forgotPasswordAction": "Forgot password?",
+  "@forgotPasswordAction": {
+    "description": "Settings."
+  },
+  "forgotPasswordTitle": "Forgot your password?",
+  "@forgotPasswordTitle": {
+    "description": "Settings."
+  },
+  "forgotPasswordBody": "There is no server, so the password can't be recovered or reset. The only way back in is to erase everything and set the app up again.",
+  "@forgotPasswordBody": {
+    "description": "Settings."
+  },
+  "eraseTitle": "Erase all data",
+  "@eraseTitle": {
+    "description": "Settings."
+  },
+  "eraseBody": "Everything in the app on this phone will be deleted: details, passwords, documents, notes, lists, reminders and settings. This can't be undone.",
+  "@eraseBody": {
+    "description": "Settings."
+  },
+  "eraseKeepsBackups": "Backup files you saved elsewhere and copies on Google Drive are not touched. You can restore a backup after setting the app up again.",
+  "@eraseKeepsBackups": {
+    "description": "Settings."
+  },
+  "eraseConfirmWord": "ERASE",
+  "@eraseConfirmWord": {
+    "description": "The word the user must type to confirm. Translate it, keep it short."
+  },
+  "eraseTypeToConfirm": "Type {word} to confirm",
+  "@eraseTypeToConfirm": {
+    "description": "Settings.",
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "eraseAction": "Erase everything",
+  "@eraseAction": {
+    "description": "Settings."
+  }
+}

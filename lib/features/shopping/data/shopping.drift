@@ -1,0 +1,7 @@
+import 'shopping_tables.dart';
+
+-- One shopping session at a time, enforced by the database.
+CREATE UNIQUE INDEX shopping_one_active ON shopping_lists (status)
+  WHERE status = 'active';
+
+CREATE INDEX shopping_items_list ON shopping_items (list_id, position);

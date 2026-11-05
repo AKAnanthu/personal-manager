@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tasks and checklists</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Tasks</h1>
+    <button aria-label="Search tasks" style="width: 48px; height: 48px; border: 0; background: transparent; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px; padding: 4px 16px">
+    <div role="tablist" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #EAEEEC; border-radius: 22px; padding: 4px">
+      <button role="tab" aria-selected="true" style="height: 40px; border: 0; border-radius: 18px; background: #FFFFFF; color: #0A4F44; font: 700 14px 'Plus Jakarta Sans', sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.08)">Pending · 5</button>
+      <button role="tab" aria-selected="false" style="height: 40px; border: 0; border-radius: 18px; background: transparent; color: #3E4643; font: 600 14px 'Plus Jakarta Sans', sans-serif">Completed · 12</button>
+    </div>
+
+    <span style="font-size: 13px; font-weight: 700; color: #A12C1F; letter-spacing: .04em; text-transform: uppercase">Overdue</span>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; align-items: center; gap: 14px; padding: 12px 14px">
+      <button aria-label="Mark Submit tax documents done" style="width: 28px; height: 28px; border: 2px solid #A12C1F; border-radius: 8px; background: transparent; flex: none; padding: 0"></button>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Submit tax documents to CA</span><span style="font-size: 12px; font-weight: 600; color: #A12C1F">Due 1 Nov</span></div>
+    </div>
+
+    <span style="font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Upcoming</span>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <button aria-label="Mark Renew car insurance done" style="width: 28px; height: 28px; border: 2px solid #0F6B5C; border-radius: 8px; background: transparent; flex: none; padding: 0"></button>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Renew car insurance</span><span style="font-size: 12px; color: #5B6461; display: flex; align-items: center; gap: 4px">Due 12 Nov · <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 13px; height: 13px"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/></svg>9 Nov, 10 AM</span></div>
+          <span style="font-size: 12px; font-weight: 700; color: #3E4643">2/3</span>
+        </div>
+        <div style="margin-left: 42px; display: flex; flex-direction: column; gap: 8px; font-size: 14px">
+          <span style="display: flex; align-items: center; gap: 10px; color: #5B6461; text-decoration: line-through"><span style="width: 18px; height: 18px; border-radius: 5px; background: #0F6B5C; flex: none"></span>Compare quotes</span>
+          <span style="display: flex; align-items: center; gap: 10px; color: #5B6461; text-decoration: line-through"><span style="width: 18px; height: 18px; border-radius: 5px; background: #0F6B5C; flex: none"></span>Check RC copy in Documents</span>
+          <span style="display: flex; align-items: center; gap: 10px"><span style="width: 18px; height: 18px; border-radius: 5px; border: 2px solid #0F6B5C; flex: none"></span>Pay and save policy PDF</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+        <button aria-label="Mark Book dentist appointment done" style="width: 28px; height: 28px; border: 2px solid #0F6B5C; border-radius: 8px; background: transparent; flex: none; padding: 0"></button>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Book dentist appointment</span><span style="font-size: 12px; color: #5B6461">Due 15 Nov</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+        <button aria-label="Mark Return library books done" style="width: 28px; height: 28px; border: 2px solid #0F6B5C; border-radius: 8px; background: transparent; flex: none; padding: 0"></button>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Return library books</span><span style="font-size: 12px; color: #5B6461">Due 20 Nov</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px">
+        <button aria-label="Mark Clean out wardrobe done" style="width: 28px; height: 28px; border: 2px solid #0F6B5C; border-radius: 8px; background: transparent; flex: none; padding: 0"></button>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Clean out wardrobe</span><span style="font-size: 12px; color: #5B6461">No due date</span></div>
+      </div>
+    </div>
+  </div>
+
+  <button style="position: absolute; right: 16px; bottom: 24px; height: 56px; padding: 0 20px 0 16px; border: 0; border-radius: 16px; background: #0F6B5C; color: #FFFFFF; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(15,107,92,.28)"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New task</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

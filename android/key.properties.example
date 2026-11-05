@@ -1,0 +1,7 @@
+# Copy to android/key.properties (git-ignored) and fill in. Keep the
+# keystore file outside the repository and backed up safely: losing it
+# means you can no longer update the app on Google Play.
+storeFile=C:/path/outside/repo/plm-upload.jks
+storePassword=
+keyAlias=upload
+keyPassword=

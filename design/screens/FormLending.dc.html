@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New lending record</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.lab{font-size:13px;font-weight:600;color:#3E4643}
+.inp{height:52px;border:1px solid #C9D1CE;border-radius:14px;background:#FFFFFF;padding:0 14px;font:500 15px 'Plus Jakarta Sans',sans-serif;color:#1A1D1C;width:100%}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Lending.dc.html" aria-label="Cancel" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    <h1 style="margin: 0; font-size: 20px; font-weight: 700; flex: 1">New record</h1>
+    <a href="Lending.dc.html" style="height: 40px; padding: 0 18px; text-decoration: none; border-radius: 20px; background: #0F6B5C; color: #FFFFFF; font: 700 14px 'Plus Jakarta Sans', sans-serif; margin-right: 8px; display: flex; align-items: center">Save</a>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; padding: 8px 16px">
+    <div role="radiogroup" aria-label="Record type" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <button role="radio" aria-checked="true" style="height: 64px; border: 2px solid #0F6B5C; border-radius: 16px; background: #D6EDE7; color: #0A4F44; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M4 12h14l-4-4M18 12l-4 4"/></svg>I lent money</button>
+      <button role="radio" aria-checked="false" style="height: 64px; border: 1px solid #C9D1CE; border-radius: 16px; background: #FFFFFF; color: #3E4643; font: 600 15px 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M20 12H6l4-4M6 12l4 4"/></svg>I borrowed money</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="p">Person</label><input class="inp" id="p" value="Rahul"></div>
+    <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="a">Amount</label>
+      <div style="height: 52px; border: 2px solid #0F6B5C; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; gap: 6px; padding: 0 14px"><span style="font-size: 18px; font-weight: 700; color: #5B6461">₹</span><input id="a" inputmode="decimal" value="2,000" style="flex: 1; border: 0; outline: none; background: transparent; font: 700 18px 'Plus Jakarta Sans', sans-serif; min-width: 0"></div></div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="d1">Date given</label><input class="inp" id="d1" value="12 Oct 2026"></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="d2">Due date</label><input class="inp" id="d2" value="10 Nov 2026"></div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="nt">Notes <span style="font-weight: 500; color: #5B6461">(optional)</span></label><input class="inp" id="nt" placeholder="e.g. for bike repair"></div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; padding: 4px 14px; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 60px">
+        <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Remind me</span><span style="font-size: 12px; color: #5B6461">On due date, 9:00 AM</span></div>
+        <button role="switch" aria-checked="true" aria-label="Remind me" style="width: 52px; height: 32px; border: 0; border-radius: 16px; background: #0F6B5C; padding: 4px; display: flex; justify-content: flex-end"><span style="width: 24px; height: 24px; border-radius: 12px; background: #FFFFFF"></span></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: 1px solid #EEF1EF">
+        <span style="flex: 1; font-size: 15px; font-weight: 600">Status</span>
+        <div role="radiogroup" aria-label="Status" style="display: flex; gap: 6px">
+          <button role="radio" aria-checked="true" style="height: 36px; padding: 0 12px; border: 0; border-radius: 18px; background: #FCEFD6; color: #5A3B00; font: 700 13px 'Plus Jakarta Sans', sans-serif">Pending</button>
+          <button role="radio" aria-checked="false" style="height: 36px; padding: 0 12px; border: 1px solid #C9D1CE; border-radius: 18px; background: #FFFFFF; color: #3E4643; font: 600 13px 'Plus Jakarta Sans', sans-serif">Completed</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

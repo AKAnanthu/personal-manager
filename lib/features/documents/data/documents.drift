@@ -1,0 +1,25 @@
+import 'documents_tables.dart';
+
+CREATE INDEX documents_expiry ON documents (expiry_date);
+
+CREATE VIRTUAL TABLE documents_fts USING fts5(
+  title, description, original_name,
+  content='documents', content_rowid='rowid'
+);
+
+CREATE TRIGGER documents_fts_ai AFTER INSERT ON documents BEGIN
+  INSERT INTO documents_fts(rowid, title, description, original_name)
+  VALUES (new.rowid, new.title, new.description, new.original_name);
+END;
+
+CREATE TRIGGER documents_fts_ad AFTER DELETE ON documents BEGIN
+  INSERT INTO documents_fts(documents_fts, rowid, title, description, original_name)
+  VALUES ('delete', old.rowid, old.title, old.description, old.original_name);
+END;
+
+CREATE TRIGGER documents_fts_au AFTER UPDATE ON documents BEGIN
+  INSERT INTO documents_fts(documents_fts, rowid, title, description, original_name)
+  VALUES ('delete', old.rowid, old.title, old.description, old.original_name);
+  INSERT INTO documents_fts(rowid, title, description, original_name)
+  VALUES (new.rowid, new.title, new.description, new.original_name);
+END;

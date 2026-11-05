@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1A1D1C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Settings</h1>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 4px 16px">
+    <h2 style="margin: 6px 4px 0; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Security</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span style="flex: 1; font-size: 15px; font-weight: 600">Change app password</span><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+      <div style="display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M6 10a6 6 0 0 1 12 0v3M9 20c1-2 1.5-4 1.5-7a1.5 1.5 0 0 1 3 0c0 3-.5 5-1.5 8M6 14c0 2-.5 3.5-1 5M18 16c0 1.5-.3 3-.8 4"/></svg><span style="flex: 1; font-size: 15px; font-weight: 600">Fingerprint unlock</span><button role="switch" aria-checked="true" aria-label="Fingerprint unlock" style="width: 52px; height: 32px; border: 0; border-radius: 16px; background: #0F6B5C; padding: 4px; display: flex; justify-content: flex-end"><span style="width: 24px; height: 24px; border-radius: 12px; background: #FFFFFF"></span></button></div>
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Auto-lock</span><span style="font-size: 12px; color: #5B6461">After 1 minute in background</span></div><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <h2 style="margin: 6px 4px 0; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Storage</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <a href="Drive.dc.html" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8z"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Google Drive</span><span style="font-size: 12px; font-weight: 600; color: #0A4F44">Connected · [your Google account]</span></div><span style="font-size: 14px; font-weight: 600; color: #A12C1F">Disconnect</span></a>
+      <a href="Backup.dc.html" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M4 7v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7"/><ellipse cx="12" cy="7" rx="8" ry="3"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Backup &amp; restore</span><span style="font-size: 12px; color: #5B6461">Last backup 28 Oct</span></div><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <h2 style="margin: 6px 4px 0; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Preferences</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Notifications</span><span style="font-size: 12px; color: #5B6461">Allowed · exact alarms on</span></div><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M16 14h2M3 10h18"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Budget period</span><span style="font-size: 12px; color: #5B6461">Monthly · starts on the 1st</span></div><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Theme</span><span style="font-size: 12px; color: #5B6461">System default</span></div><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <h2 style="margin: 6px 4px 0; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">About</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px; border-bottom: 1px solid #EEF1EF"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span style="flex: 1; font-size: 15px; font-weight: 600">Privacy &amp; data storage</span><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #5B6461"><path d="M9 6l6 6-6 6"/></svg></a>
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 0 14px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.5"/></svg><span style="flex: 1; font-size: 15px; font-weight: 600">App info</span><span style="font-size: 13px; color: #5B6461">v1.0.0</span></a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

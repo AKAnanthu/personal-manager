@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 12px 8px 20px">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 13px; color: #5B6461">Tuesday, 3 November</span>
+      <h1 style="margin: 0; font-size: 24px; font-weight: 700">Good evening</h1>
+    </div>
+    <div style="display: flex; gap: 0">
+      <a href="Notes.dc.html" aria-label="Search" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
+      <a href="Unlock.dc.html" aria-label="Lock app" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></a>
+      <a href="Settings.dc.html" aria-label="Settings" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></a>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 18px; padding: 8px 16px 16px">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <a href="Notes.dc.html" style="height: 48px; text-decoration: none; border-radius: 14px; background: #D6EDE7; color: #0A4F44; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M12 5v14M5 12h14"/></svg>Note</a>
+      <a href="Tasks.dc.html" style="height: 48px; text-decoration: none; border-radius: 14px; background: #D6EDE7; color: #0A4F44; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M12 5v14M5 12h14"/></svg>Task</a>
+      <a href="FormReminder.dc.html" style="height: 48px; text-decoration: none; border-radius: 14px; background: #D6EDE7; color: #0A4F44; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M12 5v14M5 12h14"/></svg>Reminder</a>
+    </div>
+
+    <div style="background: #0F6B5C; color: #FFFFFF; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <div style="display: flex; align-items: center; gap: 10px">
+          <svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+          <div style="display: flex; flex-direction: column">
+            <span style="font-size: 12px; opacity: .85">Shopping paused</span>
+            <span style="font-size: 16px; font-weight: 700">Weekly groceries</span>
+          </div>
+        </div>
+        <span style="font-size: 14px; font-weight: 600">5 of 9</span>
+      </div>
+      <div style="height: 6px; border-radius: 3px; background: rgba(255,255,255,.25)"><div style="width: 56%; height: 6px; border-radius: 3px; background: #FFFFFF"></div></div>
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="font-size: 13px; opacity: .9">Left: Eggs 12, Soap 4, Rice 5 kg…</span>
+        <a href="ShopActive.dc.html" style="height: 40px; padding: 0 18px; text-decoration: none; border-radius: 20px; background: #FFFFFF; color: #0A4F44; font: 700 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center">Resume</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <h2 style="margin: 0; font-size: 16px; font-weight: 700">Coming up</h2>
+        <a href="Reminders.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">See all</a>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+        <a href="Medicine.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #E7EEFB; color: #2F4F8F; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="3" y="8.5" width="18" height="7" rx="3.5" transform="rotate(-45 12 12)"/><path d="M9.5 9.5l5 5"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Vitamin D3</span><span style="font-size: 13px; color: #5B6461">Medicine · Today, 8:00 PM</span></div>
+        </a>
+        <a href="Reminders.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #FCEFD6; color: #7A4F00; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Pay electricity bill</span><span style="font-size: 13px; color: #5B6461">Reminder · Tomorrow, 10:00 AM</span></div>
+        </a>
+        <a href="Tasks.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; align-items: center; gap: 12px; padding: 12px 14px">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #D6EDE7; color: #0A4F44; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Renew car insurance</span><span style="font-size: 13px; color: #5B6461">Task · Due 12 Nov</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 700">Quick access</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <a href="Personal.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span style="font-size: 12px; font-weight: 600">Personal</span></a>
+        <a href="Passwords.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg><span style="font-size: 12px; font-weight: 600">Passwords</span></a>
+        <a href="Notes.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg><span style="font-size: 12px; font-weight: 600">Notes</span></a>
+        <a href="Tasks.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg><span style="font-size: 12px; font-weight: 600">Tasks</span></a>
+        <a href="Reminders.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg><span style="font-size: 12px; font-weight: 600">Reminders</span></a>
+        <a href="Budget.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M16 14h2M3 10h18"/></svg><span style="font-size: 12px; font-weight: 600">Budget</span></a>
+        <a href="Lending.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg><span style="font-size: 12px; font-weight: 600">Lending</span></a>
+        <a href="Breathe.dc.html" style="text-decoration: none; color: #1A1D1C; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 0; border-radius: 14px; background: #FFFFFF; border: 1px solid #E3E7E5"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="color: #0F6B5C"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.5"/></svg><span style="font-size: 12px; font-weight: 600">Breathe</span></a>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="Main" style="height: 80px; background: #FFFFFF; border-top: 1px solid #E3E7E5; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 8px 8px 12px">
+    <a href="Main.dc.html" aria-current="page" style="text-decoration: none; color: #0A4F44; display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="width: 56px; height: 32px; border-radius: 16px; background: #D6EDE7; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5"/></svg></span><span style="font-size: 12px; font-weight: 700">Home</span></a>
+    <a href="Documents.dc.html" style="text-decoration: none; color: #5B6461; display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="width: 56px; height: 32px; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg></span><span style="font-size: 12px; font-weight: 600">Documents</span></a>
+    <a href="ShopHome.dc.html" style="text-decoration: none; color: #5B6461; display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="width: 56px; height: 32px; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></span><span style="font-size: 12px; font-weight: 600">Shopping</span></a>
+    <a href="Settings.dc.html" style="text-decoration: none; color: #5B6461; display: flex; flex-direction: column; align-items: center; gap: 4px"><span style="width: 56px; height: 32px; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18" cy="12" r="1.5"/></svg></span><span style="font-size: 12px; font-weight: 600">More</span></a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

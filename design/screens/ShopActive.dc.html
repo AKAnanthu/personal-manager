@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shopping in progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="background: #0F6B5C; color: #FFFFFF; padding: 12px 16px 18px 8px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 4px">
+      <a href="ShopHome.dc.html" aria-label="Leave shopping" style="width: 48px; height: 48px; border-radius: 24px; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Weekly groceries</h1>
+      <span style="font-size: 18px; font-weight: 700">{{doneCount}} / {{total}}</span>
+    </div>
+    <div style="margin-left: 12px; height: 8px; border-radius: 4px; background: rgba(255,255,255,.25)"><div style="width: {{pct}}; height: 8px; border-radius: 4px; background: #FFFFFF"></div></div>
+  </div>
+
+  <div style="flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px">
+    <h2 style="margin: 0 0 2px; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">To pick · {{pendingCount}}</h2>
+    <sc-for list="{{pending}}" as="it" hint-placeholder-count="4">
+      <button onClick="{{it.toggle}}" aria-pressed="false" style="width: 100%; min-height: 60px; border: 1px solid #E3E7E5; border-radius: 14px; background: #FFFFFF; display: flex; align-items: center; gap: 14px; padding: 0 14px; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1D1C">
+        <span style="width: 32px; height: 32px; border: 2.5px solid #0F6B5C; border-radius: 9px; flex: none"></span>
+        <span style="flex: 1; font-size: 18px; font-weight: 600">{{it.name}}</span>
+        <span style="font-size: 16px; font-weight: 700; color: #0A4F44; background: #D6EDE7; border-radius: 10px; padding: 4px 10px">{{it.qty}}</span>
+      </button>
+    </sc-for>
+    <h2 style="margin: 10px 0 2px; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">In the cart · {{doneCount}}</h2>
+    <sc-for list="{{done}}" as="it" hint-placeholder-count="3">
+      <button onClick="{{it.toggle}}" aria-pressed="true" style="width: 100%; min-height: 48px; border: 0; border-radius: 14px; background: #EEF1EF; display: flex; align-items: center; gap: 14px; padding: 0 14px; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif; color: #5B6461">
+        <span style="width: 32px; height: 32px; border-radius: 9px; background: #0F6B5C; color: #FFFFFF; flex: none; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke-width: 2.6"><path d="M6 12l4 4 8-9"/></svg></span>
+        <span style="flex: 1; font-size: 16px; font-weight: 500; text-decoration: line-through">{{it.name}}</span>
+        <span style="font-size: 14px; font-weight: 600">{{it.qty}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="background: #FFFFFF; border-top: 1px solid #E3E7E5; padding: 12px 16px 20px; display: flex; flex-direction: column; gap: 10px">
+    <button style="height: 44px; border: 1px dashed #9FB0AA; border-radius: 14px; background: transparent; color: #0A4F44; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M12 5v14M5 12h14"/></svg>Add item</button>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <a href="ShopHome.dc.html" style="height: 56px; text-decoration: none; border: 1px solid #B9C4C0; border-radius: 28px; background: #FFFFFF; color: #0A4F44; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center">Continue later</a>
+      <a href="ShopComplete.dc.html" style="height: 56px; text-decoration: none; border-radius: 28px; background: #0F6B5C; color: #FFFFFF; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center">Finish shopping</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { items: [
+      { id: 1, name: 'Eggs', qty: '12', done: false },
+      { id: 2, name: 'Soap', qty: '4', done: false },
+      { id: 3, name: 'Rice', qty: '5 kg', done: false },
+      { id: 4, name: 'Tea powder', qty: '250 g', done: false },
+      { id: 5, name: 'Milk', qty: '2', done: true },
+      { id: 6, name: 'Bread', qty: '1', done: true },
+      { id: 7, name: 'Sugar', qty: '2 kg', done: true },
+      { id: 8, name: 'Tomatoes', qty: '1 kg', done: true },
+      { id: 9, name: 'Onions', qty: '2 kg', done: true }
+    ] };
+  }
+  renderVals() {
+    const items = this.state.items.map((x) => ({ ...x, toggle: () => this.setState({ items: this.state.items.map((y) => y.id === x.id ? { ...y, done: !y.done } : y) }) }));
+    const done = items.filter((x) => x.done);
+    const pending = items.filter((x) => !x.done);
+    return { pending, done, doneCount: done.length, pendingCount: pending.length, total: items.length, pct: Math.round(done.length / items.length * 100) + '%' };
+  }
+}
+</script>
+</body>
+</html>

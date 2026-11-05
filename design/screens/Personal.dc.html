@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Personal details</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Personal details</h1>
+    <button aria-label="Search" style="width: 48px; height: 48px; border: 0; background: transparent; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; padding: 8px 16px">
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 20px; padding: 16px; display: flex; align-items: center; gap: 14px">
+      <div style="width: 56px; height: 56px; border-radius: 28px; background: #D6EDE7; color: #0A4F44; font-size: 20px; font-weight: 700; display: flex; align-items: center; justify-content: center">MN</div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 17px; font-weight: 700">Meera Nair</span>
+        <span style="font-size: 13px; color: #5B6461">Born 14 Mar 1992 · +91 98XXX XX210</span>
+      </div>
+      <button aria-label="Edit profile" style="width: 44px; height: 44px; border: 0; background: #EEF3F1; border-radius: 22px; color: #0A4F44; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button>
+    </div>
+
+    <div role="tablist" style="display: flex; gap: 8px">
+      <button role="tab" aria-selected="false" style="height: 36px; padding: 0 14px; border: 1px solid #C9D1CE; border-radius: 18px; background: #FFFFFF; color: #3E4643; font: 600 13px 'Plus Jakarta Sans', sans-serif">Personal</button>
+      <button role="tab" aria-selected="false" style="height: 36px; padding: 0 14px; border: 1px solid #C9D1CE; border-radius: 18px; background: #FFFFFF; color: #3E4643; font: 600 13px 'Plus Jakarta Sans', sans-serif">Family</button>
+      <button role="tab" aria-selected="true" style="height: 36px; padding: 0 14px; border: 0; border-radius: 18px; background: #0F6B5C; color: #FFFFFF; font: 600 13px 'Plus Jakarta Sans', sans-serif">IDs</button>
+      <button role="tab" aria-selected="false" style="height: 36px; padding: 0 14px; border: 1px solid #C9D1CE; border-radius: 18px; background: #FFFFFF; color: #3E4643; font: 600 13px 'Plus Jakarta Sans', sans-serif">Work &amp; more</button>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 8px 14px 16px; border-bottom: 1px solid #EEF1EF">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5B6461">Aadhaar</span><span style="font-size: 16px; font-weight: 600; letter-spacing: .04em">XXXX XXXX 4821</span></div>
+        <button aria-label="Copy Aadhaar number" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 8px 14px 16px; border-bottom: 1px solid #EEF1EF">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5B6461">PAN</span><span style="font-size: 16px; font-weight: 600; letter-spacing: .04em">ABCDE••••F</span></div>
+        <button aria-label="Copy PAN" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 8px 14px 16px; border-bottom: 1px solid #EEF1EF">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 12px; font-weight: 600; color: #5B6461">Passport</span>
+          <span style="font-size: 16px; font-weight: 600; letter-spacing: .04em">X•••••42</span>
+          <div style="display: flex; gap: 6px">
+            <span style="font-size: 12px; font-weight: 600; color: #0A4F44; background: #D6EDE7; border-radius: 8px; padding: 3px 8px; display: flex; align-items: center; gap: 4px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 14px; height: 14px"><path d="M6 3h9l4 4v14H6z"/></svg>passport.pdf</span>
+            <span style="font-size: 12px; color: #5B6461; padding: 3px 0">Expires Aug 2031</span>
+          </div>
+        </div>
+        <button aria-label="Copy passport number" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 8px 14px 16px; border-bottom: 1px solid #EEF1EF">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5B6461">Driving licence</span><span style="font-size: 16px; font-weight: 600; letter-spacing: .04em">KL07 •••••••• 318</span></div>
+        <button aria-label="Copy driving licence number" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 14px 8px 14px 16px">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 600; color: #5B6461">Voter ID</span><span style="font-size: 16px; font-weight: 600; letter-spacing: .04em">XYZ••••567</span></div>
+        <button aria-label="Copy voter ID" style="width: 44px; height: 44px; border: 0; background: transparent; color: #0F6B5C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button>
+      </div>
+    </div>
+    <p style="margin: 0; font-size: 12px; color: #5B6461; text-align: center">Tap a card to view in full · long-press to edit or delete</p>
+  </div>
+
+  <button style="position: absolute; right: 16px; bottom: 24px; height: 56px; padding: 0 20px 0 16px; border: 0; border-radius: 16px; background: #0F6B5C; color: #FFFFFF; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(15,107,92,.28)"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add ID</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

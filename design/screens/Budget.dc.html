@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Budget</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden; position: relative">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Budget</h1>
+    <button style="height: 40px; padding: 0 10px 0 14px; border: 1px solid #C9D1CE; border-radius: 20px; background: #FFFFFF; color: #1A1D1C; font: 600 13px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 4px; margin-right: 8px">November 2026<svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; padding: 8px 16px">
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 13px; font-weight: 600; color: #5B6461">Remaining this month</span>
+        <span style="font-size: 36px; font-weight: 700; color: #0A4F44">₹10,680</span>
+      </div>
+      <div role="img" aria-label="57% of budget spent" style="height: 10px; border-radius: 5px; background: #D6EDE7"><div style="width: 57%; height: 10px; border-radius: 5px; background: #0F6B5C"></div></div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 2px; background: #F4F6F5; border-radius: 12px; padding: 10px 12px">
+          <span style="font-size: 12px; font-weight: 600; color: #5B6461; display: flex; align-items: center; justify-content: space-between">Total budget<button aria-label="Edit budget" style="width: 28px; height: 28px; border: 0; background: transparent; color: #0F6B5C; padding: 0; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button></span>
+          <span style="font-size: 18px; font-weight: 700">₹25,000</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px; background: #F4F6F5; border-radius: 12px; padding: 10px 12px">
+          <span style="font-size: 12px; font-weight: 600; color: #5B6461; line-height: 28px">Total spent</span>
+          <span style="font-size: 18px; font-weight: 700">₹14,320</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 700">Expenses</h2>
+      <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #D6EDE7; color: #0A4F44; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Weekly groceries</span><span style="font-size: 12px; color: #5B6461">3 Nov · <span style="color: #0A4F44; font-weight: 600">From shopping</span></span></div>
+          <span style="font-size: 15px; font-weight: 700">₹1,846</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #F4F6F5; color: #3E4643; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Electricity bill</span><span style="font-size: 12px; color: #5B6461">1 Nov</span></div>
+          <span style="font-size: 15px; font-weight: 700">₹1,240</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #EEF1EF">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #F4F6F5; color: #3E4643; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M4 11l8-7 8 7v9H4z"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Rent share</span><span style="font-size: 12px; color: #5B6461">1 Nov</span></div>
+          <span style="font-size: 15px; font-weight: 700">₹9,500</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px">
+          <div style="width: 40px; height: 40px; border-radius: 12px; background: #D6EDE7; color: #0A4F44; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Vegetables &amp; fruit</span><span style="font-size: 12px; color: #5B6461">29 Oct · <span style="color: #0A4F44; font-weight: 600">From shopping</span></span></div>
+          <span style="font-size: 15px; font-weight: 700">₹1,734</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="FormExpense.dc.html" style="text-decoration: none; position: absolute; right: 16px; bottom: 24px; height: 56px; padding: 0 20px 0 16px; border-radius: 16px; background: #0F6B5C; color: #FFFFFF; font: 700 15px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(15,107,92,.28)"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add expense</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

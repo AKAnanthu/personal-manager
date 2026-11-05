@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Import from message</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.f{height:40px;border:1px solid #D3DAD7;border-radius:10px;background:#FFFFFF;font:500 15px 'Plus Jakarta Sans',sans-serif;color:#1A1D1C;padding:0 10px;min-width:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="ShopHome.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Import from message</h1>
+    <a href="ShareCard.dc.html" aria-label="Share list instructions" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.6M8.2 13.2l7.6 4.6"/></svg></a>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px">
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="font-size: 13px; font-weight: 700; color: #3E4643; display: flex; align-items: center; gap: 6px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9z"/></svg>Pasted message</span>
+        <a href="#" style="font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 0">Paste again</a>
+      </div>
+      <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #3E4643; white-space: pre-line; background: #F4F6F5; border-radius: 10px; padding: 10px 12px">Milk 2
+Bread 1
+Rice 5 kg
+Sugar 2 kg
+Eggs 12
+Tomatoes
+Soap 4</p>
+    </div>
+
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 700">Review 7 items</h2>
+      <span style="font-size: 13px; color: #5B6461">Item · Qty · Unit</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Milk"><input class="f" aria-label="Quantity" value="2"><input class="f" aria-label="Unit" placeholder="—"><button aria-label="Remove Milk" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Bread"><input class="f" aria-label="Quantity" value="1"><input class="f" aria-label="Unit" placeholder="—"><button aria-label="Remove Bread" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Rice"><input class="f" aria-label="Quantity" value="5"><input class="f" aria-label="Unit" value="kg"><button aria-label="Remove Rice" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Sugar"><input class="f" aria-label="Quantity" value="2"><input class="f" aria-label="Unit" value="kg"><button aria-label="Remove Sugar" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Eggs"><input class="f" aria-label="Quantity" value="12"><input class="f" aria-label="Unit" placeholder="—"><button aria-label="Remove Eggs" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div style="background: #FCEFD6; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 6px">
+        <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 24px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Tomatoes"><input class="f" aria-label="Quantity, required" placeholder="?" style="border: 2px solid #B7791F"><input class="f" aria-label="Unit" placeholder="kg"><svg class="ic" role="img" aria-label="Needs attention" viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #7A4F00"><path d="M12 3l10 18H2z"/><path d="M12 10v4M12 17.5v.5"/></svg></div>
+        <span style="font-size: 12px; font-weight: 600; color: #5A3B00">No quantity found — enter one to confirm.</span>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 56px 64px 32px; gap: 6px; align-items: center"><input class="f" aria-label="Item name" value="Soap"><input class="f" aria-label="Quantity" value="4"><input class="f" aria-label="Unit" placeholder="—"><button aria-label="Remove Soap" style="width: 32px; height: 40px; border: 0; background: transparent; color: #5B6461; padding: 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    </div>
+
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+      <a href="ShopActive.dc.html" style="height: 56px; text-decoration: none; border-radius: 28px; background: #C9D6D2; color: #3E4643; font: 700 16px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; justify-content: center">Confirm 1 item to import</a>
+      <span style="font-size: 12px; color: #5B6461; text-align: center">Only text you paste is read — the app never opens WhatsApp.</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

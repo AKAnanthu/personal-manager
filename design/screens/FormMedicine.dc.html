@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add medicine</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.lab{font-size:13px;font-weight:600;color:#3E4643}
+.inp{height:52px;border:1px solid #C9D1CE;border-radius:14px;background:#FFFFFF;padding:0 14px;font:500 15px 'Plus Jakarta Sans',sans-serif;color:#1A1D1C;width:100%}
+.day{height:44px;border:1px solid #C9D1CE;border-radius:22px;background:#FFFFFF;color:#3E4643;font:700 14px 'Plus Jakarta Sans',sans-serif;padding:0}
+.day[aria-pressed=true]{border:0;background:#0F6B5C;color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Medicine.dc.html" aria-label="Cancel" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+    <h1 style="margin: 0; font-size: 20px; font-weight: 700; flex: 1">Add medicine</h1>
+    <a href="Medicine.dc.html" style="height: 40px; padding: 0 18px; text-decoration: none; border-radius: 20px; background: #0F6B5C; color: #FFFFFF; font: 700 14px 'Plus Jakarta Sans', sans-serif; margin-right: 8px; display: flex; align-items: center">Save</a>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px; padding: 8px 16px">
+    <div style="display: flex; flex-direction: column; gap: 6px"><label class="lab" for="n">Medicine name</label><input class="inp" id="n" value="Iron supplement" style="border: 2px solid #0F6B5C"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span class="lab">Reminder times</span>
+      <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; display: flex; flex-direction: column">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 4px 4px 14px; border-bottom: 1px solid #EEF1EF">
+          <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #0F6B5C"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span style="flex: 1; font-size: 18px; font-weight: 700">9:00 AM</span>
+          <button aria-label="Remove 9:00 AM" style="width: 44px; height: 44px; border: 0; background: transparent; color: #5B6461; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 4px 4px 14px; border-bottom: 1px solid #EEF1EF">
+          <svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #0F6B5C"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span style="flex: 1; font-size: 18px; font-weight: 700">9:00 PM</span>
+          <button aria-label="Remove 9:00 PM" style="width: 44px; height: 44px; border: 0; background: transparent; color: #5B6461; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+        <button style="height: 52px; border: 0; background: transparent; color: #0A4F44; font: 600 14px 'Plus Jakarta Sans', sans-serif; display: flex; align-items: center; gap: 8px; padding: 0 14px"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" style="width: 20px; height: 20px"><path d="M12 5v14M5 12h14"/></svg>Add another time</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span class="lab">Days</span>
+      <div role="radiogroup" aria-label="Recurrence" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #EAEEEC; border-radius: 22px; padding: 4px">
+        <button role="radio" aria-checked="false" style="height: 40px; border: 0; border-radius: 18px; background: transparent; color: #3E4643; font: 600 14px 'Plus Jakarta Sans', sans-serif">Every day</button>
+        <button role="radio" aria-checked="true" style="height: 40px; border: 0; border-radius: 18px; background: #FFFFFF; color: #0A4F44; font: 700 14px 'Plus Jakarta Sans', sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.08)">Selected days</button>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+        <button class="day" aria-pressed="true" aria-label="Monday">M</button>
+        <button class="day" aria-pressed="true" aria-label="Tuesday">T</button>
+        <button class="day" aria-pressed="true" aria-label="Wednesday">W</button>
+        <button class="day" aria-pressed="true" aria-label="Thursday">T</button>
+        <button class="day" aria-pressed="true" aria-label="Friday">F</button>
+        <button class="day" aria-pressed="true" aria-label="Saturday">S</button>
+        <button class="day" aria-pressed="false" aria-label="Sunday">S</button>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; padding: 0 14px; min-height: 60px; display: flex; align-items: center; gap: 12px">
+      <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 600">Reminders on</span><span style="font-size: 12px; color: #5B6461">Turn off to pause without deleting</span></div>
+      <button role="switch" aria-checked="true" aria-label="Reminders on" style="width: 52px; height: 32px; border: 0; border-radius: 16px; background: #0F6B5C; padding: 4px; display: flex; justify-content: flex-end"><span style="width: 24px; height: 24px; border-radius: 12px; background: #FFFFFF"></span></button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

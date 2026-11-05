@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Backup and restore</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#0F6B5C}a:hover{color:#0A4F44}
+.ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+input[type=checkbox],input[type=radio]{width:22px;height:22px;accent-color:#0F6B5C;margin:0;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; background: #F7F8F6; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #1A1D1C; display: flex; flex-direction: column; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 4px; padding: 12px 8px 4px">
+    <a href="Settings.dc.html" aria-label="Back" style="width: 48px; height: 48px; border-radius: 24px; color: #1A1D1C; display: flex; align-items: center; justify-content: center"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 700; flex: 1">Backup &amp; restore</h1>
+  </div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px">
+    <div role="tablist" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #EAEEEC; border-radius: 22px; padding: 4px">
+      <button role="tab" aria-selected="true" style="height: 40px; border: 0; border-radius: 18px; background: #FFFFFF; color: #0A4F44; font: 700 14px 'Plus Jakarta Sans', sans-serif; box-shadow: 0 1px 2px rgba(0,0,0,.08)">Back up</button>
+      <button role="tab" aria-selected="false" style="height: 40px; border: 0; border-radius: 18px; background: transparent; color: #3E4643; font: 600 14px 'Plus Jakarta Sans', sans-serif">Restore</button>
+    </div>
+
+    <span style="font-size: 13px; color: #5B6461">Last backup: 28 Oct 2026 · 41 MB · Google Drive</span>
+
+    <div style="background: #FFFFFF; border: 1px solid #E3E7E5; border-radius: 16px; padding: 4px 14px; display: flex; flex-direction: column">
+      <h2 style="margin: 10px 0 2px; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase">Included by default</h2>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox" checked>Personal details</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox" checked>Notes</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox" checked>Documents <span style="font-size: 12px; color: #5B6461">with attachments</span></label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox" checked>Reminders</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox" checked>Tasks and checklists</label>
+      <h2 style="margin: 10px 0 2px; font-size: 13px; font-weight: 700; color: #5B6461; letter-spacing: .04em; text-transform: uppercase; border-top: 1px solid #EEF1EF; padding-top: 12px">Optional</h2>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox">Password notes <span style="font-size: 11px; font-weight: 700; color: #5A3B00; background: #FCEFD6; border-radius: 6px; padding: 2px 6px">Sensitive</span></label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox">Shopping lists, history &amp; receipts</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox">Budget and expenses</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox">Lending and borrowing</label>
+      <label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; font-weight: 500"><input type="checkbox">Medicine schedules</label>
+    </div>
+
+    <fieldset style="border: 0; margin: 0; padding: 0; display: flex; gap: 8px">
+      <legend style="font-size: 13px; font-weight: 700; color: #3E4643; margin-bottom: 8px">Save to</legend>
+      <label style="flex: 1; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 12px; border: 2px solid #0F6B5C; border-radius: 14px; background: #FFFFFF; font-size: 14px; font-weight: 600"><input type="radio" name="dest" checked>Google Drive</label>
+      <label style="flex: 1; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 12px; border: 1px solid #C9D1CE; border-radius: 14px; background: #FFFFFF; font-size: 14px; font-weight: 600"><input type="radio" name="dest">This device</label>
+    </fieldset>
+
+    <p style="margin: 0; font-size: 12px; line-height: 1.45; color: #5A3B00; background: #FCEFD6; border-radius: 12px; padding: 10px 12px">Backup files are not encrypted. Anyone who gets the file can read its contents.</p>
+
+    <button style="margin-top: auto; height: 56px; border: 0; border-radius: 28px; background: #0F6B5C; color: #FFFFFF; font: 700 16px 'Plus Jakarta Sans', sans-serif">Create backup · 5 categories</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
