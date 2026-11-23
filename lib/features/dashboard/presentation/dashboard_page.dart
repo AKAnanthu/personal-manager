@@ -14,9 +14,12 @@ import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
 /// Home: quick add, coming up, quick access. Deliberately shows no budget
 /// figures (PRD §4).
 class DashboardPage extends StatelessWidget {
-  const DashboardPage({required this.onLock, super.key});
+  const DashboardPage({required this.onLock, this.syncAction, super.key});
 
   final VoidCallback onLock;
+
+  /// "Sync now" (absent in tests without sync).
+  final Widget? syncAction;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +71,7 @@ class DashboardPage extends StatelessWidget {
                     icon: const Icon(LucideIcons.search),
                     onPressed: () => context.push(AppModule.notes.route),
                   ),
+                  ?syncAction,
                   IconButton(
                     tooltip: l10n.lockAppAction,
                     icon: const Icon(LucideIcons.lock),

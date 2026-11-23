@@ -7,16 +7,25 @@ import 'package:personal_life_manager/app/di.dart';
 import 'package:personal_life_manager/app/modules.dart';
 import 'package:personal_life_manager/app/shell/app_shell.dart';
 import 'package:personal_life_manager/app/shell/more_page.dart';
+import 'package:personal_life_manager/core/drive/drive_auth.dart';
+import 'package:personal_life_manager/core/drive/drive_copier.dart';
+import 'package:personal_life_manager/core/drive/drive_folders.dart';
+import 'package:personal_life_manager/core/drive/drive_service.dart';
 import 'package:personal_life_manager/core/notifications/notification_permissions.dart';
 import 'package:personal_life_manager/core/security/app_lock.dart';
 import 'package:personal_life_manager/core/security/secure_screen.dart';
 import 'package:personal_life_manager/core/security/sensitive_clipboard.dart';
+import 'package:personal_life_manager/core/storage/app_directories.dart';
 import 'package:personal_life_manager/core/storage/file_access.dart';
+import 'package:personal_life_manager/core/sync/sync_engine.dart';
 import 'package:personal_life_manager/core/utils/formats.dart';
-import 'package:personal_life_manager/features/auth/presentation/setup/setup_cubit.dart';
-import 'package:personal_life_manager/features/auth/presentation/setup/setup_page.dart';
-import 'package:personal_life_manager/features/auth/presentation/unlock/unlock_cubit.dart';
-import 'package:personal_life_manager/features/auth/presentation/unlock/unlock_page.dart';
+import 'package:personal_life_manager/features/account/data/account_session.dart';
+import 'package:personal_life_manager/features/account/presentation/account_cubit.dart';
+import 'package:personal_life_manager/features/account/presentation/account_page.dart';
+import 'package:personal_life_manager/features/account/presentation/sign_in_cubit.dart';
+import 'package:personal_life_manager/features/account/presentation/sign_in_page.dart';
+import 'package:personal_life_manager/features/account/presentation/sync_button.dart';
+import 'package:personal_life_manager/features/account/presentation/unlock_page.dart';
 import 'package:personal_life_manager/features/backup_restore/presentation/backup_cubits.dart';
 import 'package:personal_life_manager/features/backup_restore/presentation/backup_page.dart';
 import 'package:personal_life_manager/features/breathing/data/breathing_services.dart';
@@ -28,6 +37,7 @@ import 'package:personal_life_manager/features/budget/presentation/expense_form_
 import 'package:personal_life_manager/features/budget/presentation/expense_form_page.dart';
 import 'package:personal_life_manager/features/dashboard/presentation/dashboard_cubit.dart';
 import 'package:personal_life_manager/features/dashboard/presentation/dashboard_page.dart';
+import 'package:personal_life_manager/features/documents/data/document_uploader.dart';
 import 'package:personal_life_manager/features/documents/presentation/document_form_cubit.dart';
 import 'package:personal_life_manager/features/documents/presentation/document_form_page.dart';
 import 'package:personal_life_manager/features/documents/presentation/document_view_cubit.dart';
@@ -36,6 +46,8 @@ import 'package:personal_life_manager/features/documents/presentation/document_w
 import 'package:personal_life_manager/features/documents/presentation/documents_bloc.dart';
 import 'package:personal_life_manager/features/documents/presentation/documents_page.dart';
 import 'package:personal_life_manager/features/documents/presentation/linked_documents.dart';
+import 'package:personal_life_manager/features/drive_storage/presentation/drive_browser_cubit.dart';
+import 'package:personal_life_manager/features/drive_storage/presentation/drive_storage_page.dart';
 import 'package:personal_life_manager/features/lending/domain/lending.dart';
 import 'package:personal_life_manager/features/lending/presentation/lending_cubit.dart';
 import 'package:personal_life_manager/features/lending/presentation/lending_form_cubit.dart';
@@ -63,8 +75,6 @@ import 'package:personal_life_manager/features/reminders/presentation/reminder_f
 import 'package:personal_life_manager/features/reminders/presentation/reminder_form_page.dart';
 import 'package:personal_life_manager/features/reminders/presentation/reminders_cubit.dart';
 import 'package:personal_life_manager/features/reminders/presentation/reminders_page.dart';
-import 'package:personal_life_manager/features/settings/data/data_eraser.dart';
-import 'package:personal_life_manager/features/settings/presentation/change_password_page.dart';
 import 'package:personal_life_manager/features/settings/presentation/privacy_page.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_cubits.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_page.dart';
@@ -89,7 +99,7 @@ import 'package:personal_life_manager/features/tasks/presentation/tasks_page.dar
 import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
 
 abstract final class AppRoutes {
-  static const setup = '/setup';
+  static const signIn = '/sign-in';
   static const unlock = '/unlock';
   static const home = '/home';
   static const documents = '/documents';
@@ -102,15 +112,17 @@ abstract final class AppRoutes {
 
 /// Lock guard. Pure so it can be unit-tested.
 ///
-/// - not set up → `/setup`
+/// - privacy policy and terms → always (also before signing in)
+/// - not signed in → `/sign-in`
 /// - locked → `/unlock?from=<original location>` (deep links resume after)
 /// - unlocked on an auth route → the saved `from` location, else home
 String? lockRedirect(LockStatus status, Uri uri) {
   final path = uri.path;
-  final onAuthRoute = path == AppRoutes.setup || path == AppRoutes.unlock;
+  if (path == LegalRoutes.privacy || path == LegalRoutes.terms) return null;
+  final onAuthRoute = path == AppRoutes.signIn || path == AppRoutes.unlock;
   switch (status) {
     case LockStatus.notSetUp:
-      return path == AppRoutes.setup ? null : AppRoutes.setup;
+      return path == AppRoutes.signIn ? null : AppRoutes.signIn;
     case LockStatus.locked:
       if (path == AppRoutes.unlock) return null;
       if (onAuthRoute) return AppRoutes.unlock;
@@ -130,7 +142,7 @@ bool _isSafeInternal(String? location) {
   if (location == null || !location.startsWith('/')) return false;
   if (location.startsWith('//')) return false;
   final path = Uri.tryParse(location)?.path;
-  return path != null && path != AppRoutes.setup && path != AppRoutes.unlock;
+  return path != null && path != AppRoutes.signIn && path != AppRoutes.unlock;
 }
 
 GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
@@ -140,25 +152,33 @@ GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
       redirect: (context, state) => lockRedirect(lock.status, state.uri),
       routes: [
         GoRoute(
-          path: AppRoutes.setup,
+          path: AppRoutes.signIn,
           builder: (context, state) => BlocProvider(
-            create: (_) =>
-                SetupCubit(repository: sl(), biometrics: sl(), lock: lock),
-            child: const SetupPage(),
+            create: (_) => SignInCubit(
+              session: sl(),
+              sync: sl(),
+              deviceLock: sl(),
+              settings: sl(),
+              lock: lock,
+            ),
+            child: const SignInPage(),
           ),
         ),
         GoRoute(
           path: AppRoutes.unlock,
           builder: (context, state) => BlocProvider(
             create: (_) =>
-                UnlockCubit(repository: sl(), biometrics: sl(), lock: lock),
-            // Resolved lazily: tests may run without the full app set up.
-            child: UnlockPage(
-              onErase: sl.isRegistered<DataEraser>()
-                  ? () => sl<DataEraser>().eraseEverything()
-                  : null,
-            ),
+                UnlockCubit(deviceLock: sl(), settings: sl(), lock: lock),
+            child: const UnlockPage(),
           ),
+        ),
+        GoRoute(
+          path: LegalRoutes.privacy,
+          builder: (context, state) => const PrivacyPage(),
+        ),
+        GoRoute(
+          path: LegalRoutes.terms,
+          builder: (context, state) => const TermsPage(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, shell) => AppShell(shell: shell),
@@ -169,7 +189,16 @@ GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
                   path: AppRoutes.home,
                   builder: (context, state) => BlocProvider(
                     create: (_) => DashboardCubit(sl())..start(),
-                    child: DashboardPage(onLock: lock.lock),
+                    child: DashboardPage(
+                      onLock: lock.lock,
+                      // Resolved lazily: tests may run without sync set up.
+                      syncAction: sl.isRegistered<SyncEngine>()
+                          ? SyncButton(
+                              status: sl<SyncEngine>().status,
+                              onSync: sl<AccountSession>().syncNow,
+                            )
+                          : null,
+                    ),
                   ),
                 ),
               ],
@@ -222,34 +251,37 @@ GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
           builder: (context, state) => BlocProvider(
             create: (_) {
               final cubit = SettingsCubit(
-                auth: sl(),
-                biometrics: sl(),
                 permissions: sl(),
                 settings: sl(),
                 lastBackup: sl(),
-                eraser: sl(),
               );
               unawaited(cubit.load());
               return cubit;
             },
-            child: const SettingsPage(
-              appVersion: String.fromEnvironment(
+            child: SettingsPage(
+              appVersion: const String.fromEnvironment(
                 'FLUTTER_BUILD_NAME',
                 defaultValue: 'dev',
               ),
+              driveAccount: sl<DriveAuth>().account,
             ),
           ),
           routes: [
             GoRoute(
-              path: 'password',
+              path: 'account',
               builder: (context, state) => BlocProvider(
-                create: (_) => ChangePasswordCubit(sl()),
-                child: const ChangePasswordPage(),
+                create: (_) {
+                  final cubit = AccountCubit(
+                    session: sl(),
+                    sync: sl(),
+                    settings: sl(),
+                    lock: lock,
+                  );
+                  unawaited(cubit.load());
+                  return cubit;
+                },
+                child: const AccountPage(),
               ),
-            ),
-            GoRoute(
-              path: 'privacy',
-              builder: (context, state) => const PrivacyPage(),
             ),
           ],
         ),
@@ -263,13 +295,19 @@ GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
                     service: sl(),
                     files: sl(),
                     last: sl(),
+                    drive: _backupDrive(),
                   );
                   unawaited(cubit.load());
                   return cubit;
                 },
               ),
               BlocProvider(
-                create: (_) => RestoreCubit(service: sl(), files: sl()),
+                create: (_) => RestoreCubit(
+                  service: sl(),
+                  files: sl(),
+                  drive: _backupDrive(),
+                  tempDir: sl<AppDirectories>().temp,
+                ),
               ),
             ],
             child: const BackupPage(),
@@ -286,16 +324,32 @@ GoRouter buildRouter({required AppLock lock, String? initialLocation}) =>
             child: BreathePage(feedback: PlatformBreathingFeedback()),
           ),
         ),
-        for (final m in _notYetBuilt)
-          GoRoute(
-            path: m.route,
-            builder: (context, state) => ModulePlaceholderPage(module: m),
+        GoRoute(
+          path: AppModule.drive.route,
+          builder: (context, state) => _secure(
+            BlocProvider(
+              create: (_) {
+                final cubit = DriveBrowserCubit(
+                  auth: sl(),
+                  drive: sl(),
+                  folders: sl(),
+                  tempDir: sl<AppDirectories>().temp,
+                );
+                unawaited(cubit.start());
+                return cubit;
+              },
+              child: DriveStoragePage(pickers: sl(), opener: sl(), saver: sl()),
+            ),
           ),
+        ),
       ],
     );
 
-/// Modules whose milestone hasn't landed; replaced as they are built.
-const List<AppModule> _notYetBuilt = [AppModule.drive];
+BackupDrive _backupDrive() => BackupDrive(
+  auth: sl<DriveAuth>(),
+  service: sl<DriveService>(),
+  folders: sl<DriveFolders>(),
+);
 
 List<GoRoute> _noteRoutes() {
   Widget editor(String? id) => BlocProvider(
@@ -525,6 +579,8 @@ List<GoRoute> _documentRoutes() {
           create: (_) => DocumentViewCubit(
             repository: sl(),
             documentId: state.pathParameters['id'] ?? '',
+            uploader: sl<DocumentUploader>(),
+            driveAuth: sl<DriveAuth>(),
           )..start(),
           child: DocumentViewPage(opener: sl<FileOpener>()),
         ),
@@ -708,6 +764,7 @@ List<GoRoute> _shoppingRoutes() {
         create: (_) => HistoryCubit(
           repository: sl(),
           listId: state.pathParameters['id'] ?? '',
+          drive: sl<DriveCopier>(),
         )..start(),
         child: const HistoryPage(),
       ),

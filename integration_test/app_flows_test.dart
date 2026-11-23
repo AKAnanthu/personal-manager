@@ -21,8 +21,9 @@ import 'package:personal_life_manager/core/notifications/notification_platform.d
 import 'package:personal_life_manager/core/notifications/recurrence.dart';
 import 'package:personal_life_manager/core/notifications/time_zone_service.dart';
 import 'package:personal_life_manager/core/security/app_lock.dart';
-import 'package:personal_life_manager/core/security/biometric_auth.dart';
+import 'package:personal_life_manager/core/security/device_lock.dart';
 import 'package:personal_life_manager/core/storage/app_directories.dart';
+import 'package:personal_life_manager/core/sync/sync_tables.dart';
 import 'package:personal_life_manager/core/utils/cancellable.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_service.dart';
 import 'package:personal_life_manager/features/backup_restore/domain/backup.dart';
@@ -38,6 +39,8 @@ import 'package:personal_life_manager/features/settings/data/app_settings.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
 
+import '../test/helpers/fake_drive.dart';
+import '../test/helpers/fake_sync_store.dart';
 import '../test/helpers/fakes.dart';
 
 /// Records what the app asks the OS to do.
@@ -97,21 +100,13 @@ final class _RecordingPlatform implements NotificationPlatform {
   Future<void> openSettings() async {}
 }
 
-final class _NoBiometrics implements BiometricAuth {
-  @override
-  Future<BiometricKind?> availableKind() async => null;
-
-  @override
-  Future<bool> authenticate({required String reason}) async => false;
-}
-
-const _password = 'Garden-Path-42';
-
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   late Directory root;
   late _RecordingPlatform notifications;
+  late FakeSyncStore drive;
+  late FakeDeviceLock screenLock;
 
   Future<void> startApp(WidgetTester tester) async {
     // A phone-sized screen when run on the host test engine.
@@ -126,13 +121,19 @@ void main() {
         InMemorySharedPreferencesAsync.empty();
     root = Directory.systemTemp.createTempSync('plm_it');
     notifications = _RecordingPlatform();
+    drive = FakeSyncStore();
+    screenLock = FakeDeviceLock();
     await configureDependencies(
       AppFlavor.dev,
       overrides: DependencyOverrides(
         directories: AppDirectories(root),
         database: AppDatabase(NativeDatabase.memory()),
         secureStore: InMemorySecureStore(),
-        biometrics: _NoBiometrics(),
+        deviceLock: screenLock,
+        deviceSettings: FakeDeviceSettings(),
+        driveAuth: FakeDriveAuth(connectAs: 'me@gmail.com'),
+        drive: FakeDriveService(),
+        syncStore: drive,
         notifications: notifications,
         timeZone: TimeZoneService(deviceZone: () async => 'Asia/Kolkata'),
       ),
@@ -172,13 +173,9 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  Future<void> setUpPassword(WidgetTester tester) async {
-    await tapText(tester, 'Continue');
-    await tester.enterText(find.byType(TextField).at(0), _password);
-    await tester.enterText(find.byType(TextField).at(1), _password);
-    await tapText(tester, 'I understand how my data is stored');
-    await tapText(tester, 'Continue');
-    // Password hashing is deliberately slow.
+  Future<void> signIn(WidgetTester tester) async {
+    await tapText(tester, 'Continue with Google');
+    await tapText(tester, 'Unlock with screen lock');
     for (
       var i = 0;
       i < 120 && find.text('Quick access').evaluate().isEmpty;
@@ -192,35 +189,35 @@ void main() {
   GoRouter router(WidgetTester tester) =>
       GoRouter.of(tester.element(find.byType(Scaffold).first));
 
-  testWidgets('first-time setup, then lock and unlock', (tester) async {
+  testWidgets('sign in with Google, then lock and unlock', (tester) async {
     await startApp(tester);
-    expect(find.text('Welcome'), findsOneWidget);
-    await setUpPassword(tester);
+    expect(find.text('Continue with Google'), findsOneWidget);
+    await signIn(tester);
     expect(find.text('Quick access'), findsOneWidget);
+    expect(screenLock.prompts, 1);
 
+    // A note is saved to Drive by itself.
+    await sl<NotesRepository>().save(
+      const NoteDraft(title: 'Synced', contentJson: '[]', plainText: ''),
+    );
+    for (var i = 0; i < 40 && drive.files.isEmpty; i++) {
+      await tester.pump(const Duration(milliseconds: 250));
+    }
+    expect(
+      drive.files.values.where((f) => f.name.startsWith('r.notes.')),
+      hasLength(1),
+    );
+    expect(SyncNames.parseRecord(drive.files.values.first.name), isNotNull);
+
+    // Locked: the screen lock is asked again, a cancel keeps it locked.
+    screenLock.result = DeviceUnlock.cancelled;
     sl<AppLock>().lock();
     await tester.pumpAndSettle();
-    expect(find.text('Unlock'), findsWidgets);
-    await tester.enterText(find.byType(TextField), 'wrong-password');
-    await tester.tap(find.widgetWithText(FilledButton, 'Unlock'));
-    // Password checks are deliberately slow, more so on a real phone.
-    for (
-      var i = 0;
-      i < 120 && find.textContaining('Wrong password').evaluate().isEmpty;
-      i++
-    ) {
-      await tester.pump(const Duration(milliseconds: 250));
-    }
-    expect(find.textContaining('Wrong password'), findsOneWidget);
-    await tester.enterText(find.byType(TextField), _password);
-    await tester.tap(find.widgetWithText(FilledButton, 'Unlock'));
-    for (
-      var i = 0;
-      i < 120 && find.text('Quick access').evaluate().isEmpty;
-      i++
-    ) {
-      await tester.pump(const Duration(milliseconds: 250));
-    }
+    expect(find.text('Unlock with screen lock'), findsOneWidget);
+    expect(sl<AppLock>().status, LockStatus.locked);
+
+    screenLock.result = DeviceUnlock.unlocked;
+    await tester.tap(find.text('Unlock with screen lock'));
     await tester.pumpAndSettle();
     expect(sl<AppLock>().status, LockStatus.unlocked);
     expect(find.text('Quick access'), findsOneWidget);
@@ -228,7 +225,7 @@ void main() {
 
   testWidgets('a reminder is scheduled and shows on Home', (tester) async {
     await startApp(tester);
-    await setUpPassword(tester);
+    await signIn(tester);
     final at = DateTime.now().add(const Duration(days: 1));
     final when = DateTime(at.year, at.month, at.day, 9);
     final saved = await sl<RemindersRepository>().save(
@@ -255,7 +252,7 @@ void main() {
     tester,
   ) async {
     await startApp(tester);
-    await setUpPassword(tester);
+    await signIn(tester);
 
     await tapText(tester, 'Shopping');
     await tapText(tester, 'Paste a message');
@@ -314,7 +311,7 @@ void main() {
 
   testWidgets('backup, then restore only the chosen category', (tester) async {
     await startApp(tester);
-    await setUpPassword(tester);
+    await signIn(tester);
     final notes = sl<NotesRepository>();
     final passwords = sl<PasswordNotesRepository>();
     final noteId = (await notes.save(

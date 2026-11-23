@@ -53,12 +53,23 @@ class _BreathePageState extends State<BreathePage>
       BreathingMoment.at(_session.total * _clock.value, _session);
 
   void _onTick() {
-    if (!_session.vibration || _run != _Run.running) return;
+    if (_run != _Run.running) return;
     final inhaling = _moment.inhaling;
-    if (_lastInhaling != null && inhaling != _lastInhaling) {
-      unawaited(widget.feedback.cue());
+    // The last instant of the session is not a new breath.
+    if (_lastInhaling != null &&
+        inhaling != _lastInhaling &&
+        _clock.value < 1) {
+      _phaseCue(inhaling: inhaling);
     }
     _lastInhaling = inhaling;
+  }
+
+  /// Tone and/or tap at each change between breathing in and out.
+  void _phaseCue({required bool inhaling}) {
+    if (_session.sound) {
+      unawaited(widget.feedback.breathTone(inhaling: inhaling));
+    }
+    if (_session.vibration) unawaited(widget.feedback.cue());
   }
 
   void _onStatus(AnimationStatus status) {
@@ -77,7 +88,7 @@ class _BreathePageState extends State<BreathePage>
       ..value = 0;
     setState(() => _run = _Run.running);
     unawaited(widget.feedback.keepScreenOn(on: true));
-    if (s.vibration) unawaited(widget.feedback.cue());
+    _phaseCue(inhaling: true);
     _clock.forward();
   }
 
@@ -92,6 +103,8 @@ class _BreathePageState extends State<BreathePage>
     if (_run != _Run.paused) return;
     setState(() => _run = _Run.running);
     unawaited(widget.feedback.keepScreenOn(on: true));
+    // Say where the breath is again, for eyes that are closed.
+    _phaseCue(inhaling: _moment.inhaling);
     _clock.forward();
   }
 
@@ -206,6 +219,7 @@ class _BreathePageState extends State<BreathePage>
                         settings.copyWith(sound: v ?? false),
                       ),
                 title: Text(l10n.breatheSound),
+                subtitle: Text(l10n.breatheSoundHint),
               ),
               CheckboxListTile(
                 contentPadding: EdgeInsets.zero,

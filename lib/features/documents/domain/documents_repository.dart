@@ -38,4 +38,14 @@ abstract interface class DocumentsRepository {
   Future<Result<void>> delete(String id);
 
   Future<Result<File>> fileFor(AppDocument document);
+
+  /// Records the Drive copy's state. Not an edit: `updatedAt` is kept.
+  Future<Result<void>> setDriveStatus(
+    String id,
+    DriveStatus status, {
+    String? driveFileId,
+  });
+
+  /// Uploads cut off by the app closing are shown as failed, for a retry.
+  Future<void> markInterruptedUploadsFailed();
 }

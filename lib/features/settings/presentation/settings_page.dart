@@ -1,29 +1,35 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:personal_life_manager/app/modules.dart';
-import 'package:personal_life_manager/core/security/biometric_auth.dart';
 import 'package:personal_life_manager/core/ui/theme/app_theme.dart';
 import 'package:personal_life_manager/core/ui/widgets/common.dart';
 import 'package:personal_life_manager/core/utils/formats.dart';
+import 'package:personal_life_manager/features/account/presentation/sign_in_page.dart';
 import 'package:personal_life_manager/features/settings/data/app_settings.dart';
-import 'package:personal_life_manager/features/settings/presentation/erase_dialog.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_cubits.dart';
 import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
 
 abstract final class SettingsRoutes {
   static const root = '/settings';
-  static const password = '/settings/password';
-  static const privacy = '/settings/privacy';
+  static const account = '/settings/account';
 }
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({required this.appVersion, super.key});
+  const SettingsPage({
+    required this.appVersion,
+    required this.driveAccount,
+    super.key,
+  });
 
   final String appVersion;
+
+  /// The signed-in Google account.
+  final ValueListenable<String?> driveAccount;
 
   Future<T?> _choose<T>(
     BuildContext context, {
@@ -60,11 +66,8 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final cubit = context.read<SettingsCubit>();
-    return BlocConsumer<SettingsCubit, SettingsState>(
-      listenWhen: (a, b) => b.biometricFailed && !a.biometricFailed,
-      listener: (context, s) => showSnack(context, l10n.biometricFailed),
+    return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, s) {
-        final kind = s.biometricKind;
         final last = s.lastBackup;
         String autoLockLabel(AutoLock a) => l10n.autoLockOption(a.name);
         String themeLabel(ThemeMode m) => l10n.themeOption(m.name);
@@ -86,26 +89,6 @@ class SettingsPage extends StatelessWidget {
                     SectionLabel(l10n.settingsSecurity),
                     GroupCard(
                       children: [
-                        ListTile(
-                          leading: const Icon(LucideIcons.keyRound),
-                          title: Text(l10n.changePasswordTitle),
-                          trailing: const Icon(LucideIcons.chevronRight),
-                          onTap: () => context.push(SettingsRoutes.password),
-                        ),
-                        if (kind != null)
-                          SwitchListTile(
-                            secondary: Icon(
-                              kind == BiometricKind.face
-                                  ? LucideIcons.scanFace
-                                  : LucideIcons.fingerprint,
-                            ),
-                            title: Text(l10n.biometricUnlockSetting(kind.name)),
-                            value: s.biometricEnabled,
-                            onChanged: (v) => cubit.setBiometric(
-                              enabled: v,
-                              reason: l10n.biometricReasonEnable,
-                            ),
-                          ),
                         ListTile(
                           leading: const Icon(LucideIcons.timer),
                           title: Text(l10n.autoLockTitle),
@@ -129,11 +112,22 @@ class SettingsPage extends StatelessWidget {
                     SectionLabel(l10n.settingsStorage),
                     GroupCard(
                       children: [
+                        ValueListenableBuilder(
+                          valueListenable: driveAccount,
+                          builder: (context, account, _) => ListTile(
+                            leading: const Icon(LucideIcons.refreshCw),
+                            title: Text(l10n.accountTitle),
+                            subtitle: Text(account ?? ''),
+                            trailing: const Icon(LucideIcons.chevronRight),
+                            onTap: () => context.push(SettingsRoutes.account),
+                          ),
+                        ),
                         ListTile(
                           leading: const Icon(LucideIcons.cloud),
-                          title: Text(l10n.googleDrive),
-                          subtitle: Text(l10n.driveNotConnectedYet),
-                          enabled: false,
+                          title: Text(l10n.driveFilesTitle),
+                          subtitle: Text(l10n.driveFilesSubtitle),
+                          trailing: const Icon(LucideIcons.chevronRight),
+                          onTap: () => context.push(AppModule.drive.route),
                         ),
                         ListTile(
                           leading: const Icon(LucideIcons.databaseBackup),
@@ -204,7 +198,13 @@ class SettingsPage extends StatelessWidget {
                           leading: const Icon(LucideIcons.shieldCheck),
                           title: Text(l10n.privacyTitle),
                           trailing: const Icon(LucideIcons.chevronRight),
-                          onTap: () => context.push(SettingsRoutes.privacy),
+                          onTap: () => context.push(LegalRoutes.privacy),
+                        ),
+                        ListTile(
+                          leading: const Icon(LucideIcons.fileText),
+                          title: Text(l10n.termsTitle),
+                          trailing: const Icon(LucideIcons.chevronRight),
+                          onTap: () => context.push(LegalRoutes.terms),
                         ),
                         ListTile(
                           leading: const Icon(LucideIcons.info),
@@ -217,22 +217,6 @@ class SettingsPage extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(height: AppSpacing.section),
-                    OutlinedButton.icon(
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Theme.of(context).colorScheme.error,
-                      ),
-                      onPressed: () async {
-                        if (await confirmErase(
-                          context,
-                          forgotPassword: false,
-                        )) {
-                          await cubit.eraseEverything();
-                        }
-                      },
-                      icon: const Icon(LucideIcons.trash2),
-                      label: Text(l10n.eraseTitle),
                     ),
                   ],
                 ),

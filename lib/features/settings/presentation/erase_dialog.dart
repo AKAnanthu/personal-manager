@@ -4,20 +4,15 @@ import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
 
 /// Explains what erasing means and only confirms once the user types the
 /// confirmation word, so it can't happen by an accidental tap.
-Future<bool> confirmErase(
-  BuildContext context, {
-  required bool forgotPassword,
-}) async =>
+Future<bool> confirmErase(BuildContext context) async =>
     await showDialog<bool>(
       context: context,
-      builder: (_) => _EraseDialog(forgotPassword: forgotPassword),
+      builder: (_) => const _EraseDialog(),
     ) ??
     false;
 
 class _EraseDialog extends StatefulWidget {
-  const _EraseDialog({required this.forgotPassword});
-
-  final bool forgotPassword;
+  const _EraseDialog();
 
   @override
   State<_EraseDialog> createState() => _EraseDialogState();
@@ -39,16 +34,13 @@ class _EraseDialogState extends State<_EraseDialog> {
     final word = l10n.eraseConfirmWord;
     final ready = _text.text.trim().toUpperCase() == word.toUpperCase();
     return AlertDialog(
-      title: Text(
-        widget.forgotPassword ? l10n.forgotPasswordTitle : l10n.eraseTitle,
-      ),
+      title: Text(l10n.eraseTitle),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           spacing: 12,
           children: [
-            if (widget.forgotPassword) Text(l10n.forgotPasswordBody),
             NoticeBanner(message: l10n.eraseBody, tone: NoticeTone.warning),
             Text(l10n.eraseKeepsBackups, style: theme.textTheme.bodySmall),
             TextField(

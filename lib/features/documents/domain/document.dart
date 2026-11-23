@@ -1,15 +1,22 @@
 import 'package:equatable/equatable.dart';
 import 'package:personal_life_manager/core/storage/file_type.dart';
 
-/// PRD §7.3. Mapping to Drive folders is decided with the Drive milestone.
+/// PRD §7.3. Each has a Drive folder of the same (English) name: the
+/// owner chose identical names over the PRD's "Education" spelling.
 enum DocumentCategory {
-  personal,
-  financial,
-  medical,
-  employment,
-  educational,
-  propertyVehicle,
-  others,
+  personal('Personal'),
+  financial('Financial'),
+  medical('Medical'),
+  employment('Employment'),
+  educational('Educational'),
+  propertyVehicle('Property and Vehicle'),
+  others('Others');
+
+  DocumentCategory(this.driveFolder);
+
+  /// Folder under `Personal Life Manager/Documents/` on Drive. Never
+  /// translated, so it stays the same folder in every language.
+  final String driveFolder;
 }
 
 /// Drive copy state (PRD §7.5). Changed only by user-started uploads.
@@ -37,6 +44,7 @@ final class AppDocument extends Equatable {
     this.expiryDate,
     this.expiryReminder = true,
     this.driveStatus = DriveStatus.notUploaded,
+    this.driveFileId,
   });
 
   final String id;
@@ -55,6 +63,9 @@ final class AppDocument extends Equatable {
   final bool expiryReminder;
   final bool isFavourite;
   final DriveStatus driveStatus;
+
+  /// The Drive copy, once uploaded.
+  final String? driveFileId;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -93,6 +104,7 @@ final class AppDocument extends Equatable {
     expiryReminder,
     isFavourite,
     driveStatus,
+    driveFileId,
     createdAt,
     updatedAt,
   ];

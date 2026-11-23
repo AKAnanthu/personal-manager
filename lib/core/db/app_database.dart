@@ -50,6 +50,7 @@ part 'app_database.g.dart';
     'package:personal_life_manager/features/password_notes/data/passwords.drift',
     'package:personal_life_manager/features/documents/data/documents.drift',
     'package:personal_life_manager/features/shopping/data/shopping.drift',
+    'package:personal_life_manager/core/sync/sync.drift',
   },
 )
 class AppDatabase extends _$AppDatabase {
@@ -64,7 +65,53 @@ class AppDatabase extends _$AppDatabase {
   );
 
   @override
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
+
+  /// The change-recording triggers of every synced table (sync.drift).
+  List<Trigger> get syncTriggers => [
+    syncNotesAi,
+    syncNotesAu,
+    syncNotesAd,
+    syncNoteAttachmentsAi,
+    syncNoteAttachmentsAu,
+    syncNoteAttachmentsAd,
+    syncTasksAi,
+    syncTasksAu,
+    syncTasksAd,
+    syncTaskChecklistItemsAi,
+    syncTaskChecklistItemsAu,
+    syncTaskChecklistItemsAd,
+    syncRemindersAi,
+    syncRemindersAu,
+    syncRemindersAd,
+    syncPersonalEntriesAi,
+    syncPersonalEntriesAu,
+    syncPersonalEntriesAd,
+    syncPasswordNotesAi,
+    syncPasswordNotesAu,
+    syncPasswordNotesAd,
+    syncDocumentsAi,
+    syncDocumentsAu,
+    syncDocumentsAd,
+    syncShoppingListsAi,
+    syncShoppingListsAu,
+    syncShoppingListsAd,
+    syncShoppingItemsAi,
+    syncShoppingItemsAu,
+    syncShoppingItemsAd,
+    syncExpensesAi,
+    syncExpensesAu,
+    syncExpensesAd,
+    syncBudgetAmountsAi,
+    syncBudgetAmountsAu,
+    syncBudgetAmountsAd,
+    syncLendingRecordsAi,
+    syncLendingRecordsAu,
+    syncLendingRecordsAd,
+    syncMedicinesAi,
+    syncMedicinesAu,
+    syncMedicinesAd,
+  ];
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -121,6 +168,16 @@ class AppDatabase extends _$AppDatabase {
         await m.create(schema.budgetAmounts);
         await m.create(schema.lendingRecords);
         await m.create(schema.medicines);
+      },
+      from6To7: (m, schema) async {
+        await m.create(schema.syncOutbox);
+        await m.create(schema.syncRemote);
+        await m.create(schema.syncMute);
+        // Introduced in v7; see the note on v2 triggers. Existing records
+        // reach Drive when the user signs in (SyncEngine.seedAll).
+        for (final t in syncTriggers) {
+          await m.create(t);
+        }
       },
     ),
     beforeOpen: (details) async {

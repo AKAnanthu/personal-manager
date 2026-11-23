@@ -29,6 +29,12 @@ enum SupportedFileType {
   bool get hasInAppPreview => isImage || this == pdf;
 
   String get label => name.toUpperCase();
+
+  /// By file name extension only (for labels; not a safety check).
+  static SupportedFileType? fromName(String fileName) {
+    final ext = p.extension(fileName).toLowerCase();
+    return values.where((t) => t.extensions.contains(ext)).firstOrNull;
+  }
 }
 
 sealed class FileCheck {
@@ -55,7 +61,9 @@ final class FileTooLarge extends FileCheck {
 /// Validates by extension **and** content signature, so a renamed file
 /// can't slip through.
 abstract final class FileTypeValidator {
-  static const int maxBytes = 25 * 1024 * 1024;
+  /// Small on purpose: every file is also saved to the user's Google
+  /// Drive, and photos are compressed when taken (FilePickers).
+  static const int maxBytes = 500 * 1024;
 
   static Future<FileCheck> check(File file, {String? originalName}) async {
     final ext = p.extension(originalName ?? file.path).toLowerCase();

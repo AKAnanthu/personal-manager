@@ -1,3 +1,4 @@
 {
-  "FLAVOR": "prod"
+  "FLAVOR": "prod",
+  "GOOGLE_SERVER_CLIENT_ID": "742034467769-lhnf900plb20gqt452n6jm6o5dubem41.apps.googleusercontent.com"
 }

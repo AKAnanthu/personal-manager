@@ -35,8 +35,11 @@ class AppLock extends ChangeNotifier {
   /// Called after setup completes or the user authenticates.
   void markUnlocked() => _setStatus(LockStatus.unlocked);
 
-  /// After all data was erased: the router returns to first-time setup.
+  /// Signed out (this phone was wiped): the router shows sign-in.
   void markNotSetUp() => _setStatus(LockStatus.notSetUp);
+
+  /// Signed in at app start: the screen lock opens the app.
+  void markLocked() => _setStatus(LockStatus.locked);
 
   /// "Lock now", or an automatic lock after the timeout.
   void lock() {

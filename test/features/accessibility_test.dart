@@ -2,22 +2,23 @@
 // (320 × 568) must lay out without overflow, and icon-only buttons must
 // have labels for screen readers.
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:personal_life_manager/core/drive/drive_folders.dart';
 import 'package:personal_life_manager/core/error/result.dart';
 import 'package:personal_life_manager/core/notifications/notification_permissions.dart';
 import 'package:personal_life_manager/core/notifications/recurrence.dart';
 import 'package:personal_life_manager/core/security/app_lock.dart';
-import 'package:personal_life_manager/core/security/biometric_auth.dart';
 import 'package:personal_life_manager/core/security/sensitive_clipboard.dart';
+import 'package:personal_life_manager/core/storage/file_access.dart';
 import 'package:personal_life_manager/core/storage/file_type.dart';
 import 'package:personal_life_manager/core/ui/session_notices.dart';
 import 'package:personal_life_manager/core/ui/theme/app_theme.dart';
-import 'package:personal_life_manager/features/auth/domain/auth_repository.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_platform.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_service.dart';
 import 'package:personal_life_manager/features/backup_restore/presentation/backup_cubits.dart';
@@ -34,6 +35,8 @@ import 'package:personal_life_manager/features/documents/domain/document.dart';
 import 'package:personal_life_manager/features/documents/domain/documents_repository.dart';
 import 'package:personal_life_manager/features/documents/presentation/documents_bloc.dart';
 import 'package:personal_life_manager/features/documents/presentation/documents_page.dart';
+import 'package:personal_life_manager/features/drive_storage/presentation/drive_browser_cubit.dart';
+import 'package:personal_life_manager/features/drive_storage/presentation/drive_storage_page.dart';
 import 'package:personal_life_manager/features/lending/domain/lending.dart';
 import 'package:personal_life_manager/features/lending/domain/lending_repository.dart';
 import 'package:personal_life_manager/features/lending/presentation/lending_cubit.dart';
@@ -47,7 +50,6 @@ import 'package:personal_life_manager/features/password_notes/domain/password_no
 import 'package:personal_life_manager/features/password_notes/presentation/passwords_bloc.dart';
 import 'package:personal_life_manager/features/password_notes/presentation/passwords_page.dart';
 import 'package:personal_life_manager/features/settings/data/app_settings.dart';
-import 'package:personal_life_manager/features/settings/data/data_eraser.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_cubits.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_page.dart';
 import 'package:personal_life_manager/features/shopping/data/instruction_sharer.dart';
@@ -59,8 +61,11 @@ import 'package:personal_life_manager/features/shopping/presentation/shopping_ho
 import 'package:personal_life_manager/features/shopping/presentation/shopping_home_page.dart';
 import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
 import 'package:personal_life_manager/l10n/locales.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_async_platform_interface.dart';
+
+import '../helpers/fake_drive.dart';
 
 class _Budget extends Mock implements BudgetRepository;
 
@@ -88,13 +93,13 @@ class _Clipboard extends Mock implements SensitiveClipboard;
 
 class _Sharer extends Mock implements InstructionSharer;
 
-class _Auth extends Mock implements AuthRepository;
-
-class _Bio extends Mock implements BiometricAuth;
-
 class _Perms extends Mock implements NotificationPermissions;
 
-class _Eraser extends Mock implements DataEraser;
+class _Pickers extends Mock implements FilePickers;
+
+class _Opener extends Mock implements FileOpener;
+
+class _Saver extends Mock implements FileSaver;
 
 final _now = DateTime(2026, 11, 3, 18);
 
@@ -390,11 +395,7 @@ void main() {
       ),
     );
 
-    final auth = _Auth();
-    final bio = _Bio();
     final perms = _Perms();
-    when(bio.availableKind).thenAnswer((_) async => BiometricKind.face);
-    when(auth.isBiometricEnabled).thenAnswer((_) async => const Ok(true));
     when(perms.areEnabled).thenAnswer((_) async => false);
     when(() => perms.exactAlarmsAvailable).thenReturn(true);
     final lock = AppLock(initialStatus: LockStatus.unlocked);
@@ -404,19 +405,91 @@ void main() {
       BlocProvider(
         create: (_) {
           final c = SettingsCubit(
-            auth: auth,
-            biometrics: bio,
             permissions: perms,
             settings: AppSettings(lock),
             lastBackup: last,
-            eraser: _Eraser(),
           );
           unawaited(c.load());
           return c;
         },
-        child: const SettingsPage(appVersion: '1.0.0'),
+        child: SettingsPage(
+          appVersion: '1.0.0',
+          driveAccount: ValueNotifier<String?>(null),
+        ),
       ),
     );
+    _expectLabelledIconButtons(tester);
+  });
+
+  testWidgets('drive storage', (tester) async {
+    // The fake Drive and in-memory prefs need no real time.
+    final temp = Directory.systemTemp.createTempSync('a11y_drive');
+    addTearDown(() => temp.deleteSync(recursive: true));
+    final drive = FakeDriveService();
+    final folders = DriveFolders(drive, SharedPreferencesAsync());
+    final docs = (await folders.resolve(['Documents', 'Property and Vehicle']))
+        .fold((f) => fail('$f'), (v) => v);
+    drive.put(
+      'a_very_long_file_name_for_the_car_registration_certificate.pdf',
+      parent: docs,
+      bytes: List.filled(2048, 0),
+      modifiedAt: DateTime(2026, 10, 28),
+    );
+    await _pumpLarge(
+      tester,
+      BlocProvider(
+        create: (_) {
+          final c = DriveBrowserCubit(
+            auth: FakeDriveAuth(
+              account: 'someone.with.a.long.address@example.com',
+            ),
+            drive: drive,
+            folders: folders,
+            tempDir: temp,
+          );
+          unawaited(c.start());
+          return c;
+        },
+        child: DriveStoragePage(
+          pickers: _Pickers(),
+          opener: _Opener(),
+          saver: _Saver(),
+        ),
+      ),
+    );
+    _expectLabelledIconButtons(tester);
+
+    Future<void> open(String folder) async {
+      final f = find.text(folder);
+      await tester.scrollUntilVisible(
+        f,
+        -200,
+        scrollable: find.byType(Scrollable).first,
+      );
+      // Clear of the floating Upload button.
+      await Scrollable.ensureVisible(tester.element(f), alignment: 0.2);
+      await tester.pumpAndSettle();
+      await tester.tap(f);
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    }
+
+    await open('Documents');
+    await open('Property and Vehicle');
+    final file = find.text(
+      'a_very_long_file_name_for_the_car_registration_certificate.pdf',
+    );
+    await Scrollable.ensureVisible(
+      tester.element(
+        find.text(
+          'a_very_long_file_name_for_the_car_registration_certificate.pdf',
+          skipOffstage: false,
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(file, findsOneWidget);
+    expect(tester.takeException(), isNull);
     _expectLabelledIconButtons(tester);
   });
 }

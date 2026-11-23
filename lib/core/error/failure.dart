@@ -53,3 +53,38 @@ final class ConflictFailure extends Failure {
   @override
   List<Object?> get props => [conflictingId];
 }
+
+/// Why a Google Drive action didn't work (PRD §5.14).
+enum DriveProblem {
+  /// No Google account connected.
+  notConnected,
+
+  /// Access expired or was revoked; the user must reconnect.
+  authExpired,
+
+  /// The user didn't allow Drive on Google's consent screen.
+  notAllowed,
+
+  /// The user's Drive is full.
+  quotaExceeded,
+
+  /// The file or folder is gone (e.g. deleted in Drive).
+  notFound,
+
+  /// No internet connection.
+  offline,
+
+  /// The user stopped it.
+  cancelled,
+
+  unknown,
+}
+
+final class DriveFailure extends Failure {
+  const DriveFailure(this.problem, [super.debugMessage]);
+
+  final DriveProblem problem;
+
+  @override
+  List<Object?> get props => [problem, debugMessage];
+}

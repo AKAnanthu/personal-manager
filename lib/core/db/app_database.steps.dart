@@ -2434,12 +2434,757 @@ i1.GeneratedColumn<int> _column_82(String aliasedName) =>
       $customConstraints: 'NOT NULL DEFAULT 1 CHECK (enabled IN (0, 1))',
       defaultValue: const i1.CustomExpression('1'),
     );
+
+final class Schema7 extends i0.VersionedSchema {
+  Schema7({required super.database}) : super(version: 7);
+  @override
+  late final List<i1.DatabaseSchemaEntity> entities = [
+    syncOutbox,
+    syncRemote,
+    syncMute,
+    notes,
+    syncNotesAi,
+    syncNotesAu,
+    syncNotesAd,
+    noteAttachments,
+    syncNoteAttachmentsAi,
+    syncNoteAttachmentsAu,
+    syncNoteAttachmentsAd,
+    tasks,
+    syncTasksAi,
+    syncTasksAu,
+    syncTasksAd,
+    taskChecklistItems,
+    syncTaskChecklistItemsAi,
+    syncTaskChecklistItemsAu,
+    syncTaskChecklistItemsAd,
+    reminders,
+    syncRemindersAi,
+    syncRemindersAu,
+    syncRemindersAd,
+    personalEntries,
+    syncPersonalEntriesAi,
+    syncPersonalEntriesAu,
+    syncPersonalEntriesAd,
+    passwordNotes,
+    syncPasswordNotesAi,
+    syncPasswordNotesAu,
+    syncPasswordNotesAd,
+    documents,
+    syncDocumentsAi,
+    syncDocumentsAu,
+    syncDocumentsAd,
+    shoppingLists,
+    syncShoppingListsAi,
+    syncShoppingListsAu,
+    syncShoppingListsAd,
+    shoppingItems,
+    syncShoppingItemsAi,
+    syncShoppingItemsAu,
+    syncShoppingItemsAd,
+    expenses,
+    syncExpensesAi,
+    syncExpensesAu,
+    syncExpensesAd,
+    budgetAmounts,
+    syncBudgetAmountsAi,
+    syncBudgetAmountsAu,
+    syncBudgetAmountsAd,
+    lendingRecords,
+    syncLendingRecordsAi,
+    syncLendingRecordsAu,
+    syncLendingRecordsAd,
+    medicines,
+    syncMedicinesAi,
+    syncMedicinesAu,
+    syncMedicinesAd,
+    shoppingOneActive,
+    shoppingItemsList,
+    documentsExpiry,
+    documentsFts,
+    passwordNotesFts,
+    passwordFtsAi,
+    passwordFtsAd,
+    passwordFtsAu,
+    personalEntriesFts,
+    personalFtsAi,
+    personalFtsAd,
+    personalFtsAu,
+    notesFts,
+  ];
+  late final Shape18 syncOutbox = Shape18(
+    source: i0.VersionedTable(
+      entityName: 'sync_outbox',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(tbl, row_id)'],
+      columns: [_column_83, _column_84, _column_85, _column_86],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape19 syncRemote = Shape19(
+    source: i0.VersionedTable(
+      entityName: 'sync_remote',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: [],
+      columns: [_column_87, _column_88, _column_89],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape20 syncMute = Shape20(
+    source: i0.VersionedTable(
+      entityName: 'sync_mute',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: [],
+      columns: [_column_90],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape0 notes = Shape0(
+    source: i0.VersionedTable(
+      entityName: 'notes',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_3,
+        _column_4,
+        _column_5,
+        _column_6,
+        _column_7,
+        _column_8,
+        _column_9,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncNotesAi = i1.Trigger(
+    'CREATE TRIGGER sync_notes_ai AFTER INSERT ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'notes\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_notes_ai',
+  );
+  final i1.Trigger syncNotesAu = i1.Trigger(
+    'CREATE TRIGGER sync_notes_au AFTER UPDATE ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'notes\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_notes_au',
+  );
+  final i1.Trigger syncNotesAd = i1.Trigger(
+    'CREATE TRIGGER sync_notes_ad AFTER DELETE ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'notes\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_notes_ad',
+  );
+  late final Shape2 noteAttachments = Shape2(
+    source: i0.VersionedTable(
+      entityName: 'note_attachments',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_13,
+        _column_14,
+        _column_15,
+        _column_16,
+        _column_17,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncNoteAttachmentsAi = i1.Trigger(
+    'CREATE TRIGGER sync_note_attachments_ai AFTER INSERT ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'note_attachments\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_note_attachments_ai',
+  );
+  final i1.Trigger syncNoteAttachmentsAu = i1.Trigger(
+    'CREATE TRIGGER sync_note_attachments_au AFTER UPDATE ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'note_attachments\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_note_attachments_au',
+  );
+  final i1.Trigger syncNoteAttachmentsAd = i1.Trigger(
+    'CREATE TRIGGER sync_note_attachments_ad AFTER DELETE ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'note_attachments\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_note_attachments_ad',
+  );
+  late final Shape3 tasks = Shape3(
+    source: i0.VersionedTable(
+      entityName: 'tasks',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_18,
+        _column_19,
+        _column_20,
+        _column_21,
+        _column_22,
+        _column_23,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncTasksAi = i1.Trigger(
+    'CREATE TRIGGER sync_tasks_ai AFTER INSERT ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'tasks\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_tasks_ai',
+  );
+  final i1.Trigger syncTasksAu = i1.Trigger(
+    'CREATE TRIGGER sync_tasks_au AFTER UPDATE ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'tasks\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_tasks_au',
+  );
+  final i1.Trigger syncTasksAd = i1.Trigger(
+    'CREATE TRIGGER sync_tasks_ad AFTER DELETE ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'tasks\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_tasks_ad',
+  );
+  late final Shape4 taskChecklistItems = Shape4(
+    source: i0.VersionedTable(
+      entityName: 'task_checklist_items',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_24,
+        _column_25,
+        _column_26,
+        _column_27,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncTaskChecklistItemsAi = i1.Trigger(
+    'CREATE TRIGGER sync_task_checklist_items_ai AFTER INSERT ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'task_checklist_items\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_task_checklist_items_ai',
+  );
+  final i1.Trigger syncTaskChecklistItemsAu = i1.Trigger(
+    'CREATE TRIGGER sync_task_checklist_items_au AFTER UPDATE ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'task_checklist_items\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_task_checklist_items_au',
+  );
+  final i1.Trigger syncTaskChecklistItemsAd = i1.Trigger(
+    'CREATE TRIGGER sync_task_checklist_items_ad AFTER DELETE ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'task_checklist_items\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_task_checklist_items_ad',
+  );
+  late final Shape5 reminders = Shape5(
+    source: i0.VersionedTable(
+      entityName: 'reminders',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_18,
+        _column_19,
+        _column_28,
+        _column_29,
+        _column_30,
+        _column_31,
+        _column_22,
+        _column_23,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncRemindersAi = i1.Trigger(
+    'CREATE TRIGGER sync_reminders_ai AFTER INSERT ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'reminders\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_reminders_ai',
+  );
+  final i1.Trigger syncRemindersAu = i1.Trigger(
+    'CREATE TRIGGER sync_reminders_au AFTER UPDATE ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'reminders\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_reminders_au',
+  );
+  final i1.Trigger syncRemindersAd = i1.Trigger(
+    'CREATE TRIGGER sync_reminders_ad AFTER DELETE ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'reminders\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_reminders_ad',
+  );
+  late final Shape8 personalEntries = Shape8(
+    source: i0.VersionedTable(
+      entityName: 'personal_entries',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_41,
+        _column_3,
+        _column_42,
+        _column_43,
+        _column_44,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncPersonalEntriesAi = i1.Trigger(
+    'CREATE TRIGGER sync_personal_entries_ai AFTER INSERT ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'personal_entries\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_personal_entries_ai',
+  );
+  final i1.Trigger syncPersonalEntriesAu = i1.Trigger(
+    'CREATE TRIGGER sync_personal_entries_au AFTER UPDATE ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'personal_entries\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_personal_entries_au',
+  );
+  final i1.Trigger syncPersonalEntriesAd = i1.Trigger(
+    'CREATE TRIGGER sync_personal_entries_ad AFTER DELETE ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'personal_entries\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_personal_entries_ad',
+  );
+  late final Shape6 passwordNotes = Shape6(
+    source: i0.VersionedTable(
+      entityName: 'password_notes',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_32,
+        _column_33,
+        _column_34,
+        _column_35,
+        _column_36,
+        _column_37,
+        _column_8,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncPasswordNotesAi = i1.Trigger(
+    'CREATE TRIGGER sync_password_notes_ai AFTER INSERT ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'password_notes\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_password_notes_ai',
+  );
+  final i1.Trigger syncPasswordNotesAu = i1.Trigger(
+    'CREATE TRIGGER sync_password_notes_au AFTER UPDATE ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'password_notes\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_password_notes_au',
+  );
+  final i1.Trigger syncPasswordNotesAd = i1.Trigger(
+    'CREATE TRIGGER sync_password_notes_ad AFTER DELETE ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'password_notes\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_password_notes_ad',
+  );
+  late final Shape10 documents = Shape10(
+    source: i0.VersionedTable(
+      entityName: 'documents',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_18,
+        _column_19,
+        _column_46,
+        _column_14,
+        _column_15,
+        _column_47,
+        _column_17,
+        _column_48,
+        _column_49,
+        _column_8,
+        _column_50,
+        _column_51,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncDocumentsAi = i1.Trigger(
+    'CREATE TRIGGER sync_documents_ai AFTER INSERT ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'documents\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_documents_ai',
+  );
+  final i1.Trigger syncDocumentsAu = i1.Trigger(
+    'CREATE TRIGGER sync_documents_au AFTER UPDATE ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'documents\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_documents_au',
+  );
+  final i1.Trigger syncDocumentsAd = i1.Trigger(
+    'CREATE TRIGGER sync_documents_ad AFTER DELETE ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'documents\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_documents_ad',
+  );
+  late final Shape12 shoppingLists = Shape12(
+    source: i0.VersionedTable(
+      entityName: 'shopping_lists',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_32,
+        _column_54,
+        _column_55,
+        _column_56,
+        _column_57,
+        _column_58,
+        _column_59,
+        _column_60,
+        _column_61,
+        _column_62,
+        _column_63,
+        _column_64,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncShoppingListsAi = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_lists_ai AFTER INSERT ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_lists\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_lists_ai',
+  );
+  final i1.Trigger syncShoppingListsAu = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_lists_au AFTER UPDATE ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_lists\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_lists_au',
+  );
+  final i1.Trigger syncShoppingListsAd = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_lists_ad AFTER DELETE ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_lists\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_lists_ad',
+  );
+  late final Shape13 shoppingItems = Shape13(
+    source: i0.VersionedTable(
+      entityName: 'shopping_items',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_65,
+        _column_32,
+        _column_66,
+        _column_67,
+        _column_68,
+        _column_27,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncShoppingItemsAi = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_items_ai AFTER INSERT ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_items\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_items_ai',
+  );
+  final i1.Trigger syncShoppingItemsAu = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_items_au AFTER UPDATE ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_items\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_items_au',
+  );
+  final i1.Trigger syncShoppingItemsAd = i1.Trigger(
+    'CREATE TRIGGER sync_shopping_items_ad AFTER DELETE ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'shopping_items\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_shopping_items_ad',
+  );
+  late final Shape14 expenses = Shape14(
+    source: i0.VersionedTable(
+      entityName: 'expenses',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)', 'UNIQUE(source, source_id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_69,
+        _column_19,
+        _column_70,
+        _column_71,
+        _column_72,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncExpensesAi = i1.Trigger(
+    'CREATE TRIGGER sync_expenses_ai AFTER INSERT ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'expenses\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_expenses_ai',
+  );
+  final i1.Trigger syncExpensesAu = i1.Trigger(
+    'CREATE TRIGGER sync_expenses_au AFTER UPDATE ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'expenses\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_expenses_au',
+  );
+  final i1.Trigger syncExpensesAd = i1.Trigger(
+    'CREATE TRIGGER sync_expenses_ad AFTER DELETE ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'expenses\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_expenses_ad',
+  );
+  late final Shape15 budgetAmounts = Shape15(
+    source: i0.VersionedTable(
+      entityName: 'budget_amounts',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [_column_0, _column_1, _column_2, _column_73, _column_69],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncBudgetAmountsAi = i1.Trigger(
+    'CREATE TRIGGER sync_budget_amounts_ai AFTER INSERT ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'budget_amounts\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_budget_amounts_ai',
+  );
+  final i1.Trigger syncBudgetAmountsAu = i1.Trigger(
+    'CREATE TRIGGER sync_budget_amounts_au AFTER UPDATE ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'budget_amounts\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_budget_amounts_au',
+  );
+  final i1.Trigger syncBudgetAmountsAd = i1.Trigger(
+    'CREATE TRIGGER sync_budget_amounts_ad AFTER DELETE ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'budget_amounts\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_budget_amounts_ad',
+  );
+  late final Shape16 lendingRecords = Shape16(
+    source: i0.VersionedTable(
+      entityName: 'lending_records',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_74,
+        _column_75,
+        _column_69,
+        _column_76,
+        _column_77,
+        _column_54,
+        _column_78,
+        _column_36,
+        _column_79,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncLendingRecordsAi = i1.Trigger(
+    'CREATE TRIGGER sync_lending_records_ai AFTER INSERT ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'lending_records\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_lending_records_ai',
+  );
+  final i1.Trigger syncLendingRecordsAu = i1.Trigger(
+    'CREATE TRIGGER sync_lending_records_au AFTER UPDATE ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'lending_records\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_lending_records_au',
+  );
+  final i1.Trigger syncLendingRecordsAd = i1.Trigger(
+    'CREATE TRIGGER sync_lending_records_ad AFTER DELETE ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'lending_records\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_lending_records_ad',
+  );
+  late final Shape17 medicines = Shape17(
+    source: i0.VersionedTable(
+      entityName: 'medicines',
+      withoutRowId: false,
+      isStrict: false,
+      tableConstraints: ['PRIMARY KEY(id)'],
+      columns: [
+        _column_0,
+        _column_1,
+        _column_2,
+        _column_32,
+        _column_80,
+        _column_81,
+        _column_82,
+      ],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger syncMedicinesAi = i1.Trigger(
+    'CREATE TRIGGER sync_medicines_ai AFTER INSERT ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'medicines\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_medicines_ai',
+  );
+  final i1.Trigger syncMedicinesAu = i1.Trigger(
+    'CREATE TRIGGER sync_medicines_au AFTER UPDATE ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'medicines\', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_medicines_au',
+  );
+  final i1.Trigger syncMedicinesAd = i1.Trigger(
+    'CREATE TRIGGER sync_medicines_ad AFTER DELETE ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES (\'medicines\', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END',
+    'sync_medicines_ad',
+  );
+  final i1.Index shoppingOneActive = i1.Index(
+    'shopping_one_active',
+    'CREATE UNIQUE INDEX shopping_one_active ON shopping_lists (status) WHERE status = \'active\'',
+  );
+  final i1.Index shoppingItemsList = i1.Index(
+    'shopping_items_list',
+    'CREATE INDEX shopping_items_list ON shopping_items (list_id, position)',
+  );
+  final i1.Index documentsExpiry = i1.Index(
+    'documents_expiry',
+    'CREATE INDEX documents_expiry ON documents (expiry_date)',
+  );
+  late final Shape11 documentsFts = Shape11(
+    source: i0.VersionedVirtualTable(
+      entityName: 'documents_fts',
+      moduleAndArgs: 'fts5(title, description, original_name, content=\'documents\', content_rowid=\'rowid\')',
+      columns: [_column_10, _column_52, _column_53],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  late final Shape7 passwordNotesFts = Shape7(
+    source: i0.VersionedVirtualTable(
+      entityName: 'password_notes_fts',
+      moduleAndArgs: 'fts5(name, url, username, content=\'password_notes\', content_rowid=\'rowid\')',
+      columns: [_column_38, _column_39, _column_40],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger passwordFtsAi = i1.Trigger(
+    'CREATE TRIGGER password_fts_ai AFTER INSERT ON password_notes BEGIN INSERT INTO password_notes_fts ("rowid", name, url, username) VALUES (new."rowid", new.name, new.url, new.username);END',
+    'password_fts_ai',
+  );
+  final i1.Trigger passwordFtsAd = i1.Trigger(
+    'CREATE TRIGGER password_fts_ad AFTER DELETE ON password_notes BEGIN INSERT INTO password_notes_fts (password_notes_fts, "rowid", name, url, username) VALUES (\'delete\', old."rowid", old.name, old.url, old.username);END',
+    'password_fts_ad',
+  );
+  final i1.Trigger passwordFtsAu = i1.Trigger(
+    'CREATE TRIGGER password_fts_au AFTER UPDATE ON password_notes BEGIN INSERT INTO password_notes_fts (password_notes_fts, "rowid", name, url, username) VALUES (\'delete\', old."rowid", old.name, old.url, old.username);INSERT INTO password_notes_fts ("rowid", name, url, username) VALUES (new."rowid", new.name, new.url, new.username);END',
+    'password_fts_au',
+  );
+  late final Shape9 personalEntriesFts = Shape9(
+    source: i0.VersionedVirtualTable(
+      entityName: 'personal_entries_fts',
+      moduleAndArgs: 'fts5(title, search_text, content=\'personal_entries\', content_rowid=\'rowid\')',
+      columns: [_column_10, _column_45],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+  final i1.Trigger personalFtsAi = i1.Trigger(
+    'CREATE TRIGGER personal_fts_ai AFTER INSERT ON personal_entries BEGIN INSERT INTO personal_entries_fts ("rowid", title, search_text) VALUES (new."rowid", new.title, new.search_text);END',
+    'personal_fts_ai',
+  );
+  final i1.Trigger personalFtsAd = i1.Trigger(
+    'CREATE TRIGGER personal_fts_ad AFTER DELETE ON personal_entries BEGIN INSERT INTO personal_entries_fts (personal_entries_fts, "rowid", title, search_text) VALUES (\'delete\', old."rowid", old.title, old.search_text);END',
+    'personal_fts_ad',
+  );
+  final i1.Trigger personalFtsAu = i1.Trigger(
+    'CREATE TRIGGER personal_fts_au AFTER UPDATE ON personal_entries BEGIN INSERT INTO personal_entries_fts (personal_entries_fts, "rowid", title, search_text) VALUES (\'delete\', old."rowid", old.title, old.search_text);INSERT INTO personal_entries_fts ("rowid", title, search_text) VALUES (new."rowid", new.title, new.search_text);END',
+    'personal_fts_au',
+  );
+  late final Shape1 notesFts = Shape1(
+    source: i0.VersionedVirtualTable(
+      entityName: 'notes_fts',
+      moduleAndArgs: 'fts5(title, plain_text, tags, content=\'notes\', content_rowid=\'rowid\')',
+      columns: [_column_10, _column_11, _column_12],
+      attachedDatabase: database,
+    ),
+    alias: null,
+  );
+}
+
+class Shape18 extends i0.VersionedTable {
+  Shape18({required super.source, required super.alias}) : super.aliased();
+  i1.GeneratedColumn<String> get tbl =>
+      columnsByName['tbl']! as i1.GeneratedColumn<String>;
+  i1.GeneratedColumn<String> get rowId =>
+      columnsByName['row_id']! as i1.GeneratedColumn<String>;
+  i1.GeneratedColumn<int> get deleted =>
+      columnsByName['deleted']! as i1.GeneratedColumn<int>;
+  i1.GeneratedColumn<int> get seq =>
+      columnsByName['seq']! as i1.GeneratedColumn<int>;
+}
+
+i1.GeneratedColumn<String> _column_83(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'tbl',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.string,
+      $customConstraints: 'NOT NULL',
+    );
+i1.GeneratedColumn<String> _column_84(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'row_id',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.string,
+      $customConstraints: 'NOT NULL',
+    );
+i1.GeneratedColumn<int> _column_85(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'deleted',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NOT NULL DEFAULT FALSE',
+      defaultValue: const i1.CustomExpression('FALSE'),
+    );
+i1.GeneratedColumn<int> _column_86(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'seq',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NOT NULL',
+    );
+
+class Shape19 extends i0.VersionedTable {
+  Shape19({required super.source, required super.alias}) : super.aliased();
+  i1.GeneratedColumn<String> get name =>
+      columnsByName['name']! as i1.GeneratedColumn<String>;
+  i1.GeneratedColumn<String> get fileId =>
+      columnsByName['file_id']! as i1.GeneratedColumn<String>;
+  i1.GeneratedColumn<String> get modified =>
+      columnsByName['modified']! as i1.GeneratedColumn<String>;
+}
+
+i1.GeneratedColumn<String> _column_87(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'name',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.string,
+      $customConstraints: 'NOT NULL PRIMARY KEY',
+    );
+i1.GeneratedColumn<String> _column_88(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'file_id',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.string,
+      $customConstraints: 'NOT NULL',
+    );
+i1.GeneratedColumn<String> _column_89(String aliasedName) =>
+    i1.GeneratedColumn<String>(
+      'modified',
+      aliasedName,
+      true,
+      type: i1.DriftSqlType.string,
+      $customConstraints: '',
+    );
+
+class Shape20 extends i0.VersionedTable {
+  Shape20({required super.source, required super.alias}) : super.aliased();
+  i1.GeneratedColumn<int> get id =>
+      columnsByName['id']! as i1.GeneratedColumn<int>;
+}
+
+i1.GeneratedColumn<int> _column_90(String aliasedName) =>
+    i1.GeneratedColumn<int>(
+      'id',
+      aliasedName,
+      false,
+      type: i1.DriftSqlType.int,
+      $customConstraints: 'NOT NULL PRIMARY KEY',
+    );
 i0.MigrationStepWithVersion migrationSteps({
   required Future<void> Function(i1.Migrator m, Schema2 schema) from1To2,
   required Future<void> Function(i1.Migrator m, Schema3 schema) from2To3,
   required Future<void> Function(i1.Migrator m, Schema4 schema) from3To4,
   required Future<void> Function(i1.Migrator m, Schema5 schema) from4To5,
   required Future<void> Function(i1.Migrator m, Schema6 schema) from5To6,
+  required Future<void> Function(i1.Migrator m, Schema7 schema) from6To7,
 }) {
   return (currentVersion, database) async {
     switch (currentVersion) {
@@ -2468,6 +3213,11 @@ i0.MigrationStepWithVersion migrationSteps({
         final migrator = i1.Migrator(database, schema);
         await from5To6(migrator, schema);
         return 6;
+      case 6:
+        final schema = Schema7(database: database);
+        final migrator = i1.Migrator(database, schema);
+        await from6To7(migrator, schema);
+        return 7;
       default:
         throw ArgumentError.value('Unknown migration from $currentVersion');
     }
@@ -2480,6 +3230,7 @@ i1.OnUpgrade stepByStep({
   required Future<void> Function(i1.Migrator m, Schema4 schema) from3To4,
   required Future<void> Function(i1.Migrator m, Schema5 schema) from4To5,
   required Future<void> Function(i1.Migrator m, Schema6 schema) from5To6,
+  required Future<void> Function(i1.Migrator m, Schema7 schema) from6To7,
 }) => i0.VersionedSchema.stepByStepHelper(
   step: migrationSteps(
     from1To2: from1To2,
@@ -2487,5 +3238,6 @@ i1.OnUpgrade stepByStep({
     from3To4: from3To4,
     from4To5: from4To5,
     from5To6: from5To6,
+    from6To7: from6To7,
   ),
 );

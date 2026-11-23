@@ -80,9 +80,12 @@ class HistoryPage extends StatelessWidget {
     return BlocConsumer<HistoryCubit, HistoryState>(
       listenWhen: (a, b) =>
           (b.deleted && !a.deleted) ||
+          (b.receiptSaved && !a.receiptSaved) ||
           (b.failure != null && a.failure != b.failure && b.list != null),
       listener: (context, s) {
-        if (s.deleted) {
+        if (s.receiptSaved) {
+          showSnack(context, l10n.receiptSavedToDrive);
+        } else if (s.deleted) {
           showSnack(context, l10n.shoppingListDeleted);
           AppBackButton.popOrHome(context);
         } else if (s.failure case final f?) {
@@ -185,7 +188,28 @@ class _Details extends StatelessWidget {
               leading: FileTypeBadge(receipt.fileType, width: 32),
               title: Text(l10n.shoppingReceipt),
               subtitle: Text(receipt.originalName),
-              trailing: const Icon(LucideIcons.chevronRight),
+              trailing: context.read<HistoryCubit>().driveAvailable
+                  ? BlocSelector<HistoryCubit, HistoryState, bool>(
+                      selector: (s) => s.receiptUploading,
+                      builder: (context, uploading) => uploading
+                          ? const Padding(
+                              padding: EdgeInsets.all(12),
+                              child: SizedBox.square(
+                                dimension: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                            )
+                          : IconButton(
+                              tooltip: l10n.receiptSaveToDrive,
+                              icon: const Icon(LucideIcons.cloudUpload),
+                              onPressed: context
+                                  .read<HistoryCubit>()
+                                  .saveReceiptToDrive,
+                            ),
+                    )
+                  : const Icon(LucideIcons.chevronRight),
               onTap: onReceipt,
             ),
           ),

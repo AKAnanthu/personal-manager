@@ -44,18 +44,41 @@ final class PrefsBreathingSettingsStore implements BreathingSettingsStore {
 }
 
 /// Side effects of a session: keep the screen on while running, a light
-/// vibration cue, the end chime.
+/// vibration cue, a tone at each breath in/out, the end chime.
 abstract interface class BreathingFeedback {
   Future<void> keepScreenOn({required bool on});
   Future<void> cue();
+
+  /// Rising tone for [inhaling], falling tone for breathing out.
+  Future<void> breathTone({required bool inhaling});
   Future<void> chime();
   Future<void> dispose();
 }
 
 final class PlatformBreathingFeedback implements BreathingFeedback {
   AudioPlayer? _player;
+  AudioPlayer? _tonePlayer;
 
   static const chimeAsset = 'sounds/breathing_done.wav';
+  static const inhaleAsset = 'sounds/breathe_in.wav';
+  static const exhaleAsset = 'sounds/breathe_out.wav';
+
+  // Plays alongside the user's music instead of stopping it, at media
+  // volume: the user switched sound on for this exercise, so it is heard
+  // even when the ringer is on silent.
+  static final AudioContext _context = AudioContextConfig(
+    focus: AudioContextConfigFocus.mixWithOthers,
+  ).build();
+
+  Future<void> _play(AudioPlayer player, String asset) async {
+    try {
+      await player.setAudioContext(_context);
+      await player.stop();
+      await player.play(AssetSource(asset));
+    } on Object {
+      // A missing sound must never break the exercise.
+    }
+  }
 
   @override
   Future<void> keepScreenOn({required bool on}) async {
@@ -70,27 +93,20 @@ final class PlatformBreathingFeedback implements BreathingFeedback {
   Future<void> cue() => HapticFeedback.lightImpact();
 
   @override
-  Future<void> chime() async {
-    final player = _player ??= AudioPlayer();
-    try {
-      // Plays alongside other audio rather than stopping the user's music.
-      await player.setAudioContext(
-        AudioContextConfig(
-          focus: AudioContextConfigFocus.mixWithOthers,
-          // Silent mode stays silent.
-          respectSilence: true,
-        ).build(),
-      );
-      await player.play(AssetSource(chimeAsset));
-    } on PlatformException {
-      // A missing chime must never break the exercise.
-    }
-  }
+  Future<void> breathTone({required bool inhaling}) => _play(
+    _tonePlayer ??= AudioPlayer(),
+    inhaling ? inhaleAsset : exhaleAsset,
+  );
+
+  @override
+  Future<void> chime() => _play(_player ??= AudioPlayer(), chimeAsset);
 
   @override
   Future<void> dispose() async {
     await keepScreenOn(on: false);
     await _player?.dispose();
+    await _tonePlayer?.dispose();
     _player = null;
+    _tonePlayer = null;
   }
 }

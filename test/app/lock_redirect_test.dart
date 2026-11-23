@@ -7,10 +7,10 @@ void main() {
       lockRedirect(s, Uri.parse(location));
 
   group('not set up', () {
-    test('everything goes to setup', () {
-      expect(go(LockStatus.notSetUp, '/home'), '/setup');
-      expect(go(LockStatus.notSetUp, '/unlock'), '/setup');
-      expect(go(LockStatus.notSetUp, '/setup'), isNull);
+    test('everything goes to sign-in', () {
+      expect(go(LockStatus.notSetUp, '/home'), '/sign-in');
+      expect(go(LockStatus.notSetUp, '/unlock'), '/sign-in');
+      expect(go(LockStatus.notSetUp, '/sign-in'), isNull);
     });
   });
 
@@ -23,9 +23,9 @@ void main() {
       expect(uri.queryParameters['from'], '/documents?id=abc');
     });
 
-    test('stays on unlock; setup is not reachable once set up', () {
+    test('stays on unlock; sign-in is not reachable once signed in', () {
       expect(go(LockStatus.locked, '/unlock?from=%2Fhome'), isNull);
-      expect(go(LockStatus.locked, '/setup'), '/unlock');
+      expect(go(LockStatus.locked, '/sign-in'), '/unlock');
     });
   });
 
@@ -39,13 +39,13 @@ void main() {
 
     test('falls back to home without a usable target', () {
       expect(go(LockStatus.unlocked, '/unlock'), '/home');
-      expect(go(LockStatus.unlocked, '/setup'), '/home');
+      expect(go(LockStatus.unlocked, '/sign-in'), '/home');
       for (final bad in [
         'https://evil.example/x',
         '//evil.example/x',
         'home',
         '/unlock',
-        '/setup?from=%2Fhome',
+        '/sign-in?from=%2Fhome',
       ]) {
         expect(
           go(

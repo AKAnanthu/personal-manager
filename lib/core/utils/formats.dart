@@ -33,12 +33,14 @@ final class AppFormats {
   /// "Aug 2031".
   String monthYear(DateTime d) => DateFormat.yMMM(_locale).format(d);
 
-  /// "860 KB", "1.2 MB" (1024-based, as phones show file sizes).
+  /// "860 KB", "1.2 MB", "15.0 GB" (1024-based, as phones show file sizes).
   String fileSize(int bytes) {
     if (bytes < 1024) return '$bytes B';
     final kb = bytes / 1024;
     if (kb < 1024) return '${NumberFormat('#,##0', _locale).format(kb)} KB';
-    return '${NumberFormat('#,##0.0', _locale).format(kb / 1024)} MB';
+    final mb = kb / 1024;
+    if (mb < 1024) return '${NumberFormat('#,##0.0', _locale).format(mb)} MB';
+    return '${NumberFormat('#,##0.0', _locale).format(mb / 1024)} GB';
   }
 
   /// "14 Mar 1992" (always with the year).

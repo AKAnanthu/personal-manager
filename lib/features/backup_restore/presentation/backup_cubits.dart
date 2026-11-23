@@ -3,6 +3,13 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path/path.dart' as p;
+import 'package:personal_life_manager/core/drive/drive_auth.dart';
+import 'package:personal_life_manager/core/drive/drive_folders.dart';
+import 'package:personal_life_manager/core/drive/drive_models.dart';
+import 'package:personal_life_manager/core/drive/drive_service.dart';
+import 'package:personal_life_manager/core/error/failure.dart';
+import 'package:personal_life_manager/core/error/result.dart';
 import 'package:personal_life_manager/core/utils/cancellable.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_platform.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_service.dart';
@@ -10,9 +17,43 @@ import 'package:personal_life_manager/features/backup_restore/domain/backup.dart
 
 // ---- Back up --------------------------------------------------------------
 
-enum BackupPhase { idle, estimating, confirming, building, built, done }
+enum BackupPhase {
+  idle,
+  estimating,
+  confirming,
+  building,
+  built,
+  uploading,
+  done,
+}
 
-enum BackupDestination { device, share }
+enum BackupDestination { device, share, drive }
+
+/// Drive pieces the backup screens use; absent when Drive isn't set up.
+final class BackupDrive {
+  const BackupDrive({
+    required this.auth,
+    required this.service,
+    required this.folders,
+  });
+
+  final DriveAuth auth;
+  final DriveService service;
+  final DriveFolders folders;
+
+  /// Connects first when needed. False when the user backed out or it
+  /// failed ([onFailure] gets the reason).
+  Future<bool> ensureConnected(void Function(Failure) onFailure) async {
+    if (auth.account.value != null) return true;
+    switch (await auth.connect()) {
+      case Ok(value: final email):
+        return email != null;
+      case Err(:final failure):
+        onFailure(failure);
+        return false;
+    }
+  }
+}
 
 final class BackupState extends Equatable {
   const BackupState({
@@ -23,6 +64,10 @@ final class BackupState extends Equatable {
     this.file,
     this.size,
     this.error = false,
+    this.toDrive = false,
+    this.uploadProgress = 0,
+    this.failure,
+    this.savedToDrive = false,
   });
 
   final Set<BackupCategory> selected;
@@ -37,8 +82,20 @@ final class BackupState extends Equatable {
   /// Something went wrong (shown once, then cleared).
   final bool error;
 
+  /// Save to Drive's Backups folder rather than the phone.
+  final bool toDrive;
+  final double uploadProgress;
+
+  /// Why the Drive upload failed (shown once).
+  final Failure? failure;
+
+  /// The finished backup went to Drive.
+  final bool savedToDrive;
+
   bool get busy =>
-      phase == BackupPhase.estimating || phase == BackupPhase.building;
+      phase == BackupPhase.estimating ||
+      phase == BackupPhase.building ||
+      phase == BackupPhase.uploading;
   bool get includesSensitive => selected.any((c) => c.sensitive);
 
   BackupState copyWith({
@@ -49,7 +106,15 @@ final class BackupState extends Equatable {
     File? Function()? file,
     int? Function()? size,
     bool? error,
+    bool? toDrive,
+    double? uploadProgress,
+    Failure? failure,
+    bool? savedToDrive,
   }) => BackupState(
+    toDrive: toDrive ?? this.toDrive,
+    uploadProgress: uploadProgress ?? this.uploadProgress,
+    failure: failure,
+    savedToDrive: savedToDrive ?? this.savedToDrive,
     selected: selected ?? this.selected,
     phase: phase ?? this.phase,
     lastBackup: lastBackup ?? this.lastBackup,
@@ -68,6 +133,10 @@ final class BackupState extends Equatable {
     file?.path,
     size,
     error,
+    toDrive,
+    uploadProgress,
+    failure,
+    savedToDrive,
   ];
 }
 
@@ -78,14 +147,26 @@ class BackupCubit extends Cubit<BackupState> {
     required this._service,
     required this._files,
     required this._last,
+    this._drive,
     this._clock = DateTime.now,
   }) : super(BackupState(selected: BackupCategory.defaults));
 
   final BackupService _service;
   final BackupFiles _files;
   final LastBackupStore _last;
+  final BackupDrive? _drive;
   final DateTime Function() _clock;
   CancelToken? _token;
+
+  bool get driveAvailable => _drive != null;
+
+  /// The connected Drive account, if any.
+  String? get driveAccount => _drive?.auth.account.value;
+
+  void chooseDrive({required bool value}) {
+    if (state.phase != BackupPhase.idle || (value && _drive == null)) return;
+    emit(state.copyWith(toDrive: value));
+  }
 
   Future<void> load() async {
     final last = await _last.load();
@@ -146,17 +227,74 @@ class BackupCubit extends Cubit<BackupState> {
     if (state.phase != BackupPhase.built || file == null || size == null) {
       return;
     }
+    if (d == BackupDestination.drive) {
+      await _toDrive(file, size);
+      return;
+    }
     try {
       switch (d) {
         case BackupDestination.device:
           if (!await _files.saveToDevice(file)) return;
         case BackupDestination.share:
           await _files.share(file);
+        case BackupDestination.drive:
+          return;
       }
     } on Exception {
       if (!isClosed) emit(state.copyWith(error: true));
       return;
     }
+    await _finish(file, size);
+  }
+
+  /// Uploads to `Backups/` on Drive. On failure the file is kept and the
+  /// user is offered the phone instead.
+  Future<void> _toDrive(File file, int size) async {
+    final drive = _drive;
+    if (drive == null) return;
+    Failure? failure;
+    final connected = await drive.ensureConnected((f) => failure = f);
+    if (isClosed) return;
+    if (!connected) {
+      _driveFailed(failure);
+      return;
+    }
+    final token = _token = CancelToken();
+    emit(state.copyWith(phase: BackupPhase.uploading, uploadProgress: 0));
+    final folder = await drive.folders.resolve(DriveLayout.backupsFolder);
+    final r = switch (folder) {
+      Err(:final failure) => Err<DriveItem>(failure),
+      Ok(value: final parentId) => await drive.service.upload(
+        file,
+        name: p.basename(file.path),
+        parentId: parentId,
+        mimeType: 'application/zip',
+        token: token,
+        onProgress: (done, total) {
+          if (!isClosed && total > 0) {
+            emit(state.copyWith(uploadProgress: done / total));
+          }
+        },
+      ),
+    };
+    if (isClosed) return;
+    switch (r) {
+      case Ok():
+        await _finish(file, size, toDrive: true);
+      case Err(failure: DriveFailure(problem: DriveProblem.cancelled)):
+        // cancel() already cleaned up.
+        break;
+      case Err(:final failure):
+        _driveFailed(failure);
+    }
+  }
+
+  /// Back to "built", now offering the phone (no automatic retry loop).
+  void _driveFailed(Failure? f) => emit(
+    state.copyWith(phase: BackupPhase.built, toDrive: false, failure: f),
+  );
+
+  Future<void> _finish(File file, int size, {bool toDrive = false}) async {
     final last = LastBackup(at: _clock(), size: size);
     await _last.save(last);
     await _service.discard(file.path);
@@ -166,6 +304,7 @@ class BackupCubit extends Cubit<BackupState> {
         phase: BackupPhase.done,
         lastBackup: last,
         file: () => null,
+        savedToDrive: toDrive,
       ),
     );
   }
@@ -185,6 +324,8 @@ class BackupCubit extends Cubit<BackupState> {
       file: () => null,
       size: () => null,
       error: error,
+      uploadProgress: 0,
+      savedToDrive: false,
     ),
   );
 
@@ -210,6 +351,7 @@ final class RestoreState extends Equatable {
     this.restored = const {},
     this.problem,
     this.error = false,
+    this.failure,
   });
 
   final RestorePhase phase;
@@ -222,6 +364,9 @@ final class RestoreState extends Equatable {
   final BackupProblem? problem;
   final bool error;
 
+  /// Why fetching from Drive failed (shown once).
+  final Failure? failure;
+
   RestoreState copyWith({
     RestorePhase? phase,
     BackupPreview? Function()? preview,
@@ -230,7 +375,9 @@ final class RestoreState extends Equatable {
     Map<BackupCategory, int>? restored,
     BackupProblem? problem,
     bool? error,
+    Failure? failure,
   }) => RestoreState(
+    failure: failure,
     phase: phase ?? this.phase,
     preview: preview != null ? preview() : this.preview,
     selected: selected ?? this.selected,
@@ -249,29 +396,110 @@ final class RestoreState extends Equatable {
     restored,
     problem,
     error,
+    failure,
   ];
 }
 
 /// Pick a file → it's checked and previewed → choose categories and how
 /// to restore → restore. Unselected categories are never touched.
 class RestoreCubit extends Cubit<RestoreState> {
-  RestoreCubit({required this._service, required this._files})
-    : super(const RestoreState());
+  RestoreCubit({
+    required this._service,
+    required this._files,
+    this._drive,
+    this._tempDir,
+  }) : super(const RestoreState());
 
   final BackupService _service;
   final BackupFiles _files;
+  final BackupDrive? _drive;
+
+  /// Where a backup fetched from Drive is put while it's checked.
+  final Directory? _tempDir;
   CancelToken? _token;
 
+  bool get driveAvailable => _drive != null && _tempDir != null;
+
+  bool get _busy =>
+      state.phase == RestorePhase.checking ||
+      state.phase == RestorePhase.restoring;
+
   Future<void> pick() async {
-    if (state.phase == RestorePhase.checking ||
-        state.phase == RestorePhase.restoring) {
-      return;
-    }
+    if (_busy) return;
     final file = await _files.pickBackup();
     if (file == null || isClosed) return;
+    await _inspect(file);
+  }
+
+  /// Backups in Drive's `Backups/` folder, newest first. Connects first
+  /// when needed; Ok(null) when the user backed out.
+  Future<Result<List<DriveItem>?>> driveBackups() async {
+    final drive = _drive;
+    if (drive == null) return const Ok(null);
+    Failure? failure;
+    if (!await drive.ensureConnected((f) => failure = f)) {
+      final f = failure;
+      return f == null ? const Ok(null) : Err(f);
+    }
+    final folder = await drive.folders.resolve(DriveLayout.backupsFolder);
+    final String id;
+    switch (folder) {
+      case Ok(:final value):
+        id = value;
+      case Err(:final failure):
+        return Err(failure);
+    }
+    final items = <DriveItem>[];
+    String? page;
+    do {
+      switch (await drive.service.list(id, pageToken: page)) {
+        case Ok(:final value):
+          items.addAll(value.items.where((i) => !i.isFolder));
+          page = value.nextPageToken;
+        case Err(:final failure):
+          return Err(failure);
+      }
+    } while (page != null && items.length < 500);
+    final epoch = DateTime.fromMillisecondsSinceEpoch(0);
+    items.sort(
+      (a, b) => (b.modifiedAt ?? epoch).compareTo(a.modifiedAt ?? epoch),
+    );
+    return Ok(items);
+  }
+
+  /// Downloads [item] from Drive, then checks it like a picked file.
+  Future<void> pickFromDrive(DriveItem item) async {
+    final drive = _drive;
+    final temp = _tempDir;
+    if (drive == null || temp == null || _busy) return;
     await _discardPreview();
     final token = _token = CancelToken();
     emit(state.copyWith(phase: RestorePhase.checking, preview: () => null));
+    final dir = Directory(p.join(temp.path, 'restore_${item.id}'));
+    await dir.create(recursive: true);
+    final file = File(p.join(dir.path, 'backup.plmbackup'));
+    try {
+      final r = await drive.service.download(item.id, file, token: token);
+      if (isClosed || token.isCancelled) return;
+      switch (r) {
+        case Ok():
+          await _inspect(file, fetched: token);
+        case Err(:final failure):
+          emit(state.copyWith(phase: RestorePhase.idle, failure: failure));
+      }
+    } finally {
+      // The checked copy lives in the staging folder from here on.
+      if (dir.existsSync()) await dir.delete(recursive: true);
+    }
+  }
+
+  Future<void> _inspect(File file, {CancelToken? fetched}) async {
+    var token = fetched;
+    if (token == null) {
+      await _discardPreview();
+      token = _token = CancelToken();
+      emit(state.copyWith(phase: RestorePhase.checking, preview: () => null));
+    }
     try {
       final preview = await _service.inspect(file, token: token);
       if (isClosed || token.isCancelled) {

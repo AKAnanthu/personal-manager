@@ -197,6 +197,31 @@ final class DocumentsRepositoryImpl implements DocumentsRepository {
       });
 
   @override
+  Future<Result<void>> setDriveStatus(
+    String id,
+    DriveStatus status, {
+    String? driveFileId,
+  }) => dbGuard(() async {
+    final n = await (_db.update(_t)..where((d) => d.id.equals(id))).write(
+      DocumentsCompanion(
+        driveStatus: Value(status),
+        driveFileId: status == DriveStatus.uploaded
+            ? Value(driveFileId)
+            : const Value.absent(),
+      ),
+    );
+    if (n == 0) throw const RecordNotFound();
+  });
+
+  @override
+  Future<void> markInterruptedUploadsFailed() async {
+    const failed = DocumentsCompanion(driveStatus: Value(DriveStatus.failed));
+    await (_db.update(_t)
+          ..where((d) => d.driveStatus.equalsValue(DriveStatus.uploading)))
+        .write(failed);
+  }
+
+  @override
   Future<Result<void>> delete(String id) async {
     final row = await (_db.select(
       _t,
@@ -268,6 +293,7 @@ final class DocumentsRepositoryImpl implements DocumentsRepository {
     expiryReminder: r.expiryReminder,
     isFavourite: r.isFavourite,
     driveStatus: r.driveStatus,
+    driveFileId: r.driveFileId,
     createdAt: r.createdAt,
     updatedAt: r.updatedAt,
   );

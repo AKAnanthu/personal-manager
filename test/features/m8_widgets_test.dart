@@ -46,6 +46,10 @@ final class _Feedback implements BreathingFeedback {
   Future<void> cue() async => events.add('cue');
 
   @override
+  Future<void> breathTone({required bool inhaling}) async =>
+      events.add(inhaling ? 'tone:in' : 'tone:out');
+
+  @override
   Future<void> chime() async => events.add('chime');
 
   @override
@@ -246,11 +250,12 @@ void main() {
     await tester.tap(find.text('Start'));
     await tester.pump();
     expect(find.text('Breathe in'), findsOneWidget);
-    expect(feedback.events, ['awake:true', 'cue']);
+    // Sound is on by default: a rising tone says "breathe in".
+    expect(feedback.events, ['awake:true', 'tone:in', 'cue']);
 
     await tester.pump(const Duration(seconds: 5));
     expect(find.text('Breathe out'), findsOneWidget);
-    expect(feedback.events.last, 'cue');
+    expect(feedback.events.sublist(3), ['tone:out', 'cue']);
 
     await tester.tap(find.text('Pause'));
     await tester.pump();
@@ -261,10 +266,56 @@ void main() {
 
     await tester.tap(find.text('Resume'));
     await tester.pump();
-    await tester.pump(const Duration(seconds: 56));
+    // Resuming repeats the current phase's tone (5 s in: breathing out).
+    expect(feedback.events.sublist(feedback.events.length - 3), [
+      'awake:true',
+      'tone:out',
+      'cue',
+    ]);
+    // Second by second, so every change of phase is seen.
+    for (var i = 0; i < 56; i++) {
+      await tester.pump(const Duration(seconds: 1));
+    }
     await tester.pump();
     expect(find.text('Well done'), findsOneWidget);
     expect(feedback.events, containsAllInOrder(['awake:false', 'chime']));
     expect(find.text('Start again'), findsOneWidget);
+    // One tone per phase change: 60 s at 4 s + 4 s is 15 phases, plus the
+    // repeat on resume; nothing extra at the very end.
+    expect(feedback.events.where((e) => e.startsWith('tone:')), hasLength(16));
+  });
+
+  testWidgets('breathing: no tones when sound is off', (tester) async {
+    tester.view
+      ..physicalSize = const Size(1170, 4200)
+      ..devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+    final store = _Store();
+    when(store.load).thenAnswer(
+      (_) async => const BreathingSettings(minutes: 1, sound: false),
+    );
+    when(() => store.save(any())).thenAnswer((_) async {});
+    final feedback = _Feedback();
+    await tester.pumpWidget(
+      _app(
+        BlocProvider(
+          create: (_) {
+            final c = BreathingSettingsCubit(store);
+            unawaited(c.load());
+            return c;
+          },
+          child: BreathePage(feedback: feedback),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Rising tone: breathe in'), findsOneWidget);
+    await tester.tap(find.text('Start'));
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 61));
+    await tester.pump();
+    expect(find.text('Well done'), findsOneWidget);
+    expect(feedback.events.where((e) => e.startsWith('tone:')), isEmpty);
+    expect(feedback.events, isNot(contains('chime')));
   });
 }

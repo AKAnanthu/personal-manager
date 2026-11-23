@@ -29,6 +29,29 @@ abstract interface class FileOpener {
   Future<bool> openExternally(File file);
 }
 
+/// Saves a copy where the user chooses (Downloads, a folder...). False
+/// when they cancelled.
+abstract interface class FileSaver {
+  Future<bool> saveCopy(File file, {required String name});
+}
+
+final class PlatformFileSaver implements FileSaver {
+  const PlatformFileSaver(this._lock);
+
+  final AppLock _lock;
+
+  @override
+  Future<bool> saveCopy(File file, {required String name}) =>
+      _lock.runExternal(() async {
+        // The plugin needs the bytes; the file is read once, then released.
+        final uri = await FilePicker.saveFile(
+          fileName: name,
+          bytes: await file.readAsBytes(),
+        );
+        return uri != null;
+      });
+}
+
 final class PlatformFilePickers implements FilePickers {
   PlatformFilePickers(this._lock, [ImagePicker? images])
     : _images = images ?? ImagePicker();
@@ -51,8 +74,9 @@ final class PlatformFilePickers implements FilePickers {
       // Re-encoded at a sane size; full-resolution camera images are large.
       final x = await _images.pickImage(
         source: source,
-        maxWidth: 2560,
-        imageQuality: 85,
+        // Keeps a photo of a document readable and under the file limit.
+        maxWidth: 1600,
+        imageQuality: 60,
       );
       return x == null ? null : PickedFile(File(x.path), x.name);
     } on PlatformException {

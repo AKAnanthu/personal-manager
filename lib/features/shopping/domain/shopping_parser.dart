@@ -165,7 +165,6 @@ abstract final class ShoppingParser {
   static final _noise = RegExp(
     // The analyzer checks this without the unicode flag; it is valid with
     // it (covered by tests).
-    // ignore: valid_regexps
     r'[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}\u{FE0F}\u{200D}\u{20E3}'
     r'\u{2022}\u{25AA}\u{25AB}\u{25E6}\u{2023}\u{2043}✓✔☐☑✅]',
     unicode: true,

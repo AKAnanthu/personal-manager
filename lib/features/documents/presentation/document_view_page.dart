@@ -30,13 +30,29 @@ class DocumentViewPage extends StatelessWidget {
   Future<void> _confirmDelete(BuildContext context) async {
     final l10n = AppLocalizations.of(context);
     final cubit = context.read<DocumentViewCubit>();
-    final ok = await confirmDialog(
-      context,
-      title: l10n.deleteDocumentTitle,
-      message: l10n.deleteDocumentBody,
-      confirmLabel: l10n.deleteAction,
+    final s = cubit.state;
+    final d = s.document;
+    final hasDriveCopy =
+        d != null &&
+        d.driveStatus == DriveStatus.uploaded &&
+        d.driveFileId != null &&
+        s.driveConnected;
+    if (!hasDriveCopy) {
+      final ok = await confirmDialog(
+        context,
+        title: l10n.deleteDocumentTitle,
+        message: l10n.deleteDocumentBody,
+        confirmLabel: l10n.deleteAction,
+      );
+      if (ok) await cubit.delete();
+      return;
+    }
+    // Default: this phone only (PRD §5.5).
+    final choice = await showDialog<bool>(
+      context: context,
+      builder: (context) => _DeleteWithDriveDialog(l10n: l10n),
     );
-    if (ok) await cubit.delete();
+    if (choice != null) await cubit.deleteWithDrive(alsoDrive: choice);
   }
 
   @override
@@ -261,10 +277,131 @@ class _Details extends StatelessWidget {
             row(l10n.driveLabel, switch (d.driveStatus) {
               DriveStatus.notUploaded => l10n.driveDeviceOnly,
               DriveStatus.uploading => l10n.driveUploading,
-              DriveStatus.uploaded => l10n.driveCopyOnDrive,
+              DriveStatus.uploaded => l10n.driveCopyIn(
+                'Documents / ${d.category.driveFolder}',
+              ),
               DriveStatus.failed => l10n.driveUploadFailed,
             }),
           ],
+        ),
+        if (context.read<DocumentViewCubit>().driveAvailable &&
+            file != null) ...[
+          const SizedBox(height: 12),
+          _DriveCopy(document: d, progress: state.uploadProgress),
+        ],
+      ],
+    );
+  }
+}
+
+/// Upload / progress / retry for the Drive copy (PRD §7.5).
+class _DriveCopy extends StatelessWidget {
+  const _DriveCopy({required this.document, required this.progress});
+
+  final AppDocument document;
+  final double? progress;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
+    final cubit = context.read<DocumentViewCubit>();
+    final p = progress;
+    if (p != null || document.driveStatus == DriveStatus.uploading) {
+      final percent = ((p ?? 0) * 100).floor();
+      return Row(
+        spacing: 8,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 6,
+              children: [
+                LinearProgressIndicator(
+                  value: p,
+                  borderRadius: BorderRadius.circular(2),
+                  semanticsLabel: l10n.driveUploadingPercent(percent),
+                ),
+                Text(
+                  l10n.driveUploadingPercent(percent),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          TextButton(
+            onPressed: cubit.cancelUpload,
+            child: Text(l10n.cancelAction),
+          ),
+        ],
+      );
+    }
+    return switch (document.driveStatus) {
+      DriveStatus.uploaded => const SizedBox.shrink(),
+      DriveStatus.failed => FilledButton.tonalIcon(
+        onPressed: cubit.uploadToDrive,
+        icon: const Icon(LucideIcons.rotateCw),
+        label: Text(l10n.driveRetryUpload),
+      ),
+      _ => OutlinedButton.icon(
+        onPressed: cubit.uploadToDrive,
+        icon: const Icon(LucideIcons.cloudUpload),
+        label: Text(l10n.driveUploadCopy),
+      ),
+    };
+  }
+}
+
+/// Delete locally only (default), or also move the Drive copy to trash.
+/// Pops true/false for "also Drive", or null when cancelled.
+class _DeleteWithDriveDialog extends StatefulWidget {
+  const _DeleteWithDriveDialog({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  State<_DeleteWithDriveDialog> createState() => _DeleteWithDriveDialogState();
+}
+
+class _DeleteWithDriveDialogState extends State<_DeleteWithDriveDialog> {
+  bool _alsoDrive = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = widget.l10n;
+    return AlertDialog(
+      title: Text(l10n.deleteDocumentTitle),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.deleteDocumentBody),
+          const SizedBox(height: 8),
+          CheckboxListTile(
+            contentPadding: EdgeInsets.zero,
+            controlAffinity: ListTileControlAffinity.leading,
+            value: _alsoDrive,
+            onChanged: (v) => setState(() => _alsoDrive = v ?? false),
+            title: Text(l10n.deleteAlsoDriveCopy),
+            subtitle: Text(l10n.deleteAlsoDriveCopyHint),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.cancelAction),
+        ),
+        FilledButton(
+          style: FilledButton.styleFrom(
+            backgroundColor: Theme.of(context).colorScheme.error,
+            foregroundColor: Theme.of(context).colorScheme.onError,
+          ),
+          onPressed: () => Navigator.of(context).pop(_alsoDrive),
+          child: Text(l10n.deleteAction),
         ),
       ],
     );

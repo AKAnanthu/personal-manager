@@ -157,7 +157,34 @@ installed app's data or show permission dialogs.
 
 iOS release needs Xcode on a Mac (signing, flavors; see Flavors above).
 
-## Google Cloud setup (needed from the Drive milestone)
+## Google Drive
+
+Optional, user-started only, scope `drive.file` (the app sees only files it
+created). Connect/disconnect in **Drive storage** or Settings.
+
+```
+Personal Life Manager/
+  Documents/{Personal, Financial, Medical, Employment, Educational,
+             Property and Vehicle, Others}   ← same names as the app
+  Backups/      ← backups saved to Drive; restore lists this folder
+  Receipts/     ← "Save a copy to Drive" from a shopping trip
+```
+
+- Folders are created on connect, found again by name if the cached IDs are
+  lost, and re-created if deleted in Drive.
+- Uploads: resumable from 5 MB, progress, cancel, manual retry. Never
+  retried automatically. Reads (list/download) retry 5xx/429 with backoff.
+- Deleting moves files to **Drive's trash** (recoverable there). Deleting a
+  document asks whether to remove its Drive copy too (default: no).
+- Errors map to: not connected, access expired (reconnect), Drive full,
+  not found, offline, cancelled, unknown.
+- No sync: the local file and the Drive copy are independent after upload.
+
+`GOOGLE_SERVER_CLIENT_ID` in `config/<flavor>.json` is the project's **web**
+OAuth client ID (not a secret); Android sign-in needs it.
+`android/app/google-services.json` isn't used by the build (no Firebase).
+
+## Google Cloud setup
 
 1. Create a Google Cloud project and enable the **Google Drive API**.
 2. OAuth consent screen: External, scope `https://www.googleapis.com/auth/drive.file`
@@ -167,6 +194,10 @@ iOS release needs Xcode on a Mac (signing, flavors; see Flavors above).
    (`cd android && ./gradlew signingReport`).
 4. iOS OAuth client per bundle ID; add its reversed client ID as a URL scheme
    in `Info.plist`.
+5. While the consent screen is in *Testing*, add each Gmail that will sign in
+   as a **test user**.
+6. Put the **web** client ID in `config/dev.json` and `config/prod.json`
+   (`GOOGLE_SERVER_CLIENT_ID`).
 
 ## Layout
 

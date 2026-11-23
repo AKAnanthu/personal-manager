@@ -56,9 +56,27 @@ class MainActivity : FlutterFragmentActivity() {
                         )
                         result.success(null)
                     }
+                    // Sync and reminders rely on the phone's clock.
+                    "automaticTime" -> result.success(
+                        mapOf(
+                            "time" to (Settings.Global.getInt(contentResolver, Settings.Global.AUTO_TIME, 1) == 1),
+                            "zone" to (Settings.Global.getInt(contentResolver, Settings.Global.AUTO_TIME_ZONE, 1) == 1),
+                        ),
+                    )
+                    "openDateSettings" -> openSettings(Settings.ACTION_DATE_SETTINGS, result)
+                    "openSecuritySettings" -> openSettings(Settings.ACTION_SECURITY_SETTINGS, result)
                     else -> result.notImplemented()
                 }
             }
+    }
+
+    private fun openSettings(action: String, result: MethodChannel.Result) {
+        try {
+            startActivity(Intent(action).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (e: android.content.ActivityNotFoundException) {
+            startActivity(Intent(Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
+        result.success(null)
     }
 
     /// Marks the clip sensitive (hidden from the Android 13+ clipboard

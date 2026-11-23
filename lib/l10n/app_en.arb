@@ -44,171 +44,13 @@
   "@hidePassword": {
     "description": "Semantics for the button that masks a revealed password."
   },
-  "secureStorageError": "Couldn't reach this device's secure storage. Try again.",
-  "@secureStorageError": {
-    "description": "Shown when the keychain/keystore read or write fails."
-  },
-  "setupStepLabel": "Step {step} of {total}",
-  "@setupStepLabel": {
-    "description": "Progress label in first-time setup.",
-    "placeholders": {
-      "step": {
-        "type": "int"
-      },
-      "total": {
-        "type": "int"
-      }
-    }
-  },
-  "setupWelcomeTitle": "Welcome",
-  "@setupWelcomeTitle": {
-    "description": "Title of the first setup step."
-  },
-  "setupWelcomeBody": "Keep your personal details, documents, notes, reminders and everyday records in one place, on this phone.",
-  "@setupWelcomeBody": {
-    "description": "Body of the first setup step."
-  },
-  "setupPasswordTitle": "Create your app password",
-  "@setupPasswordTitle": {
-    "description": "Title of the password setup step."
-  },
-  "setupPasswordSubtitle": "You'll enter this each time you open the app.",
-  "@setupPasswordSubtitle": {
-    "description": "Subtitle of the password setup step."
-  },
   "passwordLabel": "Password",
   "@passwordLabel": {
     "description": "Label for the new password field."
   },
-  "confirmPasswordLabel": "Confirm password",
-  "@confirmPasswordLabel": {
-    "description": "Label for the repeat-password field."
-  },
-  "passwordStrengthHint": "{strength, select, tooShort{Too short} fair{Fair} good{Good} strong{Strong} other{}} · at least {min} characters",
-  "@passwordStrengthHint": {
-    "description": "Strength label under the new password field.",
-    "placeholders": {
-      "strength": {
-        "type": "String"
-      },
-      "min": {
-        "type": "int"
-      }
-    }
-  },
-  "passwordStrengthSemantics": "Strength: {strength, select, tooShort{too short} fair{fair} good{good} strong{strong} other{}}",
-  "@passwordStrengthSemantics": {
-    "description": "Screen-reader label for the strength meter.",
-    "placeholders": {
-      "strength": {
-        "type": "String"
-      }
-    }
-  },
-  "passwordsDoNotMatch": "Passwords don't match",
-  "@passwordsDoNotMatch": {
-    "description": "Error under the confirm password field."
-  },
-  "dataStorageTitle": "How your data is stored",
-  "@dataStorageTitle": {
-    "description": "Heading of the data-storage disclosure card."
-  },
-  "dataStorageLocal": "Everything stays on this phone. We have no servers.",
-  "@dataStorageLocal": {
-    "description": "Disclosure: data is local."
-  },
-  "dataStorageDrive": "Copies go to your own Google Drive only when you choose.",
-  "@dataStorageDrive": {
-    "description": "Disclosure: Drive uploads are manual."
-  },
-  "dataStorageNotEncrypted": "Data, files and backups are not encrypted. The password only controls who opens the app.",
-  "@dataStorageNotEncrypted": {
-    "description": "Disclosure: no app-level encryption."
-  },
-  "dataStorageAcknowledge": "I understand how my data is stored",
-  "@dataStorageAcknowledge": {
-    "description": "Checkbox the user must tick before continuing setup."
-  },
-  "setupBiometricTitle": "{kind, select, face{Unlock with Face ID?} fingerprint{Unlock with fingerprint?} other{Unlock with biometrics?}}",
-  "@setupBiometricTitle": {
-    "description": "Title of the optional biometric step.",
-    "placeholders": {
-      "kind": {
-        "type": "String"
-      }
-    }
-  },
-  "setupBiometricBody": "It's quicker than typing your password. Your password always works too, and you can change this later in Settings.",
-  "@setupBiometricBody": {
-    "description": "Body of the optional biometric step."
-  },
-  "setupBiometricEnable": "Turn on",
-  "@setupBiometricEnable": {
-    "description": "Enables biometric unlock."
-  },
-  "setupBiometricSkip": "Not now",
-  "@setupBiometricSkip": {
-    "description": "Skips biometric unlock."
-  },
-  "biometricReasonEnable": "Confirm it's you to turn on biometric unlock",
-  "@biometricReasonEnable": {
-    "description": "System biometric prompt text when enabling."
-  },
-  "biometricReasonUnlock": "Unlock Personal Life Manager",
-  "@biometricReasonUnlock": {
-    "description": "System biometric prompt text when unlocking."
-  },
-  "biometricFailed": "Biometric check didn't work. Try again or use your password.",
-  "@biometricFailed": {
-    "description": "Shown when the biometric prompt fails or is cancelled."
-  },
-  "unlockSubtitle": "Enter your app password to continue",
+  "unlockSubtitle": "Locked",
   "@unlockSubtitle": {
     "description": "Subtitle on the unlock screen."
-  },
-  "appPasswordLabel": "App password",
-  "@appPasswordLabel": {
-    "description": "Label for the password field on the unlock screen."
-  },
-  "unlockAction": "Unlock",
-  "@unlockAction": {
-    "description": "Unlock button."
-  },
-  "orDivider": "or",
-  "@orDivider": {
-    "description": "Divider between password and biometric unlock."
-  },
-  "useBiometric": "{kind, select, face{Use Face ID} fingerprint{Use fingerprint} other{Use biometrics}}",
-  "@useBiometric": {
-    "description": "Biometric unlock button.",
-    "placeholders": {
-      "kind": {
-        "type": "String"
-      }
-    }
-  },
-  "unlockInfo": "Your data stays on this device. The app password controls access — it does not encrypt your data or files.",
-  "@unlockInfo": {
-    "description": "Info banner on the unlock screen."
-  },
-  "wrongPassword": "{count, plural, =0{Wrong password.} =1{Wrong password. 1 attempt left before a short wait.} other{Wrong password. {count} attempts left before a short wait.}}",
-  "@wrongPassword": {
-    "description": "Error after a wrong password.",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "lockedOut": "Too many attempts. Try again in {time}.",
-  "@lockedOut": {
-    "description": "Shown during the backoff period after repeated wrong passwords.",
-    "placeholders": {
-      "time": {
-        "type": "String",
-        "example": "0:30"
-      }
-    }
   },
   "notificationChannelName": "{kind, select, medicine{Medicine} reminder{Reminders} task{Tasks} lending{Lending and borrowing} documentExpiry{Document expiry} shopping{Shopping} other{Other}}",
   "@notificationChannelName": {
@@ -313,11 +155,11 @@
   "@errorUnsupportedFile": {
     "description": "Rejected attachment."
   },
-  "errorFileTooLarge": "This file is too large. The limit is {megabytes} MB.",
+  "errorFileTooLarge": "This file is too large. The limit is {kilobytes} KB.",
   "@errorFileTooLarge": {
     "description": "Rejected attachment over the size limit.",
     "placeholders": {
-      "megabytes": {
+      "kilobytes": {
         "type": "int"
       }
     }
@@ -2423,7 +2265,7 @@
       }
     }
   },
-  "breatheIntro": "Look away from the screen, relax your shoulders and follow the circle.",
+  "breatheIntro": "Relax your shoulders and follow the circle, or turn on sound, look away and close your eyes: the tones tell you when to breathe in and out.",
   "@breatheIntro": {
     "description": "Milestone 8."
   },
@@ -2491,9 +2333,13 @@
       }
     }
   },
-  "breatheSound": "Completion sound",
+  "breatheSound": "Sound cues",
   "@breatheSound": {
     "description": "Milestone 8."
+  },
+  "breatheSoundHint": "Rising tone: breathe in. Falling tone: breathe out. A chime when you're done.",
+  "@breatheSoundHint": {
+    "description": "Under the sound switch on the breathing screen."
   },
   "breatheVibration": "Vibration",
   "@breatheVibration": {
@@ -2578,10 +2424,6 @@
   },
   "backupThisDevice": "This phone (save or share the file)",
   "@backupThisDevice": {
-    "description": "Backup and restore."
-  },
-  "backupDriveLater": "Available once Google Drive is connected",
-  "@backupDriveLater": {
     "description": "Backup and restore."
   },
   "backupUnencryptedWarning": "Backup files are not encrypted. Anyone who gets the file can read its contents.",
@@ -2684,10 +2526,6 @@
   },
   "restoreChooseFile": "Choose backup file",
   "@restoreChooseFile": {
-    "description": "Backup and restore."
-  },
-  "restoreDriveLater": "Restoring from Google Drive will be available once Drive is connected.",
-  "@restoreDriveLater": {
     "description": "Backup and restore."
   },
   "restoreChecking": "Checking the backup…",
@@ -2802,44 +2640,6 @@
   "@settingsAbout": {
     "description": "Settings."
   },
-  "changePasswordTitle": "Change app password",
-  "@changePasswordTitle": {
-    "description": "Settings."
-  },
-  "currentPasswordLabel": "Current password",
-  "@currentPasswordLabel": {
-    "description": "Settings."
-  },
-  "newPasswordLabel": "New password",
-  "@newPasswordLabel": {
-    "description": "Settings."
-  },
-  "passwordTooShort": "Use at least {min} characters.",
-  "@passwordTooShort": {
-    "description": "Settings.",
-    "placeholders": {
-      "min": {
-        "type": "int"
-      }
-    }
-  },
-  "passwordSameAsCurrent": "Choose a password different from the current one.",
-  "@passwordSameAsCurrent": {
-    "description": "Settings."
-  },
-  "passwordChangedSnack": "App password changed",
-  "@passwordChangedSnack": {
-    "description": "Settings."
-  },
-  "biometricUnlockSetting": "{kind, select, face{Face ID unlock} fingerprint{Fingerprint unlock} other{Biometric unlock}}",
-  "@biometricUnlockSetting": {
-    "description": "Settings.",
-    "placeholders": {
-      "kind": {
-        "type": "String"
-      }
-    }
-  },
   "autoLockTitle": "Auto-lock",
   "@autoLockTitle": {
     "description": "Settings."
@@ -2852,10 +2652,6 @@
         "type": "String"
       }
     }
-  },
-  "driveNotConnectedYet": "Not connected · coming in a later update",
-  "@driveNotConnectedYet": {
-    "description": "Settings."
   },
   "settingsLastBackup": "Last backup {date}",
   "@settingsLastBackup": {
@@ -2920,27 +2716,27 @@
   "@privacyTitle": {
     "description": "Settings."
   },
-  "privacyLocalTitle": "Everything stays on this phone",
+  "privacyLocalTitle": "On this phone and in your Google Drive",
   "@privacyLocalTitle": {
     "description": "Settings."
   },
-  "privacyLocalBody": "Your details, notes, documents and lists are stored only on this phone. The app works fully offline.",
+  "privacyLocalBody": "What you add is stored on this phone and, within seconds, in a hidden app folder in your own Google Drive. Only this app can open that folder, and it doesn't appear in the Drive app.",
   "@privacyLocalBody": {
     "description": "Settings."
   },
-  "privacyNoServerTitle": "No servers, no account",
+  "privacyNoServerTitle": "No server of ours",
   "@privacyNoServerTitle": {
     "description": "Settings."
   },
-  "privacyNoServerBody": "There is no developer server or cloud database. Nothing is sent to the makers of this app.",
+  "privacyNoServerBody": "The app's makers run no server and can't see your data. Nothing is sent anywhere except your own Google Drive.",
   "@privacyNoServerBody": {
     "description": "Settings."
   },
-  "privacyDriveTitle": "Google Drive only when you choose",
+  "privacyDriveTitle": "Google sign-in",
   "@privacyDriveTitle": {
     "description": "Settings."
   },
-  "privacyDriveBody": "Copies go to your own Google Drive only when you upload or back up there yourself. Nothing syncs automatically.",
+  "privacyDriveBody": "You sign in with your own Google account. The app asks only for your name, email address and access to the files it creates in your Drive: never the rest of your Drive, your Gmail or your contacts.",
   "@privacyDriveBody": {
     "description": "Settings."
   },
@@ -2948,15 +2744,15 @@
   "@privacyEncryptionTitle": {
     "description": "Settings."
   },
-  "privacyEncryptionBody": "Data, files and backups are not encrypted by the app. Anyone who can get into this phone or a backup file may be able to read them.",
+  "privacyEncryptionBody": "The app doesn't encrypt your data, on the phone or in Drive (password notes are stored as typed). It's protected by your phone's screen lock and your Google account: turn on 2-Step Verification for your Google account.",
   "@privacyEncryptionBody": {
     "description": "Settings."
   },
-  "privacyPasswordTitle": "The app password controls access",
+  "privacyPasswordTitle": "Screen lock",
   "@privacyPasswordTitle": {
     "description": "Settings."
   },
-  "privacyPasswordBody": "It stops others opening the app; it does not encrypt your data. If you forget it, the only way back in is to erase everything on this phone.",
+  "privacyPasswordBody": "The app opens with your phone's screen lock (fingerprint, face, PIN or pattern). Anyone who knows your phone's PIN can open it.",
   "@privacyPasswordBody": {
     "description": "Settings."
   },
@@ -2984,27 +2780,15 @@
   "@privacyAnalyticsBody": {
     "description": "Settings."
   },
-  "forgotPasswordAction": "Forgot password?",
-  "@forgotPasswordAction": {
-    "description": "Settings."
-  },
-  "forgotPasswordTitle": "Forgot your password?",
-  "@forgotPasswordTitle": {
-    "description": "Settings."
-  },
-  "forgotPasswordBody": "There is no server, so the password can't be recovered or reset. The only way back in is to erase everything and set the app up again.",
-  "@forgotPasswordBody": {
-    "description": "Settings."
-  },
-  "eraseTitle": "Erase all data",
+  "eraseTitle": "Delete all my data",
   "@eraseTitle": {
     "description": "Settings."
   },
-  "eraseBody": "Everything in the app on this phone will be deleted: details, passwords, documents, notes, lists, reminders and settings. This can't be undone.",
+  "eraseBody": "Deletes everything from this phone and this app's data from your Google Drive. This can't be undone.",
   "@eraseBody": {
     "description": "Settings."
   },
-  "eraseKeepsBackups": "Backup files you saved elsewhere and copies on Google Drive are not touched. You can restore a backup after setting the app up again.",
+  "eraseKeepsBackups": "Backup files you saved, and copies you saved to Google Drive folders, are kept. To keep your data, save a copy to this phone first.",
   "@eraseKeepsBackups": {
     "description": "Settings."
   },
@@ -3024,5 +2808,673 @@
   "eraseAction": "Erase everything",
   "@eraseAction": {
     "description": "Settings."
+  },
+  "retryAction": "Try again",
+  "@retryAction": {
+    "description": "Generic."
+  },
+  "refreshAction": "Refresh",
+  "@refreshAction": {
+    "description": "Generic."
+  },
+  "openAction": "Open",
+  "@openAction": {
+    "description": "Generic."
+  },
+  "loadMoreAction": "Show more",
+  "@loadMoreAction": {
+    "description": "Generic."
+  },
+  "moreOptionsFor": "More options for {name}",
+  "@moreOptionsFor": {
+    "description": "Generic.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "driveNotConnected": "Not connected",
+  "@driveNotConnected": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveConnected": "Connected",
+  "@driveConnected": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveConnectedAs": "Google account used for Drive",
+  "@driveConnectedAs": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveConnectAction": "Connect Google Drive",
+  "@driveConnectAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveReconnectAction": "Connect again",
+  "@driveReconnectAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveManageAction": "Manage",
+  "@driveManageAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveWhyOnlyAppFolder": "The app can only see files it puts in its own \"Personal Life Manager\" folder, never the rest of your Drive.",
+  "@driveWhyOnlyAppFolder": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveWhyManual": "Nothing is uploaded automatically. Copies go to Drive only when you choose.",
+  "@driveWhyManual": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveWhyOptional": "Everything else works without Drive. Your files stay on this phone.",
+  "@driveWhyOptional": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveNotEncrypted": "Files are uploaded as they are, not encrypted by this app. Google Drive's own security applies.",
+  "@driveNotEncrypted": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDisconnectAction": "Disconnect",
+  "@driveDisconnectAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDisconnectHint": "Files already on Drive stay there",
+  "@driveDisconnectHint": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDisconnectTitle": "Disconnect Google Drive?",
+  "@driveDisconnectTitle": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDisconnectBody": "This app will lose access to your Drive. Nothing on this phone is deleted, and files already on Drive stay there.",
+  "@driveDisconnectBody": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveFolderPath": "Folder path",
+  "@driveFolderPath": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveFilesIn": "Files in {folder}",
+  "@driveFilesIn": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "driveFolderEmpty": "No files in this folder yet.",
+  "@driveFolderEmpty": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveItemCount": "{count, plural, =0{Empty} =1{1 item} other{{count} items}}",
+  "@driveItemCount": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "driveFooter": "Only this app's folder is shown. Drive copies don't sync: editing one won't change the other.",
+  "@driveFooter": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveUploadAction": "Upload",
+  "@driveUploadAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveUploadingPercent": "Uploading · {percent}%",
+  "@driveUploadingPercent": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "driveCancelUpload": "Stop uploading",
+  "@driveCancelUpload": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveFetching": "Downloading…",
+  "@driveFetching": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDownloadNamed": "Download {name}",
+  "@driveDownloadNamed": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "driveSaveToPhone": "Save to phone",
+  "@driveSaveToPhone": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDeleteAction": "Move to Drive trash",
+  "@driveDeleteAction": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveDeleteTitle": "Remove \"{name}\" from Drive?",
+  "@driveDeleteTitle": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "driveDeleteBody": "It goes to Google Drive's trash, where you can still restore it for a while. Copies on this phone are not affected.",
+  "@driveDeleteBody": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveNotice": "{notice, select, uploaded{Uploaded to Drive} deleted{Moved to Drive's trash} saved{Saved to your phone} disconnected{Google Drive disconnected} other{}}",
+  "@driveNotice": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "notice": {
+        "type": "String"
+      }
+    }
+  },
+  "driveProblem": "{problem, select, notConnected{Connect Google Drive first.} authExpired{Google needs you to allow Drive access again. Tap Sync now.} notAllowed{Drive access wasn't allowed. On Google's screen, tick the Drive boxes, then try again.} quotaExceeded{Your Google Drive is full. Free up space and try again.} notFound{That file or folder is no longer on Drive.} offline{No internet connection. Check it and try again.} cancelled{Stopped.} other{Something went wrong with Google Drive. Try again.}}",
+  "@driveProblem": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "problem": {
+        "type": "String"
+      }
+    }
+  },
+  "driveCopyIn": "Copy on Drive · {folder}",
+  "@driveCopyIn": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "folder": {
+        "type": "String"
+      }
+    }
+  },
+  "driveUploadCopy": "Upload a copy to Drive",
+  "@driveUploadCopy": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "driveRetryUpload": "Retry upload to Drive",
+  "@driveRetryUpload": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "deleteAlsoDriveCopy": "Also remove the copy on Drive",
+  "@deleteAlsoDriveCopy": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "deleteAlsoDriveCopyHint": "It goes to Google Drive's trash.",
+  "@deleteAlsoDriveCopyHint": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "backupDriveFolder": "Backups folder · {email}",
+  "@backupDriveFolder": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDriveConnectFirst": "You'll be asked to connect your Google account",
+  "@backupDriveConnectFirst": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "backupUploading": "Uploading to Google Drive · {percent}%",
+  "@backupUploading": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "backupSavedToDrive": "Backup saved to Google Drive ({size})",
+  "@backupSavedToDrive": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "backupDriveFailed": "Couldn't save to Drive: {reason} You can save it on this phone instead.",
+  "@backupDriveFailed": {
+    "description": "Milestone 9: Google Drive.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "restoreFromDrive": "Choose from Google Drive",
+  "@restoreFromDrive": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "restoreDriveTitle": "Backups on Google Drive",
+  "@restoreDriveTitle": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "restoreDriveEmpty": "No backups in Drive's Backups folder yet. Make one from the Back up tab.",
+  "@restoreDriveEmpty": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "receiptSaveToDrive": "Save a copy to Drive",
+  "@receiptSaveToDrive": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "receiptSavedToDrive": "Receipt copy saved to Drive",
+  "@receiptSavedToDrive": {
+    "description": "Milestone 9: Google Drive."
+  },
+  "continueWithGoogle": "Continue with Google",
+  "@continueWithGoogle": {
+    "description": "Sign-in button."
+  },
+  "signInTagline": "Notes, documents, reminders and money: saved to your own Google Drive.",
+  "@signInTagline": {
+    "description": "Sign-in screen subtitle."
+  },
+  "signInPointDrive": "Everything you add is saved to your Google Drive as you go. Only this app can see it there.",
+  "@signInPointDrive": {
+    "description": "Sign-in notice point."
+  },
+  "signInPointSync": "Using two phones? Tap Sync on the other one to get the latest. If one item is changed on both, the change saved last is kept.",
+  "@signInPointSync": {
+    "description": "Sign-in notice point."
+  },
+  "signInPointLock": "The app opens with your phone's screen lock: fingerprint, face, PIN or pattern.",
+  "@signInPointLock": {
+    "description": "Sign-in notice point."
+  },
+  "signInAgreement": "By continuing you agree to the Terms of use and the Privacy policy.",
+  "@signInAgreement": {
+    "description": "Under the sign-in button."
+  },
+  "signInDownloading": "Getting your data from Google Drive…",
+  "@signInDownloading": {
+    "description": "First download after sign-in."
+  },
+  "signInDownloadProgress": "{done} of {total}",
+  "@signInDownloadProgress": {
+    "description": "First download progress.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "signInSyncFailed": "Couldn't get your data from Google Drive: {reason} You can try again, or continue and tap Sync later.",
+  "@signInSyncFailed": {
+    "description": "First download failed.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "signInContinueLater": "Continue for now",
+  "@signInContinueLater": {
+    "description": "Skip the first download."
+  },
+  "signInConfirmLock": "One last step: confirm your phone's screen lock. It opens the app from now on.",
+  "@signInConfirmLock": {
+    "description": "After sign-in."
+  },
+  "unlockWithScreenLock": "Unlock with screen lock",
+  "@unlockWithScreenLock": {
+    "description": "Unlock button."
+  },
+  "deviceUnlockReason": "Unlock Personal Life Manager",
+  "@deviceUnlockReason": {
+    "description": "System screen-lock prompt text."
+  },
+  "noScreenLock": "This phone has no screen lock. Set a PIN, pattern or fingerprint to protect your data, then try again.",
+  "@noScreenLock": {
+    "description": "No device lock."
+  },
+  "openSecuritySettingsAction": "Open security settings",
+  "@openSecuritySettingsAction": {
+    "description": "Opens phone settings."
+  },
+  "clockNotAutomatic": "Set your phone's date & time and time zone to automatic, so reminders and sync stay correct.",
+  "@clockNotAutomatic": {
+    "description": "Clock warning."
+  },
+  "openDateSettingsAction": "Open date & time settings",
+  "@openDateSettingsAction": {
+    "description": "Opens phone settings."
+  },
+  "termsTitle": "Terms of use",
+  "@termsTitle": {
+    "description": "Terms page title."
+  },
+  "accountTitle": "Account & sync",
+  "@accountTitle": {
+    "description": "Account page title and settings row."
+  },
+  "signedInWithGoogle": "Signed in with Google",
+  "@signedInWithGoogle": {
+    "description": "Account card subtitle."
+  },
+  "syncSection": "Google Drive sync",
+  "@syncSection": {
+    "description": "Section label."
+  },
+  "syncNowAction": "Sync now",
+  "@syncNowAction": {
+    "description": "Pull the latest from Drive."
+  },
+  "syncRunning": "Syncing…",
+  "@syncRunning": {
+    "description": "Sync status."
+  },
+  "syncProgress": "Syncing… {done} of {total}",
+  "@syncProgress": {
+    "description": "Sync status with progress.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "syncSaving": "Saving to Google Drive…",
+  "@syncSaving": {
+    "description": "Sync status while uploading."
+  },
+  "syncPending": "{count, plural, =1{1 change waiting to be saved to Drive} other{{count} changes waiting to be saved to Drive}}",
+  "@syncPending": {
+    "description": "Changes not uploaded yet.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "syncAllSaved": "Everything is saved to Drive",
+  "@syncAllSaved": {
+    "description": "Sync status."
+  },
+  "syncAllSavedLast": "Everything is saved to Drive · Last synced {when}",
+  "@syncAllSavedLast": {
+    "description": "Sync status.",
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "syncUpToDate": "Up to date",
+  "@syncUpToDate": {
+    "description": "Snack after a sync that changed nothing."
+  },
+  "syncDone": "Synced: {received} updated, {removed} removed",
+  "@syncDone": {
+    "description": "Snack after a sync.",
+    "placeholders": {
+      "received": {
+        "type": "int"
+      },
+      "removed": {
+        "type": "int"
+      }
+    }
+  },
+  "syncFailed": "Couldn't sync. {reason}",
+  "@syncFailed": {
+    "description": "Sync error.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "syncHowItWorks": "Your changes are saved to Drive as you make them, and wait if you're offline. Nothing comes in by itself: tap Sync to get what you changed on another phone, including its reminders. If one item was changed on both phones, the change saved last is kept.",
+  "@syncHowItWorks": {
+    "description": "How sync works."
+  },
+  "driveStorageSection": "Storage",
+  "@driveStorageSection": {
+    "description": "Section label."
+  },
+  "appDataInDrive": "This app's data in Drive",
+  "@appDataInDrive": {
+    "description": "Storage row."
+  },
+  "googleStorage": "Your Google storage",
+  "@googleStorage": {
+    "description": "Storage row."
+  },
+  "googleStorageUsed": "{used} used",
+  "@googleStorageUsed": {
+    "description": "Storage without a limit.",
+    "placeholders": {
+      "used": {
+        "type": "String"
+      }
+    }
+  },
+  "googleStorageUsedOf": "{used} of {limit} used (shared with Gmail and Photos)",
+  "@googleStorageUsedOf": {
+    "description": "Storage use.",
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "storageUnavailable": "Not available right now",
+  "@storageUnavailable": {
+    "description": "Storage couldn't load."
+  },
+  "loadingLabel": "Loading…",
+  "@loadingLabel": {
+    "description": "Loading."
+  },
+  "fileLimitTitle": "File size limit",
+  "@fileLimitTitle": {
+    "description": "Storage row."
+  },
+  "fileLimitBody": "Documents, attachments and receipts up to {size} each. Photos are made smaller when taken.",
+  "@fileLimitBody": {
+    "description": "Storage row.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "leavingSection": "Your data",
+  "@leavingSection": {
+    "description": "Section label."
+  },
+  "saveCopyToPhone": "Save a copy to this phone",
+  "@saveCopyToPhone": {
+    "description": "Backup shortcut."
+  },
+  "saveCopyToPhoneBody": "A backup file you keep, even after signing out or uninstalling",
+  "@saveCopyToPhoneBody": {
+    "description": "Backup shortcut subtitle."
+  },
+  "signOutAction": "Sign out",
+  "@signOutAction": {
+    "description": "Sign out."
+  },
+  "signOutSubtitle": "Removes this phone's copy. Your data stays in Drive.",
+  "@signOutSubtitle": {
+    "description": "Sign out subtitle."
+  },
+  "signOutTitle": "Sign out?",
+  "@signOutTitle": {
+    "description": "Dialog title."
+  },
+  "signOutBody": "Everything on this phone is removed. Your data stays in your Google Drive and comes back when you sign in again. Want a file on this phone too? Use \"Save a copy to this phone\" first.",
+  "@signOutBody": {
+    "description": "Sign out dialog."
+  },
+  "signOutUnsavedTitle": "Some changes aren't saved",
+  "@signOutUnsavedTitle": {
+    "description": "Dialog title."
+  },
+  "signOutUnsavedBody": "{count, plural, =1{1 change isn't in Drive yet (check your internet connection). Signing out now loses it.} other{{count} changes aren't in Drive yet (check your internet connection). Signing out now loses them.}}",
+  "@signOutUnsavedBody": {
+    "description": "Unsaved changes on sign out.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "signOutAnywayAction": "Sign out anyway",
+  "@signOutAnywayAction": {
+    "description": "Confirm losing changes."
+  },
+  "deleteAllSubtitle": "From this phone and from your Google Drive",
+  "@deleteAllSubtitle": {
+    "description": "Delete everything subtitle."
+  },
+  "deleteAllFailed": "Nothing was deleted. {reason}",
+  "@deleteAllFailed": {
+    "description": "Delete everything failed.",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "uninstallNote": "Uninstalling the app removes only this phone's copy; your data stays in your Google Drive until you delete it here, or in Google Drive → Settings → Manage apps.",
+  "@uninstallNote": {
+    "description": "Note under data actions."
+  },
+  "driveFilesTitle": "Google Drive files",
+  "@driveFilesTitle": {
+    "description": "Settings row: visible Drive folders."
+  },
+  "driveFilesSubtitle": "Copies you saved to Drive folders",
+  "@driveFilesSubtitle": {
+    "description": "Settings row subtitle."
+  },
+  "legalUpdated": "Last updated 23 November 2026.",
+  "@legalUpdated": {
+    "description": "Footer of privacy and terms."
+  },
+  "privacySyncTitle": "Sync between phones",
+  "@privacySyncTitle": {
+    "description": "Privacy point."
+  },
+  "privacySyncBody": "Nothing is fetched by itself and nothing runs in the background. On another phone, tap Sync to get the latest. If one item was changed on two phones, the change saved last is kept and the other is replaced. A reminder added on one phone rings on another only after that phone syncs.",
+  "@privacySyncBody": {
+    "description": "Privacy point."
+  },
+  "privacyClockTitle": "Date and time",
+  "@privacyClockTitle": {
+    "description": "Privacy point."
+  },
+  "privacyClockBody": "Keep your phone's date & time and time zone set to automatic. Reminders and sync depend on the right time.",
+  "@privacyClockBody": {
+    "description": "Privacy point."
+  },
+  "privacyFilesTitle": "Files",
+  "@privacyFilesTitle": {
+    "description": "Privacy point."
+  },
+  "privacyFilesBody": "Documents, attachments and receipts (up to 500 KB each) are saved to Drive with their records. Photos are made smaller when taken.",
+  "@privacyFilesBody": {
+    "description": "Privacy point."
+  },
+  "privacyLeavingTitle": "Signing out, uninstalling, deleting",
+  "@privacyLeavingTitle": {
+    "description": "Privacy point."
+  },
+  "privacyLeavingBody": "Signing out or uninstalling removes only this phone's copy: your data stays in your Drive and comes back when you sign in again. Before leaving you can save a copy to your phone (Account & sync → Save a copy to this phone). \"Delete all my data\" removes it from this phone and from Drive. You can also remove it in Google Drive → Settings → Manage apps → Personal Life Manager → Delete hidden app data.",
+  "@privacyLeavingBody": {
+    "description": "Privacy point."
+  },
+  "termsUseTitle": "Personal use",
+  "@termsUseTitle": {
+    "description": "Terms point."
+  },
+  "termsUseBody": "Personal Life Manager is a personal organiser, free of charge and provided as is. We do our best, but can't promise it's free of errors: keep important originals (documents, passwords) somewhere else too.",
+  "@termsUseBody": {
+    "description": "Terms point."
+  },
+  "termsAccountTitle": "Your Google account",
+  "@termsAccountTitle": {
+    "description": "Terms point."
+  },
+  "termsAccountBody": "You sign in with your own Google account and are responsible for it and for your phone's screen lock. Google's terms apply to your Google Drive and its storage.",
+  "@termsAccountBody": {
+    "description": "Terms point."
+  },
+  "termsSyncTitle": "How saving and syncing work",
+  "@termsSyncTitle": {
+    "description": "Terms point."
+  },
+  "termsSyncBody": "Changes are saved to Drive as you make them; offline, they wait and are tried again. Another phone gets them when you tap Sync there. The change saved last to an item is kept, so an earlier change to the same item on another phone can be replaced.",
+  "@termsSyncBody": {
+    "description": "Terms point."
+  },
+  "termsStorageTitle": "Storage",
+  "@termsStorageTitle": {
+    "description": "Terms point."
+  },
+  "termsStorageBody": "Your data uses your Google storage (15 GB free, shared with Gmail and Photos). When it's full, saving stops until you free some space. Files are limited to 500 KB each.",
+  "@termsStorageBody": {
+    "description": "Terms point."
+  },
+  "termsTestingTitle": "Test version",
+  "@termsTestingTitle": {
+    "description": "Terms point."
+  },
+  "termsTestingBody": "While the app is being tested, only invited Google accounts can sign in, Google may ask you to sign in again every 7 days, and its sign-in screen may say the app isn't verified.",
+  "@termsTestingBody": {
+    "description": "Terms point."
+  },
+  "termsLeavingTitle": "Your data is yours",
+  "@termsLeavingTitle": {
+    "description": "Terms point."
+  },
+  "termsLeavingBody": "You can save a copy to your phone, sign out or delete everything at any time. Uninstalling doesn't delete your data from Drive.",
+  "@termsLeavingBody": {
+    "description": "Terms point."
+  },
+  "termsChangesTitle": "Changes",
+  "@termsChangesTitle": {
+    "description": "Terms point."
+  },
+  "termsChangesBody": "These terms may change with app updates. The version shown in the app applies.",
+  "@termsChangesBody": {
+    "description": "Terms point."
+  },
+  "appDataSummary": "{size} · {records, plural, =1{1 record} other{{records} records}} · {files, plural, =1{1 file} other{{files} files}}",
+  "@appDataSummary": {
+    "description": "Size, record count and file count of the app's data in Drive.",
+    "placeholders": {
+      "size": {
+        "type": "String"
+      },
+      "records": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      }
+    }
   }
 }

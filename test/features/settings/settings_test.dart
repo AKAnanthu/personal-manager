@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:bloc_test/bloc_test.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,19 +12,14 @@ import 'package:personal_life_manager/core/db/app_database.dart';
 import 'package:personal_life_manager/core/error/result.dart';
 import 'package:personal_life_manager/core/notifications/notification_permissions.dart';
 import 'package:personal_life_manager/core/security/app_lock.dart';
-import 'package:personal_life_manager/core/security/biometric_auth.dart';
-import 'package:personal_life_manager/core/security/password_hasher.dart';
 import 'package:personal_life_manager/core/storage/file_store.dart';
 import 'package:personal_life_manager/core/ui/theme/app_theme.dart';
-import 'package:personal_life_manager/features/auth/data/auth_repository_impl.dart';
-import 'package:personal_life_manager/features/auth/domain/auth_repository.dart';
-import 'package:personal_life_manager/features/auth/presentation/unlock/unlock_cubit.dart';
-import 'package:personal_life_manager/features/auth/presentation/unlock/unlock_page.dart';
 import 'package:personal_life_manager/features/backup_restore/data/backup_platform.dart';
 import 'package:personal_life_manager/features/notes/data/notes_repository_impl.dart';
 import 'package:personal_life_manager/features/notes/domain/note.dart';
 import 'package:personal_life_manager/features/settings/data/app_settings.dart';
 import 'package:personal_life_manager/features/settings/data/data_eraser.dart';
+import 'package:personal_life_manager/features/settings/presentation/erase_dialog.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_cubits.dart';
 import 'package:personal_life_manager/features/settings/presentation/settings_page.dart';
 import 'package:personal_life_manager/l10n/gen/app_localizations.dart';
@@ -36,15 +30,9 @@ import 'package:shared_preferences_platform_interface/shared_preferences_async_p
 
 import '../../helpers/fakes.dart';
 
-class _Auth extends Mock implements AuthRepository;
-
-class _Biometrics extends Mock implements BiometricAuth;
-
 class _Perms extends Mock implements NotificationPermissions;
 
 class _Last extends Mock implements LastBackupStore;
-
-class _Eraser extends Mock implements DataEraser;
 
 Widget _app(Widget child) => MaterialApp(
   theme: AppTheme.light,
@@ -88,73 +76,8 @@ void main() {
     });
   });
 
-  group('change password', () {
-    test('needs the right current password; counts wrong attempts', () async {
-      final repo = AuthRepositoryImpl(
-        store: InMemorySecureStore(),
-        // Fast hashing for tests.
-        hasher: const PasswordHasher(iterations: 1000),
-      );
-      ok(await repo.createPassword('old-password'));
-      final wrong = ok(
-        await repo.changePassword(current: 'nope', replacement: 'new-password'),
-      );
-      expect(wrong, isA<WrongPassword>());
-      expect(
-        ok(await repo.unlockWithPassword('old-password')),
-        const UnlockSucceeded(),
-      );
-      expect(
-        ok(
-          await repo.changePassword(
-            current: 'old-password',
-            replacement: 'new-password',
-          ),
-        ),
-        const UnlockSucceeded(),
-      );
-      expect(
-        ok(await repo.unlockWithPassword('new-password')),
-        const UnlockSucceeded(),
-      );
-    });
-
-    blocTest<ChangePasswordCubit, ChangePasswordState>(
-      'validates before checking; wrong current shows attempts left',
-      setUp: () {},
-      build: () {
-        final auth = _Auth();
-        when(
-          () => auth.changePassword(
-            current: any(named: 'current'),
-            replacement: any(named: 'replacement'),
-          ),
-        ).thenAnswer(
-          (_) async => const Ok(WrongPassword(attemptsBeforeLockout: 3)),
-        );
-        return ChangePasswordCubit(auth);
-      },
-      act: (c) async {
-        c
-          ..currentChanged('old')
-          ..replacementChanged('short')
-          ..confirmChanged('short');
-        await c.submit();
-        expect(c.state.showErrors, isTrue);
-        c
-          ..replacementChanged('long-enough-1')
-          ..confirmChanged('long-enough-1');
-        await c.submit();
-      },
-      verify: (c) {
-        expect(c.state.attemptsLeft, 3);
-        expect(c.state.outcome, ChangePasswordOutcome.none);
-      },
-    );
-  });
-
   test(
-    'erase: every record, file and the password go; back to setup',
+    'erase: every record, file and preference go; Drive is left alone',
     () async {
       final dir = Directory.systemTemp.createTempSync('erase');
       addTearDown(() => dir.deleteSync(recursive: true));
@@ -198,23 +121,23 @@ void main() {
       expect(await secure.read('auth.passwordHash'), isNull);
       expect(cleared, isTrue);
       expect(lock.status, LockStatus.notSetUp);
+      // Wiping this phone records no deletions to send to Drive.
+      for (final t in ['sync_outbox', 'sync_remote', 'sync_mute']) {
+        expect(await db.customSelect('SELECT * FROM $t').get(), isEmpty);
+      }
     },
   );
 
-  testWidgets('settings page: sections, fingerprint, theme', (tester) async {
+  testWidgets('settings page: sections, account, theme', (tester) async {
     tester.view
       ..physicalSize = const Size(1170, 4200)
       ..devicePixelRatio = 3;
     addTearDown(tester.view.reset);
-    final auth = _Auth();
-    final bio = _Biometrics();
     final perms = _Perms();
     final last = _Last();
     final lock = AppLock(initialStatus: LockStatus.unlocked);
     addTearDown(lock.dispose);
     final settings = AppSettings(lock);
-    when(bio.availableKind).thenAnswer((_) async => BiometricKind.fingerprint);
-    when(auth.isBiometricEnabled).thenAnswer((_) async => const Ok(true));
     when(perms.areEnabled).thenAnswer((_) async => true);
     when(() => perms.exactAlarmsAvailable).thenReturn(false);
     when(last.load).thenAnswer((_) async => null);
@@ -224,31 +147,31 @@ void main() {
         BlocProvider(
           create: (_) {
             final c = SettingsCubit(
-              auth: auth,
-              biometrics: bio,
               permissions: perms,
               settings: settings,
               lastBackup: last,
-              eraser: _Eraser(),
             );
             unawaited(c.load());
             return c;
           },
-          child: const SettingsPage(appVersion: '1.0.0'),
+          child: SettingsPage(
+            appVersion: '1.0.0',
+            driveAccount: ValueNotifier<String?>('me@gmail.com'),
+          ),
         ),
       ),
     );
     await tester.pumpAndSettle();
     for (final t in [
       'SECURITY',
-      'Change app password',
-      'Fingerprint unlock',
       'As soon as you leave the app',
-      'Not connected · coming in a later update',
+      'Account & sync',
+      'me@gmail.com',
+      'Google Drive files',
       'No backup made on this phone yet.',
       'Monthly · starts on the 1st',
+      'Terms of use',
       'Version 1.0.0 · licences',
-      'Erase all data',
     ]) {
       expect(find.text(t), findsOneWidget, reason: t);
     }
@@ -262,35 +185,28 @@ void main() {
     expect(find.text('Dark'), findsOneWidget);
   });
 
-  testWidgets('forgot password: erase only after typing ERASE', (tester) async {
-    final auth = _Auth();
-    final bio = _Biometrics();
-    when(bio.availableKind).thenAnswer((_) async => null);
-    when(auth.isBiometricEnabled).thenAnswer((_) async => const Ok(false));
-    when(auth.lockedUntil).thenAnswer((_) async => const Ok(null));
-    final lock = AppLock(initialStatus: LockStatus.locked);
-    addTearDown(lock.dispose);
-    var erased = 0;
+  testWidgets('delete all my data only after typing ERASE', (tester) async {
+    bool? confirmed;
     await tester.pumpWidget(
       _app(
-        BlocProvider(
-          create: (_) =>
-              UnlockCubit(repository: auth, biometrics: bio, lock: lock),
-          child: UnlockPage(onErase: () async => erased++),
+        Builder(
+          builder: (context) => TextButton(
+            onPressed: () async => confirmed = await confirmErase(context),
+            child: const Text('open'),
+          ),
         ),
       ),
     );
+    await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Forgot password?'));
-    await tester.pumpAndSettle();
-    expect(find.text('Forgot your password?'), findsOneWidget);
+    expect(find.text('Delete all my data'), findsOneWidget);
     final erase = find.widgetWithText(TextButton, 'Erase everything');
     expect(tester.widget<TextButton>(erase).onPressed, isNull);
     await tester.enterText(find.byType(TextField).last, 'erase');
     await tester.pump();
     await tester.tap(erase);
     await tester.pumpAndSettle();
-    expect(erased, 1);
+    expect(confirmed, isTrue);
   });
 }
 

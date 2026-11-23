@@ -27,7 +27,9 @@ final class BreathingSettings extends Equatable {
   final int minutes;
   final BreathingPace pace;
 
-  /// Chime at the end.
+  /// Sound cues: a rising tone to breathe in, a falling tone to breathe
+  /// out, and a chime at the end, so the user can look away or close
+  /// their eyes.
   final bool sound;
 
   /// A light tap at each change between breathing in and out.

@@ -1,0 +1,3865 @@
+{
+  "_meta": {
+    "description": "This file contains a serialized version of schema entities for drift.",
+    "version": "1.3.0"
+  },
+  "options": {
+    "store_date_time_values_as_text": false
+  },
+  "entities": [
+    {
+      "id": 0,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "sync_outbox",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "tbl",
+            "getter_name": "tbl",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "NOT NULL",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "row_id",
+            "getter_name": "rowId",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "NOT NULL",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "deleted",
+            "getter_name": "deleted",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": "NOT NULL DEFAULT FALSE",
+            "default_dart": "const CustomExpression('FALSE')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "seq",
+            "getter_name": "seq",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": "NOT NULL",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [
+          "PRIMARY KEY(tbl, row_id)"
+        ],
+        "explicit_pk": [
+          "tbl",
+          "row_id"
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "sync_remote",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "NOT NULL PRIMARY KEY",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              "primary-key"
+            ]
+          },
+          {
+            "name": "file_id",
+            "getter_name": "fileId",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "NOT NULL",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "modified",
+            "getter_name": "modified",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 2,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "sync_mute",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": "NOT NULL PRIMARY KEY",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              "primary-key"
+            ]
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 3,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "notes",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "content_json",
+            "getter_name": "contentJson",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "plain_text",
+            "getter_name": "plainText",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "tags",
+            "getter_name": "tags",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_pinned",
+            "getter_name": "isPinned",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_pinned\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_pinned\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_favourite",
+            "getter_name": "isFavourite",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_favourite\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_favourite\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_archived",
+            "getter_name": "isArchived",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_archived\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_archived\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "references": [
+        3,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          2,
+          0
+        ],
+        "name": "sync_notes_ai",
+        "sql": "CREATE TRIGGER sync_notes_ai AFTER INSERT ON notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 5,
+      "references": [
+        3,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          2,
+          0
+        ],
+        "name": "sync_notes_au",
+        "sql": "CREATE TRIGGER sync_notes_au AFTER UPDATE ON notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 6,
+      "references": [
+        3,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          2,
+          0
+        ],
+        "name": "sync_notes_ad",
+        "sql": "CREATE TRIGGER sync_notes_ad AFTER DELETE ON notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('notes', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 7,
+      "references": [
+        3
+      ],
+      "type": "table",
+      "data": {
+        "name": "note_attachments",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "note_id",
+            "getter_name": "noteId",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "REFERENCES notes (id) ON DELETE CASCADE",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "REFERENCES notes (id) ON DELETE CASCADE"
+            },
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              {
+                "foreign_key": {
+                  "to": {
+                    "table": "notes",
+                    "column": "id"
+                  },
+                  "initially_deferred": false,
+                  "on_update": null,
+                  "on_delete": "cascade"
+                }
+              }
+            ]
+          },
+          {
+            "name": "file_key",
+            "getter_name": "fileKey",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "original_name",
+            "getter_name": "originalName",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "mime_type",
+            "getter_name": "mimeType",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "size_bytes",
+            "getter_name": "sizeBytes",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "references": [
+        7,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 7,
+        "references_in_body": [
+          7,
+          2,
+          0
+        ],
+        "name": "sync_note_attachments_ai",
+        "sql": "CREATE TRIGGER sync_note_attachments_ai AFTER INSERT ON note_attachments\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('note_attachments', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 9,
+      "references": [
+        7,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 7,
+        "references_in_body": [
+          7,
+          2,
+          0
+        ],
+        "name": "sync_note_attachments_au",
+        "sql": "CREATE TRIGGER sync_note_attachments_au AFTER UPDATE ON note_attachments\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('note_attachments', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 10,
+      "references": [
+        7,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 7,
+        "references_in_body": [
+          7,
+          2,
+          0
+        ],
+        "name": "sync_note_attachments_ad",
+        "sql": "CREATE TRIGGER sync_note_attachments_ad AFTER DELETE ON note_attachments\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('note_attachments', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 11,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "tasks",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "description",
+            "getter_name": "description",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "due_date",
+            "getter_name": "dueDate",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "reminder_at",
+            "getter_name": "reminderAt",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const WallClockConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "is_completed",
+            "getter_name": "isCompleted",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_completed\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_completed\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "completed_at",
+            "getter_name": "completedAt",
+            "moor_type": "dateTime",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "references": [
+        11,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 11,
+        "references_in_body": [
+          11,
+          2,
+          0
+        ],
+        "name": "sync_tasks_ai",
+        "sql": "CREATE TRIGGER sync_tasks_ai AFTER INSERT ON tasks\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('tasks', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 13,
+      "references": [
+        11,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 11,
+        "references_in_body": [
+          11,
+          2,
+          0
+        ],
+        "name": "sync_tasks_au",
+        "sql": "CREATE TRIGGER sync_tasks_au AFTER UPDATE ON tasks\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('tasks', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 14,
+      "references": [
+        11,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 11,
+        "references_in_body": [
+          11,
+          2,
+          0
+        ],
+        "name": "sync_tasks_ad",
+        "sql": "CREATE TRIGGER sync_tasks_ad AFTER DELETE ON tasks\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('tasks', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 15,
+      "references": [
+        11
+      ],
+      "type": "table",
+      "data": {
+        "name": "task_checklist_items",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "task_id",
+            "getter_name": "taskId",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "REFERENCES tasks (id) ON DELETE CASCADE",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "REFERENCES tasks (id) ON DELETE CASCADE"
+            },
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              {
+                "foreign_key": {
+                  "to": {
+                    "table": "tasks",
+                    "column": "id"
+                  },
+                  "initially_deferred": false,
+                  "on_update": null,
+                  "on_delete": "cascade"
+                }
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "getter_name": "label",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_done",
+            "getter_name": "isDone",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_done\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_done\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "position",
+            "getter_name": "position",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "references": [
+        15,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 15,
+        "references_in_body": [
+          15,
+          2,
+          0
+        ],
+        "name": "sync_task_checklist_items_ai",
+        "sql": "CREATE TRIGGER sync_task_checklist_items_ai AFTER INSERT ON task_checklist_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('task_checklist_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 17,
+      "references": [
+        15,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 15,
+        "references_in_body": [
+          15,
+          2,
+          0
+        ],
+        "name": "sync_task_checklist_items_au",
+        "sql": "CREATE TRIGGER sync_task_checklist_items_au AFTER UPDATE ON task_checklist_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('task_checklist_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 18,
+      "references": [
+        15,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 15,
+        "references_in_body": [
+          15,
+          2,
+          0
+        ],
+        "name": "sync_task_checklist_items_ad",
+        "sql": "CREATE TRIGGER sync_task_checklist_items_ad AFTER DELETE ON task_checklist_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('task_checklist_items', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 19,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "reminders",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "description",
+            "getter_name": "description",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "anchor_at",
+            "getter_name": "anchorAt",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const WallClockConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "due_at",
+            "getter_name": "dueAt",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const WallClockConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "repeat",
+            "getter_name": "repeat",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<RepeatFrequency>(RepeatFrequency.values)",
+              "dart_type_name": "RepeatFrequency"
+            }
+          },
+          {
+            "name": "snoozed_until",
+            "getter_name": "snoozedUntil",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const WallClockConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "is_completed",
+            "getter_name": "isCompleted",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_completed\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_completed\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "completed_at",
+            "getter_name": "completedAt",
+            "moor_type": "dateTime",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "references": [
+        19,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 19,
+        "references_in_body": [
+          19,
+          2,
+          0
+        ],
+        "name": "sync_reminders_ai",
+        "sql": "CREATE TRIGGER sync_reminders_ai AFTER INSERT ON reminders\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('reminders', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 21,
+      "references": [
+        19,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 19,
+        "references_in_body": [
+          19,
+          2,
+          0
+        ],
+        "name": "sync_reminders_au",
+        "sql": "CREATE TRIGGER sync_reminders_au AFTER UPDATE ON reminders\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('reminders', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 22,
+      "references": [
+        19,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 19,
+        "references_in_body": [
+          19,
+          2,
+          0
+        ],
+        "name": "sync_reminders_ad",
+        "sql": "CREATE TRIGGER sync_reminders_ad AFTER DELETE ON reminders\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('reminders', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 23,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "personal_entries",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "kind",
+            "getter_name": "kind",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<DetailKind>(DetailKind.values)",
+              "dart_type_name": "DetailKind"
+            }
+          },
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "fields_json",
+            "getter_name": "fieldsJson",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DetailFieldsConverter()",
+              "dart_type_name": "List<DetailField>"
+            }
+          },
+          {
+            "name": "search_text",
+            "getter_name": "searchText",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "linked_document_ids",
+            "getter_name": "linkedDocumentIds",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'[]\\'')",
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const StringListConverter()",
+              "dart_type_name": "List<String>"
+            }
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "references": [
+        23,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          2,
+          0
+        ],
+        "name": "sync_personal_entries_ai",
+        "sql": "CREATE TRIGGER sync_personal_entries_ai AFTER INSERT ON personal_entries\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('personal_entries', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 25,
+      "references": [
+        23,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          2,
+          0
+        ],
+        "name": "sync_personal_entries_au",
+        "sql": "CREATE TRIGGER sync_personal_entries_au AFTER UPDATE ON personal_entries\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('personal_entries', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 26,
+      "references": [
+        23,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          2,
+          0
+        ],
+        "name": "sync_personal_entries_ad",
+        "sql": "CREATE TRIGGER sync_personal_entries_ad AFTER DELETE ON personal_entries\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('personal_entries', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 27,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "password_notes",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "url",
+            "getter_name": "url",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "username",
+            "getter_name": "username",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "password",
+            "getter_name": "password",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "notes",
+            "getter_name": "notes",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "category",
+            "getter_name": "category",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_favourite",
+            "getter_name": "isFavourite",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_favourite\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_favourite\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "references": [
+        27,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          2,
+          0
+        ],
+        "name": "sync_password_notes_ai",
+        "sql": "CREATE TRIGGER sync_password_notes_ai AFTER INSERT ON password_notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('password_notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 29,
+      "references": [
+        27,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          2,
+          0
+        ],
+        "name": "sync_password_notes_au",
+        "sql": "CREATE TRIGGER sync_password_notes_au AFTER UPDATE ON password_notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('password_notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 30,
+      "references": [
+        27,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          2,
+          0
+        ],
+        "name": "sync_password_notes_ad",
+        "sql": "CREATE TRIGGER sync_password_notes_ad AFTER DELETE ON password_notes\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('password_notes', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 31,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "documents",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "description",
+            "getter_name": "description",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "category",
+            "getter_name": "category",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<DocumentCategory>(DocumentCategory.values)",
+              "dart_type_name": "DocumentCategory"
+            }
+          },
+          {
+            "name": "file_key",
+            "getter_name": "fileKey",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "original_name",
+            "getter_name": "originalName",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "file_type",
+            "getter_name": "fileType",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<SupportedFileType>(SupportedFileType.values)",
+              "dart_type_name": "SupportedFileType"
+            }
+          },
+          {
+            "name": "size_bytes",
+            "getter_name": "sizeBytes",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "expiry_date",
+            "getter_name": "expiryDate",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "expiry_reminder",
+            "getter_name": "expiryReminder",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"expiry_reminder\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"expiry_reminder\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('1')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_favourite",
+            "getter_name": "isFavourite",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_favourite\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_favourite\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "drive_status",
+            "getter_name": "driveStatus",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'notUploaded\\'')",
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<DriveStatus>(DriveStatus.values)",
+              "dart_type_name": "DriveStatus"
+            }
+          },
+          {
+            "name": "drive_file_id",
+            "getter_name": "driveFileId",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "references": [
+        31,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          2,
+          0
+        ],
+        "name": "sync_documents_ai",
+        "sql": "CREATE TRIGGER sync_documents_ai AFTER INSERT ON documents\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('documents', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 33,
+      "references": [
+        31,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          2,
+          0
+        ],
+        "name": "sync_documents_au",
+        "sql": "CREATE TRIGGER sync_documents_au AFTER UPDATE ON documents\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('documents', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 34,
+      "references": [
+        31,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          2,
+          0
+        ],
+        "name": "sync_documents_ad",
+        "sql": "CREATE TRIGGER sync_documents_ad AFTER DELETE ON documents\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('documents', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 35,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "shopping_lists",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "status",
+            "getter_name": "status",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<ShoppingListStatus>(ShoppingListStatus.values)",
+              "dart_type_name": "ShoppingListStatus"
+            }
+          },
+          {
+            "name": "copied_from_id",
+            "getter_name": "copiedFromId",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "started_at",
+            "getter_name": "startedAt",
+            "moor_type": "dateTime",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "paused_at",
+            "getter_name": "pausedAt",
+            "moor_type": "dateTime",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "purchased_on",
+            "getter_name": "purchasedOn",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "total_paise",
+            "getter_name": "totalPaise",
+            "moor_type": "int",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "store",
+            "getter_name": "store",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "payment_method",
+            "getter_name": "paymentMethod",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<PaymentMethod>(PaymentMethod.values)",
+              "dart_type_name": "PaymentMethod"
+            }
+          },
+          {
+            "name": "receipt_key",
+            "getter_name": "receiptKey",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "receipt_name",
+            "getter_name": "receiptName",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "receipt_type",
+            "getter_name": "receiptType",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<SupportedFileType>(SupportedFileType.values)",
+              "dart_type_name": "SupportedFileType"
+            }
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "references": [
+        35,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 35,
+        "references_in_body": [
+          35,
+          2,
+          0
+        ],
+        "name": "sync_shopping_lists_ai",
+        "sql": "CREATE TRIGGER sync_shopping_lists_ai AFTER INSERT ON shopping_lists\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_lists', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 37,
+      "references": [
+        35,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 35,
+        "references_in_body": [
+          35,
+          2,
+          0
+        ],
+        "name": "sync_shopping_lists_au",
+        "sql": "CREATE TRIGGER sync_shopping_lists_au AFTER UPDATE ON shopping_lists\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_lists', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 38,
+      "references": [
+        35,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 35,
+        "references_in_body": [
+          35,
+          2,
+          0
+        ],
+        "name": "sync_shopping_lists_ad",
+        "sql": "CREATE TRIGGER sync_shopping_lists_ad AFTER DELETE ON shopping_lists\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_lists', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 39,
+      "references": [
+        35
+      ],
+      "type": "table",
+      "data": {
+        "name": "shopping_items",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "list_id",
+            "getter_name": "listId",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "REFERENCES shopping_lists (id) ON DELETE CASCADE",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "REFERENCES shopping_lists (id) ON DELETE CASCADE"
+            },
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              {
+                "foreign_key": {
+                  "to": {
+                    "table": "shopping_lists",
+                    "column": "id"
+                  },
+                  "initially_deferred": false,
+                  "on_update": null,
+                  "on_delete": "cascade"
+                }
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "quantity",
+            "getter_name": "quantity",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "unit",
+            "getter_name": "unit",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "is_purchased",
+            "getter_name": "isPurchased",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"is_purchased\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"is_purchased\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "position",
+            "getter_name": "position",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "references": [
+        39,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 39,
+        "references_in_body": [
+          39,
+          2,
+          0
+        ],
+        "name": "sync_shopping_items_ai",
+        "sql": "CREATE TRIGGER sync_shopping_items_ai AFTER INSERT ON shopping_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 41,
+      "references": [
+        39,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 39,
+        "references_in_body": [
+          39,
+          2,
+          0
+        ],
+        "name": "sync_shopping_items_au",
+        "sql": "CREATE TRIGGER sync_shopping_items_au AFTER UPDATE ON shopping_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 42,
+      "references": [
+        39,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 39,
+        "references_in_body": [
+          39,
+          2,
+          0
+        ],
+        "name": "sync_shopping_items_ad",
+        "sql": "CREATE TRIGGER sync_shopping_items_ad AFTER DELETE ON shopping_items\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('shopping_items', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 43,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "expenses",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "amount_paise",
+            "getter_name": "amountPaise",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "description",
+            "getter_name": "description",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "spent_on",
+            "getter_name": "spentOn",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "source",
+            "getter_name": "source",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<ExpenseSource>(ExpenseSource.values)",
+              "dart_type_name": "ExpenseSource"
+            }
+          },
+          {
+            "name": "source_id",
+            "getter_name": "sourceId",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ],
+        "unique_keys": [
+          [
+            "source",
+            "source_id"
+          ]
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "references": [
+        43,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 43,
+        "references_in_body": [
+          43,
+          2,
+          0
+        ],
+        "name": "sync_expenses_ai",
+        "sql": "CREATE TRIGGER sync_expenses_ai AFTER INSERT ON expenses\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('expenses', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 45,
+      "references": [
+        43,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 43,
+        "references_in_body": [
+          43,
+          2,
+          0
+        ],
+        "name": "sync_expenses_au",
+        "sql": "CREATE TRIGGER sync_expenses_au AFTER UPDATE ON expenses\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('expenses', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 46,
+      "references": [
+        43,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 43,
+        "references_in_body": [
+          43,
+          2,
+          0
+        ],
+        "name": "sync_expenses_ad",
+        "sql": "CREATE TRIGGER sync_expenses_ad AFTER DELETE ON expenses\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('expenses', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 47,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "budget_amounts",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "from_month",
+            "getter_name": "fromMonth",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "UNIQUE",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "UNIQUE"
+            },
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [
+              "unique"
+            ]
+          },
+          {
+            "name": "amount_paise",
+            "getter_name": "amountPaise",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 48,
+      "references": [
+        47,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 47,
+        "references_in_body": [
+          47,
+          2,
+          0
+        ],
+        "name": "sync_budget_amounts_ai",
+        "sql": "CREATE TRIGGER sync_budget_amounts_ai AFTER INSERT ON budget_amounts\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('budget_amounts', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 49,
+      "references": [
+        47,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 47,
+        "references_in_body": [
+          47,
+          2,
+          0
+        ],
+        "name": "sync_budget_amounts_au",
+        "sql": "CREATE TRIGGER sync_budget_amounts_au AFTER UPDATE ON budget_amounts\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('budget_amounts', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 50,
+      "references": [
+        47,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 47,
+        "references_in_body": [
+          47,
+          2,
+          0
+        ],
+        "name": "sync_budget_amounts_ad",
+        "sql": "CREATE TRIGGER sync_budget_amounts_ad AFTER DELETE ON budget_amounts\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('budget_amounts', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 51,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "lending_records",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "direction",
+            "getter_name": "direction",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<LendingDirection>(LendingDirection.values)",
+              "dart_type_name": "LendingDirection"
+            }
+          },
+          {
+            "name": "person",
+            "getter_name": "person",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "amount_paise",
+            "getter_name": "amountPaise",
+            "moor_type": "int",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "given_on",
+            "getter_name": "givenOn",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "due_on",
+            "getter_name": "dueOn",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "status",
+            "getter_name": "status",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const EnumNameConverter<LendingStatus>(LendingStatus.values)",
+              "dart_type_name": "LendingStatus"
+            }
+          },
+          {
+            "name": "completed_on",
+            "getter_name": "completedOn",
+            "moor_type": "string",
+            "nullable": true,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const DateOnlyConverter()",
+              "dart_type_name": "DateTime"
+            }
+          },
+          {
+            "name": "notes",
+            "getter_name": "notes",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "remind",
+            "getter_name": "remind",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"remind\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"remind\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('0')",
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 52,
+      "references": [
+        51,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 51,
+        "references_in_body": [
+          51,
+          2,
+          0
+        ],
+        "name": "sync_lending_records_ai",
+        "sql": "CREATE TRIGGER sync_lending_records_ai AFTER INSERT ON lending_records\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('lending_records', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 53,
+      "references": [
+        51,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 51,
+        "references_in_body": [
+          51,
+          2,
+          0
+        ],
+        "name": "sync_lending_records_au",
+        "sql": "CREATE TRIGGER sync_lending_records_au AFTER UPDATE ON lending_records\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('lending_records', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 54,
+      "references": [
+        51,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 51,
+        "references_in_body": [
+          51,
+          2,
+          0
+        ],
+        "name": "sync_lending_records_ad",
+        "sql": "CREATE TRIGGER sync_lending_records_ad AFTER DELETE ON lending_records\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('lending_records', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 55,
+      "references": [],
+      "type": "table",
+      "data": {
+        "name": "medicines",
+        "was_declared_in_moor": false,
+        "columns": [
+          {
+            "name": "id",
+            "getter_name": "id",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "created_at",
+            "getter_name": "createdAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "updated_at",
+            "getter_name": "updatedAt",
+            "moor_type": "dateTime",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "times",
+            "getter_name": "times",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const TimesConverter()",
+              "dart_type_name": "List<TimeOfDayMinutes>"
+            }
+          },
+          {
+            "name": "weekdays",
+            "getter_name": "weekdays",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": null,
+            "default_dart": "const CustomExpression('\\'\\'')",
+            "default_client_dart": null,
+            "dsl_features": [],
+            "type_converter": {
+              "dart_expr": "const WeekdaysConverter()",
+              "dart_type_name": "Set<int>"
+            }
+          },
+          {
+            "name": "enabled",
+            "getter_name": "enabled",
+            "moor_type": "bool",
+            "nullable": false,
+            "customConstraints": null,
+            "defaultConstraints": "CHECK (\"enabled\" IN (0, 1))",
+            "dialectAwareDefaultConstraints": {
+              "sqlite": "CHECK (\"enabled\" IN (0, 1))"
+            },
+            "default_dart": "const CustomExpression('1')",
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": false,
+        "without_rowid": false,
+        "constraints": [],
+        "explicit_pk": [
+          "id"
+        ]
+      }
+    },
+    {
+      "id": 56,
+      "references": [
+        55,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 55,
+        "references_in_body": [
+          55,
+          2,
+          0
+        ],
+        "name": "sync_medicines_ai",
+        "sql": "CREATE TRIGGER sync_medicines_ai AFTER INSERT ON medicines\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('medicines', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 57,
+      "references": [
+        55,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 55,
+        "references_in_body": [
+          55,
+          2,
+          0
+        ],
+        "name": "sync_medicines_au",
+        "sql": "CREATE TRIGGER sync_medicines_au AFTER UPDATE ON medicines\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('medicines', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 58,
+      "references": [
+        55,
+        2,
+        0
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 55,
+        "references_in_body": [
+          55,
+          2,
+          0
+        ],
+        "name": "sync_medicines_ad",
+        "sql": "CREATE TRIGGER sync_medicines_ad AFTER DELETE ON medicines\nWHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN\n  INSERT INTO sync_outbox (tbl, row_id, deleted, seq)\n  VALUES ('medicines', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox))\n  ON CONFLICT (tbl, row_id) DO UPDATE\n    SET deleted = excluded.deleted, seq = excluded.seq;\nEND;"
+      }
+    },
+    {
+      "id": 59,
+      "references": [
+        35
+      ],
+      "type": "index",
+      "data": {
+        "on": 35,
+        "name": "shopping_one_active",
+        "sql": "CREATE UNIQUE INDEX shopping_one_active ON shopping_lists (status)\r\n  WHERE status = 'active';",
+        "unique": true,
+        "columns": []
+      }
+    },
+    {
+      "id": 60,
+      "references": [
+        39
+      ],
+      "type": "index",
+      "data": {
+        "on": 39,
+        "name": "shopping_items_list",
+        "sql": "CREATE INDEX shopping_items_list ON shopping_items (list_id, position);",
+        "unique": false,
+        "columns": []
+      }
+    },
+    {
+      "id": 61,
+      "references": [
+        31
+      ],
+      "type": "index",
+      "data": {
+        "on": 31,
+        "name": "documents_expiry",
+        "sql": "CREATE INDEX documents_expiry ON documents (expiry_date);",
+        "unique": false,
+        "columns": []
+      }
+    },
+    {
+      "id": 62,
+      "references": [
+        31
+      ],
+      "type": "table",
+      "data": {
+        "name": "documents_fts",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "description",
+            "getter_name": "description",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "original_name",
+            "getter_name": "originalName",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": true,
+        "create_virtual_stmt": "CREATE VIRTUAL TABLE \"documents_fts\" USING fts5(title, description, original_name, content='documents', content_rowid='rowid')",
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 63,
+      "references": [
+        31,
+        62
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          62
+        ],
+        "name": "documents_fts_ai",
+        "sql": "CREATE TRIGGER documents_fts_ai AFTER INSERT ON documents BEGIN\r\n  INSERT INTO documents_fts(rowid, title, description, original_name)\r\n  VALUES (new.rowid, new.title, new.description, new.original_name);\r\nEND;"
+      }
+    },
+    {
+      "id": 64,
+      "references": [
+        31,
+        62
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          62
+        ],
+        "name": "documents_fts_ad",
+        "sql": "CREATE TRIGGER documents_fts_ad AFTER DELETE ON documents BEGIN\r\n  INSERT INTO documents_fts(documents_fts, rowid, title, description, original_name)\r\n  VALUES ('delete', old.rowid, old.title, old.description, old.original_name);\r\nEND;"
+      }
+    },
+    {
+      "id": 65,
+      "references": [
+        31,
+        62
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 31,
+        "references_in_body": [
+          31,
+          62
+        ],
+        "name": "documents_fts_au",
+        "sql": "CREATE TRIGGER documents_fts_au AFTER UPDATE ON documents BEGIN\r\n  INSERT INTO documents_fts(documents_fts, rowid, title, description, original_name)\r\n  VALUES ('delete', old.rowid, old.title, old.description, old.original_name);\r\n  INSERT INTO documents_fts(rowid, title, description, original_name)\r\n  VALUES (new.rowid, new.title, new.description, new.original_name);\r\nEND;"
+      }
+    },
+    {
+      "id": 66,
+      "references": [
+        27
+      ],
+      "type": "table",
+      "data": {
+        "name": "password_notes_fts",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "name",
+            "getter_name": "name",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "url",
+            "getter_name": "url",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "username",
+            "getter_name": "username",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": true,
+        "create_virtual_stmt": "CREATE VIRTUAL TABLE \"password_notes_fts\" USING fts5(name, url, username, content='password_notes', content_rowid='rowid')",
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 67,
+      "references": [
+        27,
+        66
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          66
+        ],
+        "name": "password_fts_ai",
+        "sql": "CREATE TRIGGER password_fts_ai AFTER INSERT ON password_notes BEGIN\r\n  INSERT INTO password_notes_fts(rowid, name, url, username)\r\n  VALUES (new.rowid, new.name, new.url, new.username);\r\nEND;"
+      }
+    },
+    {
+      "id": 68,
+      "references": [
+        27,
+        66
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          66
+        ],
+        "name": "password_fts_ad",
+        "sql": "CREATE TRIGGER password_fts_ad AFTER DELETE ON password_notes BEGIN\r\n  INSERT INTO password_notes_fts(password_notes_fts, rowid, name, url, username)\r\n  VALUES ('delete', old.rowid, old.name, old.url, old.username);\r\nEND;"
+      }
+    },
+    {
+      "id": 69,
+      "references": [
+        27,
+        66
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 27,
+        "references_in_body": [
+          27,
+          66
+        ],
+        "name": "password_fts_au",
+        "sql": "CREATE TRIGGER password_fts_au AFTER UPDATE ON password_notes BEGIN\r\n  INSERT INTO password_notes_fts(password_notes_fts, rowid, name, url, username)\r\n  VALUES ('delete', old.rowid, old.name, old.url, old.username);\r\n  INSERT INTO password_notes_fts(rowid, name, url, username)\r\n  VALUES (new.rowid, new.name, new.url, new.username);\r\nEND;"
+      }
+    },
+    {
+      "id": 70,
+      "references": [
+        23
+      ],
+      "type": "table",
+      "data": {
+        "name": "personal_entries_fts",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "search_text",
+            "getter_name": "searchText",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": true,
+        "create_virtual_stmt": "CREATE VIRTUAL TABLE \"personal_entries_fts\" USING fts5(title, search_text, content='personal_entries', content_rowid='rowid')",
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 71,
+      "references": [
+        23,
+        70
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          70
+        ],
+        "name": "personal_fts_ai",
+        "sql": "CREATE TRIGGER personal_fts_ai AFTER INSERT ON personal_entries BEGIN\r\n  INSERT INTO personal_entries_fts(rowid, title, search_text)\r\n  VALUES (new.rowid, new.title, new.search_text);\r\nEND;"
+      }
+    },
+    {
+      "id": 72,
+      "references": [
+        23,
+        70
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          70
+        ],
+        "name": "personal_fts_ad",
+        "sql": "CREATE TRIGGER personal_fts_ad AFTER DELETE ON personal_entries BEGIN\r\n  INSERT INTO personal_entries_fts(personal_entries_fts, rowid, title, search_text)\r\n  VALUES ('delete', old.rowid, old.title, old.search_text);\r\nEND;"
+      }
+    },
+    {
+      "id": 73,
+      "references": [
+        23,
+        70
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 23,
+        "references_in_body": [
+          23,
+          70
+        ],
+        "name": "personal_fts_au",
+        "sql": "CREATE TRIGGER personal_fts_au AFTER UPDATE ON personal_entries BEGIN\r\n  INSERT INTO personal_entries_fts(personal_entries_fts, rowid, title, search_text)\r\n  VALUES ('delete', old.rowid, old.title, old.search_text);\r\n  INSERT INTO personal_entries_fts(rowid, title, search_text)\r\n  VALUES (new.rowid, new.title, new.search_text);\r\nEND;"
+      }
+    },
+    {
+      "id": 74,
+      "references": [
+        3
+      ],
+      "type": "table",
+      "data": {
+        "name": "notes_fts",
+        "was_declared_in_moor": true,
+        "columns": [
+          {
+            "name": "title",
+            "getter_name": "title",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "plain_text",
+            "getter_name": "plainText",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          },
+          {
+            "name": "tags",
+            "getter_name": "tags",
+            "moor_type": "string",
+            "nullable": false,
+            "customConstraints": "",
+            "default_dart": null,
+            "default_client_dart": null,
+            "dsl_features": []
+          }
+        ],
+        "is_virtual": true,
+        "create_virtual_stmt": "CREATE VIRTUAL TABLE \"notes_fts\" USING fts5(title, plain_text, tags, content='notes', content_rowid='rowid')",
+        "without_rowid": false,
+        "constraints": []
+      }
+    },
+    {
+      "id": 75,
+      "references": [
+        3,
+        74
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          74
+        ],
+        "name": "notes_fts_ai",
+        "sql": "CREATE TRIGGER notes_fts_ai AFTER INSERT ON notes BEGIN\r\n  INSERT INTO notes_fts(rowid, title, plain_text, tags)\r\n  VALUES (new.rowid, new.title, new.plain_text, new.tags);\r\nEND;"
+      }
+    },
+    {
+      "id": 76,
+      "references": [
+        3,
+        74
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          74
+        ],
+        "name": "notes_fts_ad",
+        "sql": "CREATE TRIGGER notes_fts_ad AFTER DELETE ON notes BEGIN\r\n  INSERT INTO notes_fts(notes_fts, rowid, title, plain_text, tags)\r\n  VALUES ('delete', old.rowid, old.title, old.plain_text, old.tags);\r\nEND;"
+      }
+    },
+    {
+      "id": 77,
+      "references": [
+        3,
+        74
+      ],
+      "type": "trigger",
+      "data": {
+        "on": 3,
+        "references_in_body": [
+          3,
+          74
+        ],
+        "name": "notes_fts_au",
+        "sql": "CREATE TRIGGER notes_fts_au AFTER UPDATE ON notes BEGIN\r\n  INSERT INTO notes_fts(notes_fts, rowid, title, plain_text, tags)\r\n  VALUES ('delete', old.rowid, old.title, old.plain_text, old.tags);\r\n  INSERT INTO notes_fts(rowid, title, plain_text, tags)\r\n  VALUES (new.rowid, new.title, new.plain_text, new.tags);\r\nEND;"
+      }
+    }
+  ],
+  "fixed_sql": [
+    {
+      "name": "sync_outbox",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"sync_outbox\" (\"tbl\" TEXT NOT NULL, \"row_id\" TEXT NOT NULL, \"deleted\" INTEGER NOT NULL DEFAULT FALSE, \"seq\" INTEGER NOT NULL, PRIMARY KEY(tbl, row_id));"
+        }
+      ]
+    },
+    {
+      "name": "sync_remote",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"sync_remote\" (\"name\" TEXT NOT NULL PRIMARY KEY, \"file_id\" TEXT NOT NULL, \"modified\" TEXT);"
+        }
+      ]
+    },
+    {
+      "name": "sync_mute",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"sync_mute\" (\"id\" INTEGER NOT NULL PRIMARY KEY);"
+        }
+      ]
+    },
+    {
+      "name": "notes",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"notes\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"title\" TEXT NOT NULL DEFAULT '', \"content_json\" TEXT NOT NULL, \"plain_text\" TEXT NOT NULL DEFAULT '', \"tags\" TEXT NOT NULL DEFAULT '', \"is_pinned\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_pinned\" IN (0, 1)), \"is_favourite\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_favourite\" IN (0, 1)), \"is_archived\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_archived\" IN (0, 1)), PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_notes_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_notes_ai AFTER INSERT ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_notes_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_notes_au AFTER UPDATE ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_notes_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_notes_ad AFTER DELETE ON notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('notes', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "note_attachments",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"note_attachments\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"note_id\" TEXT NOT NULL REFERENCES notes (id) ON DELETE CASCADE, \"file_key\" TEXT NOT NULL, \"original_name\" TEXT NOT NULL, \"mime_type\" TEXT NOT NULL, \"size_bytes\" INTEGER NOT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_note_attachments_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_note_attachments_ai AFTER INSERT ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('note_attachments', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_note_attachments_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_note_attachments_au AFTER UPDATE ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('note_attachments', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_note_attachments_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_note_attachments_ad AFTER DELETE ON note_attachments WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('note_attachments', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "tasks",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"tasks\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"title\" TEXT NOT NULL, \"description\" TEXT NOT NULL DEFAULT '', \"due_date\" TEXT NULL, \"reminder_at\" TEXT NULL, \"is_completed\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_completed\" IN (0, 1)), \"completed_at\" INTEGER NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_tasks_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_tasks_ai AFTER INSERT ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('tasks', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_tasks_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_tasks_au AFTER UPDATE ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('tasks', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_tasks_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_tasks_ad AFTER DELETE ON tasks WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('tasks', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "task_checklist_items",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"task_checklist_items\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"task_id\" TEXT NOT NULL REFERENCES tasks (id) ON DELETE CASCADE, \"label\" TEXT NOT NULL, \"is_done\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_done\" IN (0, 1)), \"position\" INTEGER NOT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_task_checklist_items_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_task_checklist_items_ai AFTER INSERT ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('task_checklist_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_task_checklist_items_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_task_checklist_items_au AFTER UPDATE ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('task_checklist_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_task_checklist_items_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_task_checklist_items_ad AFTER DELETE ON task_checklist_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('task_checklist_items', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "reminders",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"reminders\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"title\" TEXT NOT NULL, \"description\" TEXT NOT NULL DEFAULT '', \"anchor_at\" TEXT NOT NULL, \"due_at\" TEXT NOT NULL, \"repeat\" TEXT NOT NULL, \"snoozed_until\" TEXT NULL, \"is_completed\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_completed\" IN (0, 1)), \"completed_at\" INTEGER NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_reminders_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_reminders_ai AFTER INSERT ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('reminders', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_reminders_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_reminders_au AFTER UPDATE ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('reminders', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_reminders_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_reminders_ad AFTER DELETE ON reminders WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('reminders', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "personal_entries",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"personal_entries\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"kind\" TEXT NOT NULL, \"title\" TEXT NOT NULL DEFAULT '', \"fields_json\" TEXT NOT NULL, \"search_text\" TEXT NOT NULL DEFAULT '', \"linked_document_ids\" TEXT NOT NULL DEFAULT '[]', PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_personal_entries_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_personal_entries_ai AFTER INSERT ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('personal_entries', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_personal_entries_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_personal_entries_au AFTER UPDATE ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('personal_entries', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_personal_entries_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_personal_entries_ad AFTER DELETE ON personal_entries WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('personal_entries', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "password_notes",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"password_notes\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"name\" TEXT NOT NULL, \"url\" TEXT NOT NULL DEFAULT '', \"username\" TEXT NOT NULL DEFAULT '', \"password\" TEXT NOT NULL DEFAULT '', \"notes\" TEXT NOT NULL DEFAULT '', \"category\" TEXT NOT NULL DEFAULT '', \"is_favourite\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_favourite\" IN (0, 1)), PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_password_notes_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_password_notes_ai AFTER INSERT ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('password_notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_password_notes_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_password_notes_au AFTER UPDATE ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('password_notes', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_password_notes_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_password_notes_ad AFTER DELETE ON password_notes WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('password_notes', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "documents",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"documents\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"title\" TEXT NOT NULL, \"description\" TEXT NOT NULL DEFAULT '', \"category\" TEXT NOT NULL, \"file_key\" TEXT NOT NULL, \"original_name\" TEXT NOT NULL, \"file_type\" TEXT NOT NULL, \"size_bytes\" INTEGER NOT NULL, \"expiry_date\" TEXT NULL, \"expiry_reminder\" INTEGER NOT NULL DEFAULT 1 CHECK (\"expiry_reminder\" IN (0, 1)), \"is_favourite\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_favourite\" IN (0, 1)), \"drive_status\" TEXT NOT NULL DEFAULT 'notUploaded', \"drive_file_id\" TEXT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_documents_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_documents_ai AFTER INSERT ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('documents', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_documents_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_documents_au AFTER UPDATE ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('documents', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_documents_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_documents_ad AFTER DELETE ON documents WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('documents', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "shopping_lists",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"shopping_lists\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"name\" TEXT NOT NULL, \"status\" TEXT NOT NULL, \"copied_from_id\" TEXT NULL, \"started_at\" INTEGER NULL, \"paused_at\" INTEGER NULL, \"purchased_on\" TEXT NULL, \"total_paise\" INTEGER NULL, \"store\" TEXT NOT NULL DEFAULT '', \"payment_method\" TEXT NULL, \"receipt_key\" TEXT NULL, \"receipt_name\" TEXT NULL, \"receipt_type\" TEXT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_lists_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_lists_ai AFTER INSERT ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_lists', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_lists_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_lists_au AFTER UPDATE ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_lists', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_lists_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_lists_ad AFTER DELETE ON shopping_lists WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_lists', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "shopping_items",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"shopping_items\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"list_id\" TEXT NOT NULL REFERENCES shopping_lists (id) ON DELETE CASCADE, \"name\" TEXT NOT NULL, \"quantity\" TEXT NOT NULL DEFAULT '', \"unit\" TEXT NOT NULL DEFAULT '', \"is_purchased\" INTEGER NOT NULL DEFAULT 0 CHECK (\"is_purchased\" IN (0, 1)), \"position\" INTEGER NOT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_items_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_items_ai AFTER INSERT ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_items_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_items_au AFTER UPDATE ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_items', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_shopping_items_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_shopping_items_ad AFTER DELETE ON shopping_items WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('shopping_items', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "expenses",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"expenses\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"amount_paise\" INTEGER NOT NULL, \"description\" TEXT NOT NULL DEFAULT '', \"spent_on\" TEXT NOT NULL, \"source\" TEXT NOT NULL, \"source_id\" TEXT NULL, PRIMARY KEY (\"id\"), UNIQUE (\"source\", \"source_id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_expenses_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_expenses_ai AFTER INSERT ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('expenses', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_expenses_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_expenses_au AFTER UPDATE ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('expenses', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_expenses_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_expenses_ad AFTER DELETE ON expenses WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('expenses', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "budget_amounts",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"budget_amounts\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"from_month\" TEXT NOT NULL UNIQUE, \"amount_paise\" INTEGER NOT NULL, PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_budget_amounts_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_budget_amounts_ai AFTER INSERT ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('budget_amounts', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_budget_amounts_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_budget_amounts_au AFTER UPDATE ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('budget_amounts', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_budget_amounts_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_budget_amounts_ad AFTER DELETE ON budget_amounts WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('budget_amounts', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "lending_records",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"lending_records\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"direction\" TEXT NOT NULL, \"person\" TEXT NOT NULL, \"amount_paise\" INTEGER NOT NULL, \"given_on\" TEXT NOT NULL, \"due_on\" TEXT NULL, \"status\" TEXT NOT NULL, \"completed_on\" TEXT NULL, \"notes\" TEXT NOT NULL DEFAULT '', \"remind\" INTEGER NOT NULL DEFAULT 0 CHECK (\"remind\" IN (0, 1)), PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_lending_records_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_lending_records_ai AFTER INSERT ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('lending_records', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_lending_records_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_lending_records_au AFTER UPDATE ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('lending_records', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_lending_records_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_lending_records_ad AFTER DELETE ON lending_records WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('lending_records', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "medicines",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TABLE IF NOT EXISTS \"medicines\" (\"id\" TEXT NOT NULL, \"created_at\" INTEGER NOT NULL, \"updated_at\" INTEGER NOT NULL, \"name\" TEXT NOT NULL, \"times\" TEXT NOT NULL, \"weekdays\" TEXT NOT NULL DEFAULT '', \"enabled\" INTEGER NOT NULL DEFAULT 1 CHECK (\"enabled\" IN (0, 1)), PRIMARY KEY (\"id\"));"
+        }
+      ]
+    },
+    {
+      "name": "sync_medicines_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_medicines_ai AFTER INSERT ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('medicines', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_medicines_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_medicines_au AFTER UPDATE ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('medicines', new.id, 0, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "sync_medicines_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER sync_medicines_ad AFTER DELETE ON medicines WHEN NOT EXISTS (SELECT 1 FROM sync_mute) BEGIN INSERT INTO sync_outbox (tbl, row_id, deleted, seq) VALUES ('medicines', old.id, 1, (SELECT COALESCE(MAX(seq), 0) + 1 FROM sync_outbox)) ON CONFLICT (tbl, row_id) DO UPDATE SET deleted = excluded.deleted, seq = excluded.seq;END"
+        }
+      ]
+    },
+    {
+      "name": "shopping_one_active",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE UNIQUE INDEX shopping_one_active ON shopping_lists (status) WHERE status = 'active'"
+        }
+      ]
+    },
+    {
+      "name": "shopping_items_list",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE INDEX shopping_items_list ON shopping_items (list_id, position)"
+        }
+      ]
+    },
+    {
+      "name": "documents_expiry",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE INDEX documents_expiry ON documents (expiry_date)"
+        }
+      ]
+    },
+    {
+      "name": "documents_fts",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE VIRTUAL TABLE IF NOT EXISTS \"documents_fts\" USING fts5(title, description, original_name, content='documents', content_rowid='rowid');"
+        }
+      ]
+    },
+    {
+      "name": "documents_fts_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER documents_fts_ai AFTER INSERT ON documents BEGIN INSERT INTO documents_fts (\"rowid\", title, description, original_name) VALUES (new.\"rowid\", new.title, new.description, new.original_name);END"
+        }
+      ]
+    },
+    {
+      "name": "documents_fts_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER documents_fts_ad AFTER DELETE ON documents BEGIN INSERT INTO documents_fts (documents_fts, \"rowid\", title, description, original_name) VALUES ('delete', old.\"rowid\", old.title, old.description, old.original_name);END"
+        }
+      ]
+    },
+    {
+      "name": "documents_fts_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER documents_fts_au AFTER UPDATE ON documents BEGIN INSERT INTO documents_fts (documents_fts, \"rowid\", title, description, original_name) VALUES ('delete', old.\"rowid\", old.title, old.description, old.original_name);INSERT INTO documents_fts (\"rowid\", title, description, original_name) VALUES (new.\"rowid\", new.title, new.description, new.original_name);END"
+        }
+      ]
+    },
+    {
+      "name": "password_notes_fts",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE VIRTUAL TABLE IF NOT EXISTS \"password_notes_fts\" USING fts5(name, url, username, content='password_notes', content_rowid='rowid');"
+        }
+      ]
+    },
+    {
+      "name": "password_fts_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER password_fts_ai AFTER INSERT ON password_notes BEGIN INSERT INTO password_notes_fts (\"rowid\", name, url, username) VALUES (new.\"rowid\", new.name, new.url, new.username);END"
+        }
+      ]
+    },
+    {
+      "name": "password_fts_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER password_fts_ad AFTER DELETE ON password_notes BEGIN INSERT INTO password_notes_fts (password_notes_fts, \"rowid\", name, url, username) VALUES ('delete', old.\"rowid\", old.name, old.url, old.username);END"
+        }
+      ]
+    },
+    {
+      "name": "password_fts_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER password_fts_au AFTER UPDATE ON password_notes BEGIN INSERT INTO password_notes_fts (password_notes_fts, \"rowid\", name, url, username) VALUES ('delete', old.\"rowid\", old.name, old.url, old.username);INSERT INTO password_notes_fts (\"rowid\", name, url, username) VALUES (new.\"rowid\", new.name, new.url, new.username);END"
+        }
+      ]
+    },
+    {
+      "name": "personal_entries_fts",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE VIRTUAL TABLE IF NOT EXISTS \"personal_entries_fts\" USING fts5(title, search_text, content='personal_entries', content_rowid='rowid');"
+        }
+      ]
+    },
+    {
+      "name": "personal_fts_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER personal_fts_ai AFTER INSERT ON personal_entries BEGIN INSERT INTO personal_entries_fts (\"rowid\", title, search_text) VALUES (new.\"rowid\", new.title, new.search_text);END"
+        }
+      ]
+    },
+    {
+      "name": "personal_fts_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER personal_fts_ad AFTER DELETE ON personal_entries BEGIN INSERT INTO personal_entries_fts (personal_entries_fts, \"rowid\", title, search_text) VALUES ('delete', old.\"rowid\", old.title, old.search_text);END"
+        }
+      ]
+    },
+    {
+      "name": "personal_fts_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER personal_fts_au AFTER UPDATE ON personal_entries BEGIN INSERT INTO personal_entries_fts (personal_entries_fts, \"rowid\", title, search_text) VALUES ('delete', old.\"rowid\", old.title, old.search_text);INSERT INTO personal_entries_fts (\"rowid\", title, search_text) VALUES (new.\"rowid\", new.title, new.search_text);END"
+        }
+      ]
+    },
+    {
+      "name": "notes_fts",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE VIRTUAL TABLE IF NOT EXISTS \"notes_fts\" USING fts5(title, plain_text, tags, content='notes', content_rowid='rowid');"
+        }
+      ]
+    },
+    {
+      "name": "notes_fts_ai",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER notes_fts_ai AFTER INSERT ON notes BEGIN INSERT INTO notes_fts (\"rowid\", title, plain_text, tags) VALUES (new.\"rowid\", new.title, new.plain_text, new.tags);END"
+        }
+      ]
+    },
+    {
+      "name": "notes_fts_ad",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER notes_fts_ad AFTER DELETE ON notes BEGIN INSERT INTO notes_fts (notes_fts, \"rowid\", title, plain_text, tags) VALUES ('delete', old.\"rowid\", old.title, old.plain_text, old.tags);END"
+        }
+      ]
+    },
+    {
+      "name": "notes_fts_au",
+      "sql": [
+        {
+          "dialect": "sqlite",
+          "sql": "CREATE TRIGGER notes_fts_au AFTER UPDATE ON notes BEGIN INSERT INTO notes_fts (notes_fts, \"rowid\", title, plain_text, tags) VALUES ('delete', old.\"rowid\", old.title, old.plain_text, old.tags);INSERT INTO notes_fts (\"rowid\", title, plain_text, tags) VALUES (new.\"rowid\", new.title, new.plain_text, new.tags);END"
+        }
+      ]
+    }
+  ]
+}

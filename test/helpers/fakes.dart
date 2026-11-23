@@ -1,7 +1,7 @@
 import 'package:mocktail/mocktail.dart';
-import 'package:personal_life_manager/core/security/biometric_auth.dart';
+import 'package:personal_life_manager/core/platform/device_settings.dart';
+import 'package:personal_life_manager/core/security/device_lock.dart';
 import 'package:personal_life_manager/core/storage/secure_store.dart';
-import 'package:personal_life_manager/features/auth/domain/auth_repository.dart';
 
 final class InMemorySecureStore implements SecureStore {
   final Map<String, String> values = {};
@@ -19,9 +19,34 @@ final class InMemorySecureStore implements SecureStore {
   Future<void> deleteAll() async => values.clear();
 }
 
-class MockAuthRepository extends Mock implements AuthRepository;
+/// A screen lock that answers [result].
+final class FakeDeviceLock implements DeviceLock {
+  FakeDeviceLock([this.result = DeviceUnlock.unlocked]);
 
-class MockBiometricAuth extends Mock implements BiometricAuth;
+  DeviceUnlock result;
+  int prompts = 0;
+
+  @override
+  Future<DeviceUnlock> unlock({required String reason}) async {
+    prompts++;
+    return result;
+  }
+}
+
+final class FakeDeviceSettings implements DeviceSettings {
+  bool automatic = true;
+  int opened = 0;
+
+  @override
+  Future<({bool time, bool zone})> automaticTime() async =>
+      (time: automatic, zone: automatic);
+
+  @override
+  Future<void> openDateSettings() async => opened++;
+
+  @override
+  Future<void> openSecuritySettings() async => opened++;
+}
 
 class MockSecureStore extends Mock implements SecureStore;
 

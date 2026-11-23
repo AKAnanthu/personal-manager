@@ -160,191 +160,17 @@ abstract class AppLocalizations {
   /// **'Hide password'**
   String get hidePassword;
 
-  /// Shown when the keychain/keystore read or write fails.
-  ///
-  /// In en, this message translates to:
-  /// **'Couldn\'t reach this device\'s secure storage. Try again.'**
-  String get secureStorageError;
-
-  /// Progress label in first-time setup.
-  ///
-  /// In en, this message translates to:
-  /// **'Step {step} of {total}'**
-  String setupStepLabel(int step, int total);
-
-  /// Title of the first setup step.
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome'**
-  String get setupWelcomeTitle;
-
-  /// Body of the first setup step.
-  ///
-  /// In en, this message translates to:
-  /// **'Keep your personal details, documents, notes, reminders and everyday records in one place, on this phone.'**
-  String get setupWelcomeBody;
-
-  /// Title of the password setup step.
-  ///
-  /// In en, this message translates to:
-  /// **'Create your app password'**
-  String get setupPasswordTitle;
-
-  /// Subtitle of the password setup step.
-  ///
-  /// In en, this message translates to:
-  /// **'You\'ll enter this each time you open the app.'**
-  String get setupPasswordSubtitle;
-
   /// Label for the new password field.
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get passwordLabel;
 
-  /// Label for the repeat-password field.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm password'**
-  String get confirmPasswordLabel;
-
-  /// Strength label under the new password field.
-  ///
-  /// In en, this message translates to:
-  /// **'{strength, select, tooShort{Too short} fair{Fair} good{Good} strong{Strong} other{}} · at least {min} characters'**
-  String passwordStrengthHint(String strength, int min);
-
-  /// Screen-reader label for the strength meter.
-  ///
-  /// In en, this message translates to:
-  /// **'Strength: {strength, select, tooShort{too short} fair{fair} good{good} strong{strong} other{}}'**
-  String passwordStrengthSemantics(String strength);
-
-  /// Error under the confirm password field.
-  ///
-  /// In en, this message translates to:
-  /// **'Passwords don\'t match'**
-  String get passwordsDoNotMatch;
-
-  /// Heading of the data-storage disclosure card.
-  ///
-  /// In en, this message translates to:
-  /// **'How your data is stored'**
-  String get dataStorageTitle;
-
-  /// Disclosure: data is local.
-  ///
-  /// In en, this message translates to:
-  /// **'Everything stays on this phone. We have no servers.'**
-  String get dataStorageLocal;
-
-  /// Disclosure: Drive uploads are manual.
-  ///
-  /// In en, this message translates to:
-  /// **'Copies go to your own Google Drive only when you choose.'**
-  String get dataStorageDrive;
-
-  /// Disclosure: no app-level encryption.
-  ///
-  /// In en, this message translates to:
-  /// **'Data, files and backups are not encrypted. The password only controls who opens the app.'**
-  String get dataStorageNotEncrypted;
-
-  /// Checkbox the user must tick before continuing setup.
-  ///
-  /// In en, this message translates to:
-  /// **'I understand how my data is stored'**
-  String get dataStorageAcknowledge;
-
-  /// Title of the optional biometric step.
-  ///
-  /// In en, this message translates to:
-  /// **'{kind, select, face{Unlock with Face ID?} fingerprint{Unlock with fingerprint?} other{Unlock with biometrics?}}'**
-  String setupBiometricTitle(String kind);
-
-  /// Body of the optional biometric step.
-  ///
-  /// In en, this message translates to:
-  /// **'It\'s quicker than typing your password. Your password always works too, and you can change this later in Settings.'**
-  String get setupBiometricBody;
-
-  /// Enables biometric unlock.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn on'**
-  String get setupBiometricEnable;
-
-  /// Skips biometric unlock.
-  ///
-  /// In en, this message translates to:
-  /// **'Not now'**
-  String get setupBiometricSkip;
-
-  /// System biometric prompt text when enabling.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm it\'s you to turn on biometric unlock'**
-  String get biometricReasonEnable;
-
-  /// System biometric prompt text when unlocking.
-  ///
-  /// In en, this message translates to:
-  /// **'Unlock Personal Life Manager'**
-  String get biometricReasonUnlock;
-
-  /// Shown when the biometric prompt fails or is cancelled.
-  ///
-  /// In en, this message translates to:
-  /// **'Biometric check didn\'t work. Try again or use your password.'**
-  String get biometricFailed;
-
   /// Subtitle on the unlock screen.
   ///
   /// In en, this message translates to:
-  /// **'Enter your app password to continue'**
+  /// **'Locked'**
   String get unlockSubtitle;
-
-  /// Label for the password field on the unlock screen.
-  ///
-  /// In en, this message translates to:
-  /// **'App password'**
-  String get appPasswordLabel;
-
-  /// Unlock button.
-  ///
-  /// In en, this message translates to:
-  /// **'Unlock'**
-  String get unlockAction;
-
-  /// Divider between password and biometric unlock.
-  ///
-  /// In en, this message translates to:
-  /// **'or'**
-  String get orDivider;
-
-  /// Biometric unlock button.
-  ///
-  /// In en, this message translates to:
-  /// **'{kind, select, face{Use Face ID} fingerprint{Use fingerprint} other{Use biometrics}}'**
-  String useBiometric(String kind);
-
-  /// Info banner on the unlock screen.
-  ///
-  /// In en, this message translates to:
-  /// **'Your data stays on this device. The app password controls access — it does not encrypt your data or files.'**
-  String get unlockInfo;
-
-  /// Error after a wrong password.
-  ///
-  /// In en, this message translates to:
-  /// **'{count, plural, =0{Wrong password.} =1{Wrong password. 1 attempt left before a short wait.} other{Wrong password. {count} attempts left before a short wait.}}'**
-  String wrongPassword(int count);
-
-  /// Shown during the backoff period after repeated wrong passwords.
-  ///
-  /// In en, this message translates to:
-  /// **'Too many attempts. Try again in {time}.'**
-  String lockedOut(String time);
 
   /// Android notification channel name, shown in system settings.
   ///
@@ -481,8 +307,8 @@ abstract class AppLocalizations {
   /// Rejected attachment over the size limit.
   ///
   /// In en, this message translates to:
-  /// **'This file is too large. The limit is {megabytes} MB.'**
-  String errorFileTooLarge(int megabytes);
+  /// **'This file is too large. The limit is {kilobytes} KB.'**
+  String errorFileTooLarge(int kilobytes);
 
   /// File copy failed.
   ///
@@ -2911,7 +2737,7 @@ abstract class AppLocalizations {
   /// Milestone 8.
   ///
   /// In en, this message translates to:
-  /// **'Look away from the screen, relax your shoulders and follow the circle.'**
+  /// **'Relax your shoulders and follow the circle, or turn on sound, look away and close your eyes: the tones tell you when to breathe in and out.'**
   String get breatheIntro;
 
   /// Milestone 8.
@@ -2977,8 +2803,14 @@ abstract class AppLocalizations {
   /// Milestone 8.
   ///
   /// In en, this message translates to:
-  /// **'Completion sound'**
+  /// **'Sound cues'**
   String get breatheSound;
+
+  /// Under the sound switch on the breathing screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Rising tone: breathe in. Falling tone: breathe out. A chime when you\'re done.'**
+  String get breatheSoundHint;
 
   /// Milestone 8.
   ///
@@ -3091,12 +2923,6 @@ abstract class AppLocalizations {
   /// Backup and restore.
   ///
   /// In en, this message translates to:
-  /// **'Available once Google Drive is connected'**
-  String get backupDriveLater;
-
-  /// Backup and restore.
-  ///
-  /// In en, this message translates to:
   /// **'Backup files are not encrypted. Anyone who gets the file can read its contents.'**
   String get backupUnencryptedWarning;
 
@@ -3201,12 +3027,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose backup file'**
   String get restoreChooseFile;
-
-  /// Backup and restore.
-  ///
-  /// In en, this message translates to:
-  /// **'Restoring from Google Drive will be available once Drive is connected.'**
-  String get restoreDriveLater;
 
   /// Backup and restore.
   ///
@@ -3349,48 +3169,6 @@ abstract class AppLocalizations {
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Change app password'**
-  String get changePasswordTitle;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Current password'**
-  String get currentPasswordLabel;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'New password'**
-  String get newPasswordLabel;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Use at least {min} characters.'**
-  String passwordTooShort(int min);
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose a password different from the current one.'**
-  String get passwordSameAsCurrent;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'App password changed'**
-  String get passwordChangedSnack;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'{kind, select, face{Face ID unlock} fingerprint{Fingerprint unlock} other{Biometric unlock}}'**
-  String biometricUnlockSetting(String kind);
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
   /// **'Auto-lock'**
   String get autoLockTitle;
 
@@ -3399,12 +3177,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{option, select, immediately{As soon as you leave the app} after30s{After 30 seconds in background} after1min{After 1 minute in background} after5min{After 5 minutes in background} other{}}'**
   String autoLockOption(String option);
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Not connected · coming in a later update'**
-  String get driveNotConnectedYet;
 
   /// Settings.
   ///
@@ -3481,37 +3253,37 @@ abstract class AppLocalizations {
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Everything stays on this phone'**
+  /// **'On this phone and in your Google Drive'**
   String get privacyLocalTitle;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Your details, notes, documents and lists are stored only on this phone. The app works fully offline.'**
+  /// **'What you add is stored on this phone and, within seconds, in a hidden app folder in your own Google Drive. Only this app can open that folder, and it doesn\'t appear in the Drive app.'**
   String get privacyLocalBody;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'No servers, no account'**
+  /// **'No server of ours'**
   String get privacyNoServerTitle;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'There is no developer server or cloud database. Nothing is sent to the makers of this app.'**
+  /// **'The app\'s makers run no server and can\'t see your data. Nothing is sent anywhere except your own Google Drive.'**
   String get privacyNoServerBody;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Google Drive only when you choose'**
+  /// **'Google sign-in'**
   String get privacyDriveTitle;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Copies go to your own Google Drive only when you upload or back up there yourself. Nothing syncs automatically.'**
+  /// **'You sign in with your own Google account. The app asks only for your name, email address and access to the files it creates in your Drive: never the rest of your Drive, your Gmail or your contacts.'**
   String get privacyDriveBody;
 
   /// Settings.
@@ -3523,19 +3295,19 @@ abstract class AppLocalizations {
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Data, files and backups are not encrypted by the app. Anyone who can get into this phone or a backup file may be able to read them.'**
+  /// **'The app doesn\'t encrypt your data, on the phone or in Drive (password notes are stored as typed). It\'s protected by your phone\'s screen lock and your Google account: turn on 2-Step Verification for your Google account.'**
   String get privacyEncryptionBody;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'The app password controls access'**
+  /// **'Screen lock'**
   String get privacyPasswordTitle;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'It stops others opening the app; it does not encrypt your data. If you forget it, the only way back in is to erase everything on this phone.'**
+  /// **'The app opens with your phone\'s screen lock (fingerprint, face, PIN or pattern). Anyone who knows your phone\'s PIN can open it.'**
   String get privacyPasswordBody;
 
   /// Settings.
@@ -3577,37 +3349,19 @@ abstract class AppLocalizations {
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Forgot password?'**
-  String get forgotPasswordAction;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Forgot your password?'**
-  String get forgotPasswordTitle;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'There is no server, so the password can\'t be recovered or reset. The only way back in is to erase everything and set the app up again.'**
-  String get forgotPasswordBody;
-
-  /// Settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Erase all data'**
+  /// **'Delete all my data'**
   String get eraseTitle;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Everything in the app on this phone will be deleted: details, passwords, documents, notes, lists, reminders and settings. This can\'t be undone.'**
+  /// **'Deletes everything from this phone and this app\'s data from your Google Drive. This can\'t be undone.'**
   String get eraseBody;
 
   /// Settings.
   ///
   /// In en, this message translates to:
-  /// **'Backup files you saved elsewhere and copies on Google Drive are not touched. You can restore a backup after setting the app up again.'**
+  /// **'Backup files you saved, and copies you saved to Google Drive folders, are kept. To keep your data, save a copy to this phone first.'**
   String get eraseKeepsBackups;
 
   /// The word the user must type to confirm. Translate it, keep it short.
@@ -3627,6 +3381,786 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Erase everything'**
   String get eraseAction;
+
+  /// Generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retryAction;
+
+  /// Generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get refreshAction;
+
+  /// Generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get openAction;
+
+  /// Generic.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get loadMoreAction;
+
+  /// Generic.
+  ///
+  /// In en, this message translates to:
+  /// **'More options for {name}'**
+  String moreOptionsFor(String name);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected'**
+  String get driveNotConnected;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected'**
+  String get driveConnected;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Google account used for Drive'**
+  String get driveConnectedAs;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect Google Drive'**
+  String get driveConnectAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect again'**
+  String get driveReconnectAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage'**
+  String get driveManageAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'The app can only see files it puts in its own \"Personal Life Manager\" folder, never the rest of your Drive.'**
+  String get driveWhyOnlyAppFolder;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is uploaded automatically. Copies go to Drive only when you choose.'**
+  String get driveWhyManual;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything else works without Drive. Your files stay on this phone.'**
+  String get driveWhyOptional;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Files are uploaded as they are, not encrypted by this app. Google Drive\'s own security applies.'**
+  String get driveNotEncrypted;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect'**
+  String get driveDisconnectAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Files already on Drive stay there'**
+  String get driveDisconnectHint;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnect Google Drive?'**
+  String get driveDisconnectTitle;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'This app will lose access to your Drive. Nothing on this phone is deleted, and files already on Drive stay there.'**
+  String get driveDisconnectBody;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Folder path'**
+  String get driveFolderPath;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Files in {folder}'**
+  String driveFilesIn(String folder);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'No files in this folder yet.'**
+  String get driveFolderEmpty;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Empty} =1{1 item} other{{count} items}}'**
+  String driveItemCount(int count);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Only this app\'s folder is shown. Drive copies don\'t sync: editing one won\'t change the other.'**
+  String get driveFooter;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get driveUploadAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading · {percent}%'**
+  String driveUploadingPercent(int percent);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop uploading'**
+  String get driveCancelUpload;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading…'**
+  String get driveFetching;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Download {name}'**
+  String driveDownloadNamed(String name);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to phone'**
+  String get driveSaveToPhone;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to Drive trash'**
+  String get driveDeleteAction;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove \"{name}\" from Drive?'**
+  String driveDeleteTitle(String name);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'It goes to Google Drive\'s trash, where you can still restore it for a while. Copies on this phone are not affected.'**
+  String get driveDeleteBody;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'{notice, select, uploaded{Uploaded to Drive} deleted{Moved to Drive\'s trash} saved{Saved to your phone} disconnected{Google Drive disconnected} other{}}'**
+  String driveNotice(String notice);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'{problem, select, notConnected{Connect Google Drive first.} authExpired{Google needs you to allow Drive access again. Tap Sync now.} notAllowed{Drive access wasn\'t allowed. On Google\'s screen, tick the Drive boxes, then try again.} quotaExceeded{Your Google Drive is full. Free up space and try again.} notFound{That file or folder is no longer on Drive.} offline{No internet connection. Check it and try again.} cancelled{Stopped.} other{Something went wrong with Google Drive. Try again.}}'**
+  String driveProblem(String problem);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy on Drive · {folder}'**
+  String driveCopyIn(String folder);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload a copy to Drive'**
+  String get driveUploadCopy;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry upload to Drive'**
+  String get driveRetryUpload;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Also remove the copy on Drive'**
+  String get deleteAlsoDriveCopy;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'It goes to Google Drive\'s trash.'**
+  String get deleteAlsoDriveCopyHint;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Backups folder · {email}'**
+  String backupDriveFolder(String email);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll be asked to connect your Google account'**
+  String get backupDriveConnectFirst;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploading to Google Drive · {percent}%'**
+  String backupUploading(int percent);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup saved to Google Drive ({size})'**
+  String backupSavedToDrive(String size);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t save to Drive: {reason} You can save it on this phone instead.'**
+  String backupDriveFailed(String reason);
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from Google Drive'**
+  String get restoreFromDrive;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Backups on Google Drive'**
+  String get restoreDriveTitle;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'No backups in Drive\'s Backups folder yet. Make one from the Back up tab.'**
+  String get restoreDriveEmpty;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a copy to Drive'**
+  String get receiptSaveToDrive;
+
+  /// Milestone 9: Google Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt copy saved to Drive'**
+  String get receiptSavedToDrive;
+
+  /// Sign-in button.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// Sign-in screen subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes, documents, reminders and money: saved to your own Google Drive.'**
+  String get signInTagline;
+
+  /// Sign-in notice point.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything you add is saved to your Google Drive as you go. Only this app can see it there.'**
+  String get signInPointDrive;
+
+  /// Sign-in notice point.
+  ///
+  /// In en, this message translates to:
+  /// **'Using two phones? Tap Sync on the other one to get the latest. If one item is changed on both, the change saved last is kept.'**
+  String get signInPointSync;
+
+  /// Sign-in notice point.
+  ///
+  /// In en, this message translates to:
+  /// **'The app opens with your phone\'s screen lock: fingerprint, face, PIN or pattern.'**
+  String get signInPointLock;
+
+  /// Under the sign-in button.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing you agree to the Terms of use and the Privacy policy.'**
+  String get signInAgreement;
+
+  /// First download after sign-in.
+  ///
+  /// In en, this message translates to:
+  /// **'Getting your data from Google Drive…'**
+  String get signInDownloading;
+
+  /// First download progress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total}'**
+  String signInDownloadProgress(int done, int total);
+
+  /// First download failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t get your data from Google Drive: {reason} You can try again, or continue and tap Sync later.'**
+  String signInSyncFailed(String reason);
+
+  /// Skip the first download.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue for now'**
+  String get signInContinueLater;
+
+  /// After sign-in.
+  ///
+  /// In en, this message translates to:
+  /// **'One last step: confirm your phone\'s screen lock. It opens the app from now on.'**
+  String get signInConfirmLock;
+
+  /// Unlock button.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock with screen lock'**
+  String get unlockWithScreenLock;
+
+  /// System screen-lock prompt text.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Personal Life Manager'**
+  String get deviceUnlockReason;
+
+  /// No device lock.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone has no screen lock. Set a PIN, pattern or fingerprint to protect your data, then try again.'**
+  String get noScreenLock;
+
+  /// Opens phone settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open security settings'**
+  String get openSecuritySettingsAction;
+
+  /// Clock warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Set your phone\'s date & time and time zone to automatic, so reminders and sync stay correct.'**
+  String get clockNotAutomatic;
+
+  /// Opens phone settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open date & time settings'**
+  String get openDateSettingsAction;
+
+  /// Terms page title.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of use'**
+  String get termsTitle;
+
+  /// Account page title and settings row.
+  ///
+  /// In en, this message translates to:
+  /// **'Account & sync'**
+  String get accountTitle;
+
+  /// Account card subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in with Google'**
+  String get signedInWithGoogle;
+
+  /// Section label.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive sync'**
+  String get syncSection;
+
+  /// Pull the latest from Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync now'**
+  String get syncNowAction;
+
+  /// Sync status.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing…'**
+  String get syncRunning;
+
+  /// Sync status with progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing… {done} of {total}'**
+  String syncProgress(int done, int total);
+
+  /// Sync status while uploading.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving to Google Drive…'**
+  String get syncSaving;
+
+  /// Changes not uploaded yet.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 change waiting to be saved to Drive} other{{count} changes waiting to be saved to Drive}}'**
+  String syncPending(int count);
+
+  /// Sync status.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is saved to Drive'**
+  String get syncAllSaved;
+
+  /// Sync status.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is saved to Drive · Last synced {when}'**
+  String syncAllSavedLast(String when);
+
+  /// Snack after a sync that changed nothing.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to date'**
+  String get syncUpToDate;
+
+  /// Snack after a sync.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced: {received} updated, {removed} removed'**
+  String syncDone(int received, int removed);
+
+  /// Sync error.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t sync. {reason}'**
+  String syncFailed(String reason);
+
+  /// How sync works.
+  ///
+  /// In en, this message translates to:
+  /// **'Your changes are saved to Drive as you make them, and wait if you\'re offline. Nothing comes in by itself: tap Sync to get what you changed on another phone, including its reminders. If one item was changed on both phones, the change saved last is kept.'**
+  String get syncHowItWorks;
+
+  /// Section label.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
+  String get driveStorageSection;
+
+  /// Storage row.
+  ///
+  /// In en, this message translates to:
+  /// **'This app\'s data in Drive'**
+  String get appDataInDrive;
+
+  /// Storage row.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Google storage'**
+  String get googleStorage;
+
+  /// Storage without a limit.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} used'**
+  String googleStorageUsed(String used);
+
+  /// Storage use.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} of {limit} used (shared with Gmail and Photos)'**
+  String googleStorageUsedOf(String used, String limit);
+
+  /// Storage couldn't load.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available right now'**
+  String get storageUnavailable;
+
+  /// Loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading…'**
+  String get loadingLabel;
+
+  /// Storage row.
+  ///
+  /// In en, this message translates to:
+  /// **'File size limit'**
+  String get fileLimitTitle;
+
+  /// Storage row.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents, attachments and receipts up to {size} each. Photos are made smaller when taken.'**
+  String fileLimitBody(String size);
+
+  /// Section label.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data'**
+  String get leavingSection;
+
+  /// Backup shortcut.
+  ///
+  /// In en, this message translates to:
+  /// **'Save a copy to this phone'**
+  String get saveCopyToPhone;
+
+  /// Backup shortcut subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A backup file you keep, even after signing out or uninstalling'**
+  String get saveCopyToPhoneBody;
+
+  /// Sign out.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOutAction;
+
+  /// Sign out subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Removes this phone\'s copy. Your data stays in Drive.'**
+  String get signOutSubtitle;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out?'**
+  String get signOutTitle;
+
+  /// Sign out dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything on this phone is removed. Your data stays in your Google Drive and comes back when you sign in again. Want a file on this phone too? Use \"Save a copy to this phone\" first.'**
+  String get signOutBody;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Some changes aren\'t saved'**
+  String get signOutUnsavedTitle;
+
+  /// Unsaved changes on sign out.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 change isn\'t in Drive yet (check your internet connection). Signing out now loses it.} other{{count} changes aren\'t in Drive yet (check your internet connection). Signing out now loses them.}}'**
+  String signOutUnsavedBody(int count);
+
+  /// Confirm losing changes.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out anyway'**
+  String get signOutAnywayAction;
+
+  /// Delete everything subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'From this phone and from your Google Drive'**
+  String get deleteAllSubtitle;
+
+  /// Delete everything failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was deleted. {reason}'**
+  String deleteAllFailed(String reason);
+
+  /// Note under data actions.
+  ///
+  /// In en, this message translates to:
+  /// **'Uninstalling the app removes only this phone\'s copy; your data stays in your Google Drive until you delete it here, or in Google Drive → Settings → Manage apps.'**
+  String get uninstallNote;
+
+  /// Settings row: visible Drive folders.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Drive files'**
+  String get driveFilesTitle;
+
+  /// Settings row subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Copies you saved to Drive folders'**
+  String get driveFilesSubtitle;
+
+  /// Footer of privacy and terms.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated 23 November 2026.'**
+  String get legalUpdated;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync between phones'**
+  String get privacySyncTitle;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is fetched by itself and nothing runs in the background. On another phone, tap Sync to get the latest. If one item was changed on two phones, the change saved last is kept and the other is replaced. A reminder added on one phone rings on another only after that phone syncs.'**
+  String get privacySyncBody;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Date and time'**
+  String get privacyClockTitle;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your phone\'s date & time and time zone set to automatic. Reminders and sync depend on the right time.'**
+  String get privacyClockBody;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Files'**
+  String get privacyFilesTitle;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents, attachments and receipts (up to 500 KB each) are saved to Drive with their records. Photos are made smaller when taken.'**
+  String get privacyFilesBody;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing out, uninstalling, deleting'**
+  String get privacyLeavingTitle;
+
+  /// Privacy point.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing out or uninstalling removes only this phone\'s copy: your data stays in your Drive and comes back when you sign in again. Before leaving you can save a copy to your phone (Account & sync → Save a copy to this phone). \"Delete all my data\" removes it from this phone and from Drive. You can also remove it in Google Drive → Settings → Manage apps → Personal Life Manager → Delete hidden app data.'**
+  String get privacyLeavingBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal use'**
+  String get termsUseTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Life Manager is a personal organiser, free of charge and provided as is. We do our best, but can\'t promise it\'s free of errors: keep important originals (documents, passwords) somewhere else too.'**
+  String get termsUseBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Google account'**
+  String get termsAccountTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'You sign in with your own Google account and are responsible for it and for your phone\'s screen lock. Google\'s terms apply to your Google Drive and its storage.'**
+  String get termsAccountBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'How saving and syncing work'**
+  String get termsSyncTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes are saved to Drive as you make them; offline, they wait and are tried again. Another phone gets them when you tap Sync there. The change saved last to an item is kept, so an earlier change to the same item on another phone can be replaced.'**
+  String get termsSyncBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage'**
+  String get termsStorageTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data uses your Google storage (15 GB free, shared with Gmail and Photos). When it\'s full, saving stops until you free some space. Files are limited to 500 KB each.'**
+  String get termsStorageBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Test version'**
+  String get termsTestingTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'While the app is being tested, only invited Google accounts can sign in, Google may ask you to sign in again every 7 days, and its sign-in screen may say the app isn\'t verified.'**
+  String get termsTestingBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Your data is yours'**
+  String get termsLeavingTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'You can save a copy to your phone, sign out or delete everything at any time. Uninstalling doesn\'t delete your data from Drive.'**
+  String get termsLeavingBody;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes'**
+  String get termsChangesTitle;
+
+  /// Terms point.
+  ///
+  /// In en, this message translates to:
+  /// **'These terms may change with app updates. The version shown in the app applies.'**
+  String get termsChangesBody;
+
+  /// Size, record count and file count of the app's data in Drive.
+  ///
+  /// In en, this message translates to:
+  /// **'{size} · {records, plural, =1{1 record} other{{records} records}} · {files, plural, =1{1 file} other{{files} files}}'**
+  String appDataSummary(String size, int records, int files);
 }
 
 class _AppLocalizationsDelegate

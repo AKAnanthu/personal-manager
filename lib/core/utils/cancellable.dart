@@ -18,6 +18,17 @@ final class CancelToken {
 
   void _listen(void Function() l) => _listeners.add(l);
   void _unlisten(void Function() l) => _listeners.remove(l);
+
+  /// Calls [l] once when cancelled (at once if already cancelled). Returns
+  /// a function that removes the listener.
+  void Function() whenCancelled(void Function() l) {
+    if (_cancelled) {
+      l();
+      return () {};
+    }
+    _listen(l);
+    return () => _unlisten(l);
+  }
 }
 
 /// Thrown when work stops because its [CancelToken] was cancelled.

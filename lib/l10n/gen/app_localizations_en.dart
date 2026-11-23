@@ -44,152 +44,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hidePassword => 'Hide password';
 
   @override
-  String get secureStorageError =>
-      'Couldn\'t reach this device\'s secure storage. Try again.';
-
-  @override
-  String setupStepLabel(int step, int total) {
-    return 'Step $step of $total';
-  }
-
-  @override
-  String get setupWelcomeTitle => 'Welcome';
-
-  @override
-  String get setupWelcomeBody =>
-      'Keep your personal details, documents, notes, reminders and everyday records in one place, on this phone.';
-
-  @override
-  String get setupPasswordTitle => 'Create your app password';
-
-  @override
-  String get setupPasswordSubtitle =>
-      'You\'ll enter this each time you open the app.';
-
-  @override
   String get passwordLabel => 'Password';
 
   @override
-  String get confirmPasswordLabel => 'Confirm password';
-
-  @override
-  String passwordStrengthHint(String strength, int min) {
-    String _temp0 = intl.Intl.selectLogic(strength, {
-      'tooShort': 'Too short',
-      'fair': 'Fair',
-      'good': 'Good',
-      'strong': 'Strong',
-      'other': '',
-    });
-    return '$_temp0 · at least $min characters';
-  }
-
-  @override
-  String passwordStrengthSemantics(String strength) {
-    String _temp0 = intl.Intl.selectLogic(strength, {
-      'tooShort': 'too short',
-      'fair': 'fair',
-      'good': 'good',
-      'strong': 'strong',
-      'other': '',
-    });
-    return 'Strength: $_temp0';
-  }
-
-  @override
-  String get passwordsDoNotMatch => 'Passwords don\'t match';
-
-  @override
-  String get dataStorageTitle => 'How your data is stored';
-
-  @override
-  String get dataStorageLocal =>
-      'Everything stays on this phone. We have no servers.';
-
-  @override
-  String get dataStorageDrive =>
-      'Copies go to your own Google Drive only when you choose.';
-
-  @override
-  String get dataStorageNotEncrypted =>
-      'Data, files and backups are not encrypted. The password only controls who opens the app.';
-
-  @override
-  String get dataStorageAcknowledge => 'I understand how my data is stored';
-
-  @override
-  String setupBiometricTitle(String kind) {
-    String _temp0 = intl.Intl.selectLogic(kind, {
-      'face': 'Unlock with Face ID?',
-      'fingerprint': 'Unlock with fingerprint?',
-      'other': 'Unlock with biometrics?',
-    });
-    return '$_temp0';
-  }
-
-  @override
-  String get setupBiometricBody =>
-      'It\'s quicker than typing your password. Your password always works too, and you can change this later in Settings.';
-
-  @override
-  String get setupBiometricEnable => 'Turn on';
-
-  @override
-  String get setupBiometricSkip => 'Not now';
-
-  @override
-  String get biometricReasonEnable =>
-      'Confirm it\'s you to turn on biometric unlock';
-
-  @override
-  String get biometricReasonUnlock => 'Unlock Personal Life Manager';
-
-  @override
-  String get biometricFailed =>
-      'Biometric check didn\'t work. Try again or use your password.';
-
-  @override
-  String get unlockSubtitle => 'Enter your app password to continue';
-
-  @override
-  String get appPasswordLabel => 'App password';
-
-  @override
-  String get unlockAction => 'Unlock';
-
-  @override
-  String get orDivider => 'or';
-
-  @override
-  String useBiometric(String kind) {
-    String _temp0 = intl.Intl.selectLogic(kind, {
-      'face': 'Use Face ID',
-      'fingerprint': 'Use fingerprint',
-      'other': 'Use biometrics',
-    });
-    return '$_temp0';
-  }
-
-  @override
-  String get unlockInfo =>
-      'Your data stays on this device. The app password controls access — it does not encrypt your data or files.';
-
-  @override
-  String wrongPassword(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'Wrong password. $count attempts left before a short wait.',
-      one: 'Wrong password. 1 attempt left before a short wait.',
-      zero: 'Wrong password.',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String lockedOut(String time) {
-    return 'Too many attempts. Try again in $time.';
-  }
+  String get unlockSubtitle => 'Locked';
 
   @override
   String notificationChannelName(String kind) {
@@ -283,8 +141,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'This file type isn\'t supported. Use PDF, JPG, PNG, Word or Excel files.';
 
   @override
-  String errorFileTooLarge(int megabytes) {
-    return 'This file is too large. The limit is $megabytes MB.';
+  String errorFileTooLarge(int kilobytes) {
+    return 'This file is too large. The limit is $kilobytes KB.';
   }
 
   @override
@@ -1926,7 +1784,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get breatheIntro =>
-      'Look away from the screen, relax your shoulders and follow the circle.';
+      'Relax your shoulders and follow the circle, or turn on sound, look away and close your eyes: the tones tell you when to breathe in and out.';
 
   @override
   String get breatheIn => 'Breathe in';
@@ -1965,7 +1823,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get breatheSound => 'Completion sound';
+  String get breatheSound => 'Sound cues';
+
+  @override
+  String get breatheSoundHint =>
+      'Rising tone: breathe in. Falling tone: breathe out. A chime when you\'re done.';
 
   @override
   String get breatheVibration => 'Vibration';
@@ -2038,9 +1900,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backupThisDevice => 'This phone (save or share the file)';
-
-  @override
-  String get backupDriveLater => 'Available once Google Drive is connected';
 
   @override
   String get backupUnencryptedWarning =>
@@ -2131,10 +1990,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restoreChooseFile => 'Choose backup file';
 
   @override
-  String get restoreDriveLater =>
-      'Restoring from Google Drive will be available once Drive is connected.';
-
-  @override
   String get restoreChecking => 'Checking the backup…';
 
   @override
@@ -2223,37 +2078,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsAbout => 'About';
 
   @override
-  String get changePasswordTitle => 'Change app password';
-
-  @override
-  String get currentPasswordLabel => 'Current password';
-
-  @override
-  String get newPasswordLabel => 'New password';
-
-  @override
-  String passwordTooShort(int min) {
-    return 'Use at least $min characters.';
-  }
-
-  @override
-  String get passwordSameAsCurrent =>
-      'Choose a password different from the current one.';
-
-  @override
-  String get passwordChangedSnack => 'App password changed';
-
-  @override
-  String biometricUnlockSetting(String kind) {
-    String _temp0 = intl.Intl.selectLogic(kind, {
-      'face': 'Face ID unlock',
-      'fingerprint': 'Fingerprint unlock',
-      'other': 'Biometric unlock',
-    });
-    return '$_temp0';
-  }
-
-  @override
   String get autoLockTitle => 'Auto-lock';
 
   @override
@@ -2267,9 +2091,6 @@ class AppLocalizationsEn extends AppLocalizations {
     });
     return '$_temp0';
   }
-
-  @override
-  String get driveNotConnectedYet => 'Not connected · coming in a later update';
 
   @override
   String settingsLastBackup(String date) {
@@ -2322,39 +2143,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyTitle => 'Privacy & data storage';
 
   @override
-  String get privacyLocalTitle => 'Everything stays on this phone';
+  String get privacyLocalTitle => 'On this phone and in your Google Drive';
 
   @override
   String get privacyLocalBody =>
-      'Your details, notes, documents and lists are stored only on this phone. The app works fully offline.';
+      'What you add is stored on this phone and, within seconds, in a hidden app folder in your own Google Drive. Only this app can open that folder, and it doesn\'t appear in the Drive app.';
 
   @override
-  String get privacyNoServerTitle => 'No servers, no account';
+  String get privacyNoServerTitle => 'No server of ours';
 
   @override
   String get privacyNoServerBody =>
-      'There is no developer server or cloud database. Nothing is sent to the makers of this app.';
+      'The app\'s makers run no server and can\'t see your data. Nothing is sent anywhere except your own Google Drive.';
 
   @override
-  String get privacyDriveTitle => 'Google Drive only when you choose';
+  String get privacyDriveTitle => 'Google sign-in';
 
   @override
   String get privacyDriveBody =>
-      'Copies go to your own Google Drive only when you upload or back up there yourself. Nothing syncs automatically.';
+      'You sign in with your own Google account. The app asks only for your name, email address and access to the files it creates in your Drive: never the rest of your Drive, your Gmail or your contacts.';
 
   @override
   String get privacyEncryptionTitle => 'Not encrypted';
 
   @override
   String get privacyEncryptionBody =>
-      'Data, files and backups are not encrypted by the app. Anyone who can get into this phone or a backup file may be able to read them.';
+      'The app doesn\'t encrypt your data, on the phone or in Drive (password notes are stored as typed). It\'s protected by your phone\'s screen lock and your Google account: turn on 2-Step Verification for your Google account.';
 
   @override
-  String get privacyPasswordTitle => 'The app password controls access';
+  String get privacyPasswordTitle => 'Screen lock';
 
   @override
   String get privacyPasswordBody =>
-      'It stops others opening the app; it does not encrypt your data. If you forget it, the only way back in is to erase everything on this phone.';
+      'The app opens with your phone\'s screen lock (fingerprint, face, PIN or pattern). Anyone who knows your phone\'s PIN can open it.';
 
   @override
   String get privacyBackupTitle => 'Backups are files you control';
@@ -2379,25 +2200,15 @@ class AppLocalizationsEn extends AppLocalizations {
       'No analytics, ads or crash reporting. Logs on the phone never contain your records.';
 
   @override
-  String get forgotPasswordAction => 'Forgot password?';
-
-  @override
-  String get forgotPasswordTitle => 'Forgot your password?';
-
-  @override
-  String get forgotPasswordBody =>
-      'There is no server, so the password can\'t be recovered or reset. The only way back in is to erase everything and set the app up again.';
-
-  @override
-  String get eraseTitle => 'Erase all data';
+  String get eraseTitle => 'Delete all my data';
 
   @override
   String get eraseBody =>
-      'Everything in the app on this phone will be deleted: details, passwords, documents, notes, lists, reminders and settings. This can\'t be undone.';
+      'Deletes everything from this phone and this app\'s data from your Google Drive. This can\'t be undone.';
 
   @override
   String get eraseKeepsBackups =>
-      'Backup files you saved elsewhere and copies on Google Drive are not touched. You can restore a backup after setting the app up again.';
+      'Backup files you saved, and copies you saved to Google Drive folders, are kept. To keep your data, save a copy to this phone first.';
 
   @override
   String get eraseConfirmWord => 'ERASE';
@@ -2409,4 +2220,530 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get eraseAction => 'Erase everything';
+
+  @override
+  String get retryAction => 'Try again';
+
+  @override
+  String get refreshAction => 'Refresh';
+
+  @override
+  String get openAction => 'Open';
+
+  @override
+  String get loadMoreAction => 'Show more';
+
+  @override
+  String moreOptionsFor(String name) {
+    return 'More options for $name';
+  }
+
+  @override
+  String get driveNotConnected => 'Not connected';
+
+  @override
+  String get driveConnected => 'Connected';
+
+  @override
+  String get driveConnectedAs => 'Google account used for Drive';
+
+  @override
+  String get driveConnectAction => 'Connect Google Drive';
+
+  @override
+  String get driveReconnectAction => 'Connect again';
+
+  @override
+  String get driveManageAction => 'Manage';
+
+  @override
+  String get driveWhyOnlyAppFolder =>
+      'The app can only see files it puts in its own \"Personal Life Manager\" folder, never the rest of your Drive.';
+
+  @override
+  String get driveWhyManual =>
+      'Nothing is uploaded automatically. Copies go to Drive only when you choose.';
+
+  @override
+  String get driveWhyOptional =>
+      'Everything else works without Drive. Your files stay on this phone.';
+
+  @override
+  String get driveNotEncrypted =>
+      'Files are uploaded as they are, not encrypted by this app. Google Drive\'s own security applies.';
+
+  @override
+  String get driveDisconnectAction => 'Disconnect';
+
+  @override
+  String get driveDisconnectHint => 'Files already on Drive stay there';
+
+  @override
+  String get driveDisconnectTitle => 'Disconnect Google Drive?';
+
+  @override
+  String get driveDisconnectBody =>
+      'This app will lose access to your Drive. Nothing on this phone is deleted, and files already on Drive stay there.';
+
+  @override
+  String get driveFolderPath => 'Folder path';
+
+  @override
+  String driveFilesIn(String folder) {
+    return 'Files in $folder';
+  }
+
+  @override
+  String get driveFolderEmpty => 'No files in this folder yet.';
+
+  @override
+  String driveItemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+      zero: 'Empty',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get driveFooter =>
+      'Only this app\'s folder is shown. Drive copies don\'t sync: editing one won\'t change the other.';
+
+  @override
+  String get driveUploadAction => 'Upload';
+
+  @override
+  String driveUploadingPercent(int percent) {
+    return 'Uploading · $percent%';
+  }
+
+  @override
+  String get driveCancelUpload => 'Stop uploading';
+
+  @override
+  String get driveFetching => 'Downloading…';
+
+  @override
+  String driveDownloadNamed(String name) {
+    return 'Download $name';
+  }
+
+  @override
+  String get driveSaveToPhone => 'Save to phone';
+
+  @override
+  String get driveDeleteAction => 'Move to Drive trash';
+
+  @override
+  String driveDeleteTitle(String name) {
+    return 'Remove \"$name\" from Drive?';
+  }
+
+  @override
+  String get driveDeleteBody =>
+      'It goes to Google Drive\'s trash, where you can still restore it for a while. Copies on this phone are not affected.';
+
+  @override
+  String driveNotice(String notice) {
+    String _temp0 = intl.Intl.selectLogic(notice, {
+      'uploaded': 'Uploaded to Drive',
+      'deleted': 'Moved to Drive\'s trash',
+      'saved': 'Saved to your phone',
+      'disconnected': 'Google Drive disconnected',
+      'other': '',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String driveProblem(String problem) {
+    String _temp0 = intl.Intl.selectLogic(problem, {
+      'notConnected': 'Connect Google Drive first.',
+      'authExpired':
+          'Google needs you to allow Drive access again. Tap Sync now.',
+      'notAllowed': 'Drive access wasn\'t allowed. On Google\'s screen, tick the Drive boxes, then try again.',
+      'quotaExceeded':
+          'Your Google Drive is full. Free up space and try again.',
+      'notFound': 'That file or folder is no longer on Drive.',
+      'offline': 'No internet connection. Check it and try again.',
+      'cancelled': 'Stopped.',
+      'other': 'Something went wrong with Google Drive. Try again.',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String driveCopyIn(String folder) {
+    return 'Copy on Drive · $folder';
+  }
+
+  @override
+  String get driveUploadCopy => 'Upload a copy to Drive';
+
+  @override
+  String get driveRetryUpload => 'Retry upload to Drive';
+
+  @override
+  String get deleteAlsoDriveCopy => 'Also remove the copy on Drive';
+
+  @override
+  String get deleteAlsoDriveCopyHint => 'It goes to Google Drive\'s trash.';
+
+  @override
+  String backupDriveFolder(String email) {
+    return 'Backups folder · $email';
+  }
+
+  @override
+  String get backupDriveConnectFirst =>
+      'You\'ll be asked to connect your Google account';
+
+  @override
+  String backupUploading(int percent) {
+    return 'Uploading to Google Drive · $percent%';
+  }
+
+  @override
+  String backupSavedToDrive(String size) {
+    return 'Backup saved to Google Drive ($size)';
+  }
+
+  @override
+  String backupDriveFailed(String reason) {
+    return 'Couldn\'t save to Drive: $reason You can save it on this phone instead.';
+  }
+
+  @override
+  String get restoreFromDrive => 'Choose from Google Drive';
+
+  @override
+  String get restoreDriveTitle => 'Backups on Google Drive';
+
+  @override
+  String get restoreDriveEmpty =>
+      'No backups in Drive\'s Backups folder yet. Make one from the Back up tab.';
+
+  @override
+  String get receiptSaveToDrive => 'Save a copy to Drive';
+
+  @override
+  String get receiptSavedToDrive => 'Receipt copy saved to Drive';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get signInTagline =>
+      'Notes, documents, reminders and money: saved to your own Google Drive.';
+
+  @override
+  String get signInPointDrive =>
+      'Everything you add is saved to your Google Drive as you go. Only this app can see it there.';
+
+  @override
+  String get signInPointSync =>
+      'Using two phones? Tap Sync on the other one to get the latest. If one item is changed on both, the change saved last is kept.';
+
+  @override
+  String get signInPointLock =>
+      'The app opens with your phone\'s screen lock: fingerprint, face, PIN or pattern.';
+
+  @override
+  String get signInAgreement =>
+      'By continuing you agree to the Terms of use and the Privacy policy.';
+
+  @override
+  String get signInDownloading => 'Getting your data from Google Drive…';
+
+  @override
+  String signInDownloadProgress(int done, int total) {
+    return '$done of $total';
+  }
+
+  @override
+  String signInSyncFailed(String reason) {
+    return 'Couldn\'t get your data from Google Drive: $reason You can try again, or continue and tap Sync later.';
+  }
+
+  @override
+  String get signInContinueLater => 'Continue for now';
+
+  @override
+  String get signInConfirmLock =>
+      'One last step: confirm your phone\'s screen lock. It opens the app from now on.';
+
+  @override
+  String get unlockWithScreenLock => 'Unlock with screen lock';
+
+  @override
+  String get deviceUnlockReason => 'Unlock Personal Life Manager';
+
+  @override
+  String get noScreenLock =>
+      'This phone has no screen lock. Set a PIN, pattern or fingerprint to protect your data, then try again.';
+
+  @override
+  String get openSecuritySettingsAction => 'Open security settings';
+
+  @override
+  String get clockNotAutomatic =>
+      'Set your phone\'s date & time and time zone to automatic, so reminders and sync stay correct.';
+
+  @override
+  String get openDateSettingsAction => 'Open date & time settings';
+
+  @override
+  String get termsTitle => 'Terms of use';
+
+  @override
+  String get accountTitle => 'Account & sync';
+
+  @override
+  String get signedInWithGoogle => 'Signed in with Google';
+
+  @override
+  String get syncSection => 'Google Drive sync';
+
+  @override
+  String get syncNowAction => 'Sync now';
+
+  @override
+  String get syncRunning => 'Syncing…';
+
+  @override
+  String syncProgress(int done, int total) {
+    return 'Syncing… $done of $total';
+  }
+
+  @override
+  String get syncSaving => 'Saving to Google Drive…';
+
+  @override
+  String syncPending(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count changes waiting to be saved to Drive',
+      one: '1 change waiting to be saved to Drive',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get syncAllSaved => 'Everything is saved to Drive';
+
+  @override
+  String syncAllSavedLast(String when) {
+    return 'Everything is saved to Drive · Last synced $when';
+  }
+
+  @override
+  String get syncUpToDate => 'Up to date';
+
+  @override
+  String syncDone(int received, int removed) {
+    return 'Synced: $received updated, $removed removed';
+  }
+
+  @override
+  String syncFailed(String reason) {
+    return 'Couldn\'t sync. $reason';
+  }
+
+  @override
+  String get syncHowItWorks =>
+      'Your changes are saved to Drive as you make them, and wait if you\'re offline. Nothing comes in by itself: tap Sync to get what you changed on another phone, including its reminders. If one item was changed on both phones, the change saved last is kept.';
+
+  @override
+  String get driveStorageSection => 'Storage';
+
+  @override
+  String get appDataInDrive => 'This app\'s data in Drive';
+
+  @override
+  String get googleStorage => 'Your Google storage';
+
+  @override
+  String googleStorageUsed(String used) {
+    return '$used used';
+  }
+
+  @override
+  String googleStorageUsedOf(String used, String limit) {
+    return '$used of $limit used (shared with Gmail and Photos)';
+  }
+
+  @override
+  String get storageUnavailable => 'Not available right now';
+
+  @override
+  String get loadingLabel => 'Loading…';
+
+  @override
+  String get fileLimitTitle => 'File size limit';
+
+  @override
+  String fileLimitBody(String size) {
+    return 'Documents, attachments and receipts up to $size each. Photos are made smaller when taken.';
+  }
+
+  @override
+  String get leavingSection => 'Your data';
+
+  @override
+  String get saveCopyToPhone => 'Save a copy to this phone';
+
+  @override
+  String get saveCopyToPhoneBody =>
+      'A backup file you keep, even after signing out or uninstalling';
+
+  @override
+  String get signOutAction => 'Sign out';
+
+  @override
+  String get signOutSubtitle =>
+      'Removes this phone\'s copy. Your data stays in Drive.';
+
+  @override
+  String get signOutTitle => 'Sign out?';
+
+  @override
+  String get signOutBody =>
+      'Everything on this phone is removed. Your data stays in your Google Drive and comes back when you sign in again. Want a file on this phone too? Use \"Save a copy to this phone\" first.';
+
+  @override
+  String get signOutUnsavedTitle => 'Some changes aren\'t saved';
+
+  @override
+  String signOutUnsavedBody(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count changes aren\'t in Drive yet (check your internet connection). Signing out now loses them.',
+      one: '1 change isn\'t in Drive yet (check your internet connection). Signing out now loses it.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get signOutAnywayAction => 'Sign out anyway';
+
+  @override
+  String get deleteAllSubtitle => 'From this phone and from your Google Drive';
+
+  @override
+  String deleteAllFailed(String reason) {
+    return 'Nothing was deleted. $reason';
+  }
+
+  @override
+  String get uninstallNote =>
+      'Uninstalling the app removes only this phone\'s copy; your data stays in your Google Drive until you delete it here, or in Google Drive → Settings → Manage apps.';
+
+  @override
+  String get driveFilesTitle => 'Google Drive files';
+
+  @override
+  String get driveFilesSubtitle => 'Copies you saved to Drive folders';
+
+  @override
+  String get legalUpdated => 'Last updated 23 November 2026.';
+
+  @override
+  String get privacySyncTitle => 'Sync between phones';
+
+  @override
+  String get privacySyncBody =>
+      'Nothing is fetched by itself and nothing runs in the background. On another phone, tap Sync to get the latest. If one item was changed on two phones, the change saved last is kept and the other is replaced. A reminder added on one phone rings on another only after that phone syncs.';
+
+  @override
+  String get privacyClockTitle => 'Date and time';
+
+  @override
+  String get privacyClockBody =>
+      'Keep your phone\'s date & time and time zone set to automatic. Reminders and sync depend on the right time.';
+
+  @override
+  String get privacyFilesTitle => 'Files';
+
+  @override
+  String get privacyFilesBody =>
+      'Documents, attachments and receipts (up to 500 KB each) are saved to Drive with their records. Photos are made smaller when taken.';
+
+  @override
+  String get privacyLeavingTitle => 'Signing out, uninstalling, deleting';
+
+  @override
+  String get privacyLeavingBody =>
+      'Signing out or uninstalling removes only this phone\'s copy: your data stays in your Drive and comes back when you sign in again. Before leaving you can save a copy to your phone (Account & sync → Save a copy to this phone). \"Delete all my data\" removes it from this phone and from Drive. You can also remove it in Google Drive → Settings → Manage apps → Personal Life Manager → Delete hidden app data.';
+
+  @override
+  String get termsUseTitle => 'Personal use';
+
+  @override
+  String get termsUseBody =>
+      'Personal Life Manager is a personal organiser, free of charge and provided as is. We do our best, but can\'t promise it\'s free of errors: keep important originals (documents, passwords) somewhere else too.';
+
+  @override
+  String get termsAccountTitle => 'Your Google account';
+
+  @override
+  String get termsAccountBody =>
+      'You sign in with your own Google account and are responsible for it and for your phone\'s screen lock. Google\'s terms apply to your Google Drive and its storage.';
+
+  @override
+  String get termsSyncTitle => 'How saving and syncing work';
+
+  @override
+  String get termsSyncBody =>
+      'Changes are saved to Drive as you make them; offline, they wait and are tried again. Another phone gets them when you tap Sync there. The change saved last to an item is kept, so an earlier change to the same item on another phone can be replaced.';
+
+  @override
+  String get termsStorageTitle => 'Storage';
+
+  @override
+  String get termsStorageBody =>
+      'Your data uses your Google storage (15 GB free, shared with Gmail and Photos). When it\'s full, saving stops until you free some space. Files are limited to 500 KB each.';
+
+  @override
+  String get termsTestingTitle => 'Test version';
+
+  @override
+  String get termsTestingBody =>
+      'While the app is being tested, only invited Google accounts can sign in, Google may ask you to sign in again every 7 days, and its sign-in screen may say the app isn\'t verified.';
+
+  @override
+  String get termsLeavingTitle => 'Your data is yours';
+
+  @override
+  String get termsLeavingBody =>
+      'You can save a copy to your phone, sign out or delete everything at any time. Uninstalling doesn\'t delete your data from Drive.';
+
+  @override
+  String get termsChangesTitle => 'Changes';
+
+  @override
+  String get termsChangesBody =>
+      'These terms may change with app updates. The version shown in the app applies.';
+
+  @override
+  String appDataSummary(String size, int records, int files) {
+    String _temp0 = intl.Intl.pluralLogic(
+      records,
+      locale: localeName,
+      other: '$records records',
+      one: '1 record',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      files,
+      locale: localeName,
+      other: '$files files',
+      one: '1 file',
+    );
+    return '$size · $_temp0 · $_temp1';
+  }
 }

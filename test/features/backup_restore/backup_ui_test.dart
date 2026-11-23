@@ -186,7 +186,7 @@ void main() {
     );
   });
 
-  testWidgets('page: defaults ticked, password notes sensitive; Drive later', (
+  testWidgets('page: defaults ticked, password notes sensitive; no Drive', (
     tester,
   ) async {
     tester.view
@@ -231,10 +231,14 @@ void main() {
     expect(box('Password notes').value, isFalse);
     expect(find.text('Sensitive'), findsOneWidget);
     expect(find.text('Create backup · 5 categories'), findsOneWidget);
-    expect(
-      find.text('Available once Google Drive is connected'),
-      findsOneWidget,
+    // Without Drive set up, the Drive destination is shown but off.
+    final drive = tester.widget<RadioListTile<bool>>(
+      find.ancestor(
+        of: find.text('Google Drive'),
+        matching: find.byType(RadioListTile<bool>),
+      ),
     );
+    expect(drive.enabled, isFalse);
     expect(find.textContaining('not encrypted. Anyone'), findsOneWidget);
 
     await tester.tap(find.text('Password notes'));

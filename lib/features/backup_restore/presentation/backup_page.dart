@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:personal_life_manager/core/drive/drive_models.dart';
+import 'package:personal_life_manager/core/error/result.dart';
+import 'package:personal_life_manager/core/ui/failure_messages.dart';
 import 'package:personal_life_manager/core/ui/theme/app_palette.dart';
 import 'package:personal_life_manager/core/ui/theme/app_theme.dart';
 import 'package:personal_life_manager/core/ui/widgets/common.dart';
@@ -175,23 +178,40 @@ class _BackupTab extends StatelessWidget {
     final theme = Theme.of(context);
     final cubit = context.read<BackupCubit>();
     return BlocConsumer<BackupCubit, BackupState>(
-      listenWhen: (a, b) => a.phase != b.phase || (b.error && !a.error),
+      listenWhen: (a, b) =>
+          a.phase != b.phase ||
+          (b.error && !a.error) ||
+          (b.failure != null && a.failure != b.failure),
       listener: (context, s) {
         if (s.error) showSnack(context, l10n.backupFailed);
+        if (s.failure case final f?) {
+          showSnack(context, l10n.backupDriveFailed(f.message(l10n)));
+        }
         switch (s.phase) {
           case BackupPhase.confirming:
             unawaited(_confirm(context, s));
           case BackupPhase.built:
-            unawaited(_deliver(context, s));
+            unawaited(
+              s.toDrive
+                  ? cubit.deliver(BackupDestination.drive)
+                  : _deliver(context, s),
+            );
           case BackupPhase.done:
             final last = s.lastBackup;
             if (last != null) {
-              showSnack(context, l10n.backupSaved(_size(context, last.size)));
+              final size = _size(context, last.size);
+              showSnack(
+                context,
+                s.savedToDrive
+                    ? l10n.backupSavedToDrive(size)
+                    : l10n.backupSaved(size),
+              );
             }
             unawaited(cubit.cancel()); // back to idle
           case BackupPhase.idle ||
               BackupPhase.estimating ||
-              BackupPhase.building:
+              BackupPhase.building ||
+              BackupPhase.uploading:
             break;
         }
       },
@@ -235,16 +255,21 @@ class _BackupTab extends StatelessWidget {
             const SizedBox(height: AppSpacing.section),
             SectionLabel(l10n.backupSaveTo),
             RadioGroup<bool>(
-              groupValue: false,
-              onChanged: (_) {},
+              groupValue: s.toDrive,
+              onChanged: (v) {
+                if (v != null && !locked) cubit.chooseDrive(value: v);
+              },
               child: Column(
                 children: [
                   RadioListTile<bool>(
                     contentPadding: EdgeInsets.zero,
                     value: true,
-                    enabled: false,
+                    enabled: cubit.driveAvailable && !locked,
                     title: Text(l10n.googleDrive),
-                    subtitle: Text(l10n.backupDriveLater),
+                    subtitle: Text(switch (cubit.driveAccount) {
+                      final a? => l10n.backupDriveFolder(a),
+                      null => l10n.backupDriveConnectFirst,
+                    }),
                   ),
                   RadioListTile<bool>(
                     contentPadding: EdgeInsets.zero,
@@ -264,9 +289,16 @@ class _BackupTab extends StatelessWidget {
             const SizedBox(height: 16),
             if (s.busy)
               _Working(
-                text: s.phase == BackupPhase.estimating
-                    ? l10n.backupChecking
-                    : l10n.backupPreparing,
+                text: switch (s.phase) {
+                  BackupPhase.estimating => l10n.backupChecking,
+                  BackupPhase.uploading => l10n.backupUploading(
+                    (s.uploadProgress * 100).floor(),
+                  ),
+                  _ => l10n.backupPreparing,
+                },
+                progress: s.phase == BackupPhase.uploading
+                    ? s.uploadProgress
+                    : null,
                 onCancel: cubit.cancel,
               )
             else
@@ -285,6 +317,18 @@ class _BackupTab extends StatelessWidget {
 
 class _RestoreTab extends StatelessWidget {
   const _RestoreTab();
+
+  /// Lists `Backups/` on Drive and lets the user pick one.
+  Future<void> _fromDrive(BuildContext context) async {
+    final cubit = context.read<RestoreCubit>();
+    final picked = await showModalBottomSheet<DriveItem>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      builder: (context) => _DriveBackupsSheet(load: cubit.driveBackups),
+    );
+    if (picked != null) await cubit.pickFromDrive(picked);
+  }
 
   Future<void> _confirm(BuildContext context, RestoreState s) async {
     final l10n = AppLocalizations.of(context);
@@ -314,9 +358,12 @@ class _RestoreTab extends StatelessWidget {
     return BlocConsumer<RestoreCubit, RestoreState>(
       listenWhen: (a, b) =>
           (b.problem != null && a.problem != b.problem) ||
-          (b.error && !a.error),
+          (b.error && !a.error) ||
+          (b.failure != null && a.failure != b.failure),
       listener: (context, s) {
-        if (s.problem case final p?) {
+        if (s.failure case final f?) {
+          showSnack(context, f.message(l10n));
+        } else if (s.problem case final p?) {
           unawaited(
             showDialog<void>(
               context: context,
@@ -349,7 +396,12 @@ class _RestoreTab extends StatelessWidget {
                   icon: const Icon(LucideIcons.folderOpen),
                   label: Text(l10n.restoreChooseFile),
                 ),
-                NoticeBanner(message: l10n.restoreDriveLater),
+                if (cubit.driveAvailable)
+                  OutlinedButton.icon(
+                    onPressed: () => _fromDrive(context),
+                    icon: const Icon(LucideIcons.cloudDownload),
+                    label: Text(l10n.restoreFromDrive),
+                  ),
               ],
             );
           case RestorePhase.checking:
@@ -476,10 +528,13 @@ class _Preview extends StatelessWidget {
 }
 
 class _Working extends StatelessWidget {
-  const _Working({required this.text, this.onCancel});
+  const _Working({required this.text, this.onCancel, this.progress});
 
   final String text;
   final VoidCallback? onCancel;
+
+  /// 0..1 when known; otherwise the bar just moves.
+  final double? progress;
 
   @override
   Widget build(BuildContext context) {
@@ -493,7 +548,7 @@ class _Working extends StatelessWidget {
           spacing: 12,
           children: [
             Text(text, style: Theme.of(context).textTheme.titleSmall),
-            const LinearProgressIndicator(),
+            LinearProgressIndicator(value: progress),
             if (cancel != null)
               Align(
                 alignment: Alignment.centerRight,
@@ -503,6 +558,117 @@ class _Working extends StatelessWidget {
                 ),
               ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Backups found in Drive's `Backups/` folder; pops the chosen one.
+class _DriveBackupsSheet extends StatefulWidget {
+  const _DriveBackupsSheet({required this.load});
+
+  final Future<Result<List<DriveItem>?>> Function() load;
+
+  @override
+  State<_DriveBackupsSheet> createState() => _DriveBackupsSheetState();
+}
+
+class _DriveBackupsSheetState extends State<_DriveBackupsSheet> {
+  late Future<Result<List<DriveItem>?>> _items = widget.load();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final theme = Theme.of(context);
+    final fmt = AppFormats.of(context);
+    return SafeArea(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.sizeOf(context).height * 0.7,
+        ),
+        child: FutureBuilder(
+          future: _items,
+          builder: (context, snap) {
+            final Widget body;
+            switch (snap.data) {
+              case null:
+                body = const Padding(
+                  padding: EdgeInsets.all(32),
+                  child: Center(child: CircularProgressIndicator()),
+                );
+              case Ok(value: null):
+                // Backed out of connecting.
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (context.mounted) Navigator.of(context).pop();
+                });
+                body = const SizedBox.shrink();
+              case Ok(value: final items?) when items.isEmpty:
+                body = Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Text(
+                    l10n.restoreDriveEmpty,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                );
+              case Ok(value: final items?):
+                body = ListView(
+                  shrinkWrap: true,
+                  children: [
+                    for (final i in items)
+                      ListTile(
+                        leading: const Icon(LucideIcons.archive),
+                        title: Text(
+                          i.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        subtitle: Text(
+                          [
+                            if (i.modifiedAt case final m?) fmt.fullDate(m),
+                            if (i.sizeBytes case final b?) fmt.fileSize(b),
+                          ].join(' · '),
+                        ),
+                        onTap: () => Navigator.of(context).pop(i),
+                      ),
+                  ],
+                );
+              case Err(:final failure):
+                body = Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    spacing: 12,
+                    children: [
+                      NoticeBanner(
+                        message: failure.message(l10n),
+                        tone: NoticeTone.warning,
+                      ),
+                      FilledButton.tonal(
+                        onPressed: () => setState(() => _items = widget.load()),
+                        child: Text(l10n.retryAction),
+                      ),
+                    ],
+                  ),
+                );
+            }
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+                  child: Text(
+                    l10n.restoreDriveTitle,
+                    style: theme.textTheme.titleMedium,
+                  ),
+                ),
+                Flexible(child: body),
+              ],
+            );
+          },
         ),
       ),
     );

@@ -7,10 +7,11 @@ extension FailureMessage on Failure {
     NotFoundFailure() => l10n.errorNotFound,
     UnsupportedFileFailure() => l10n.errorUnsupportedFile,
     FileTooLargeFailure(:final maxBytes) => l10n.errorFileTooLarge(
-      maxBytes ~/ (1024 * 1024),
+      maxBytes ~/ 1024,
     ),
     StorageFailure() => l10n.errorFileStorage,
     ConflictFailure() => l10n.errorConflict,
+    DriveFailure(:final problem) => l10n.driveProblem(problem.name),
     DatabaseFailure() || ValidationFailure() => l10n.errorGeneric,
   };
 }
